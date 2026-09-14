@@ -88,7 +88,7 @@ export function Hero() {
           </motion.div>
 
           {/* Траектория - единственный графический элемент экрана */}
-          <Trajectory className="pointer-events-none mt-2 h-[96px] w-full max-w-4xl sm:h-[132px]" />
+          <Trajectory className="pointer-events-none mt-2 h-[64px] w-full max-w-4xl sm:h-[132px]" />
         </motion.div>
 
         {/* Доказательная строка */}

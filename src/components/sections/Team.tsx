@@ -31,7 +31,7 @@ export function Team() {
         initial="hidden"
         whileInView="visible"
         viewport={revealViewport}
-        className="grid gap-5 xs:grid-cols-2 lg:grid-cols-4 lg:gap-6"
+        className="grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4 lg:gap-6"
       >
         {team.map((member) => (
           <motion.li

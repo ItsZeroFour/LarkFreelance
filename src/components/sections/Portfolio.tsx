@@ -23,11 +23,14 @@ export function Portfolio() {
 
   return (
     <Section id="portfolio">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      {/* Нижний отступ шапки переносится на обёртку: иначе он встаёт между
+          заголовком и кнопкой, а кнопка прилипает к сетке кейсов. */}
+      <div className="mb-7 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <SectionHeading
           eyebrow="04 - Портфолио"
           title="Работы, которые *ушли в прод*"
           description="Лендинги, e-commerce, промо-кампании и интерактивные игры - от стоматологии до футбольных промо."
+          className="!mb-0"
         />
 
         <Button href="/portfolio" variant="secondary" className="self-start lg:self-auto">

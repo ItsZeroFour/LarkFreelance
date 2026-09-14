@@ -60,7 +60,7 @@ export function Freelancers() {
 
         <motion.ul
           variants={revealVariants("up")}
-          className="lark-tiles mt-3 w-full text-left"
+          className="lark-tiles mt-3 w-full text-left !grid-cols-1 lg:!grid-cols-3"
         >
           {offers.map((offer) => (
             <li key={offer.title} className="lark-tile cursor-default">

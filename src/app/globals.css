@@ -99,6 +99,14 @@
     border-bottom-color: transparent;
     color: var(--lark-text);
   }
+
+  /* Команда на мобильном идёт в две колонки: инициалы ступенью Display
+     в плитке шириной ~170px упираются в края, поэтому ступень ниже. */
+  @media (max-width: 768px) {
+    .lark-person__mark {
+      font-size: var(--lark-size-h2);
+    }
+  }
 }
 
 @layer utilities {

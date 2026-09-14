@@ -254,13 +254,15 @@ export function Larkins() {
           Стек на 1024. */}
       <div className="grid gap-5 lg:grid-cols-12 lg:gap-6">
         <div data-surface="console" className="lg:col-span-7">
-          <div className="lark-term h-[460px]">
+          <div className="lark-term h-[400px] sm:h-[460px]">
             <div className="lark-term__bar">
               <span className="lark-term__dots" aria-hidden="true">
                 <i /><i /><i />
               </span>
-              <span className="lark-term__name">larkins · бриф</span>
-              <span className="lark-term__dim ml-auto">{statusLabel}</span>
+              <span className="lark-term__name min-w-0 truncate">larkins · бриф</span>
+              <span className="lark-term__dim ml-auto shrink-0 whitespace-nowrap">
+                {statusLabel}
+              </span>
             </div>
 
             <div ref={logRef} className="lark-term__log" aria-live="polite">

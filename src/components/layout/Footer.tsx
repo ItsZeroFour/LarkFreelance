@@ -42,11 +42,11 @@ export function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={revealViewport}
-          className="grid gap-8 py-10 lg:grid-cols-12 lg:gap-6"
+          className="grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-6"
         >
           <motion.div
             variants={revealVariants("up")}
-            className="flex flex-col gap-3 lg:col-span-5"
+            className="flex flex-col gap-3 sm:col-span-2 lg:col-span-5"
           >
             <Link href="/" aria-label="Lark Freelance - на главную" className="text-text">
               <Logo size={28} />
