@@ -1,0 +1,10 @@
+/* Бренд-палитра. Зафиксирована, не расширять. */
+:root {
+  --lark-color-yellow: #FFD23F;
+  --lark-color-yellow-light: #FFEE9F;
+  --lark-color-graphite: #1C1C1C;
+  --lark-color-success: #3DD68C;
+  --lark-color-warning: #FFB020;
+  --lark-color-error: #FF5A5A;
+  --lark-color-info: #5AA9FF;
+}

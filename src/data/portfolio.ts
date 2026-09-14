@@ -1,0 +1,422 @@
+/**
+ * Portfolio case studies. Content and imagery are drawn from the real
+ * delivered projects under /public/portfolio/<slug>.
+ */
+
+export type PortfolioCategory = "landing" | "ecommerce" | "promo" | "game";
+
+export interface PortfolioFilter {
+  id: PortfolioCategory | "all";
+  label: string;
+}
+
+export const portfolioFilters: PortfolioFilter[] = [
+  { id: "all", label: "Все" },
+  { id: "landing", label: "Лендинги" },
+  { id: "ecommerce", label: "E-commerce" },
+  { id: "promo", label: "Промо" },
+  { id: "game", label: "Игры" },
+];
+
+export interface PortfolioStat {
+  value: string;
+  label: string;
+}
+
+export interface PortfolioHighlight {
+  title: string;
+  text: string;
+}
+
+export interface PortfolioItem {
+  slug: string;
+  title: string;
+  client: string;
+  category: PortfolioCategory;
+  categoryLabel: string;
+  year: string;
+  /** Hero one-liner pulled from the site itself. */
+  tagline: string;
+  /** Short copy for the gallery card. */
+  summary: string;
+  /** Brand accent - tints the whole case page. */
+  accent: string;
+  /** Screenshots are mobile stories (portrait) or desktop pages (landscape). */
+  orientation: "landscape" | "portrait";
+  /** Cover image, relative to /public. */
+  cover: string;
+  /** Full screenshot set, in display order. */
+  gallery: string[];
+  /** Detail-page narrative. */
+  overview: string[];
+  services: string[];
+  stats: PortfolioStat[];
+  highlights: PortfolioHighlight[];
+}
+
+/** Build a /public path for a project's screenshot. */
+const img = (slug: string, file: string) => `/portfolio/${slug}/${file}`;
+
+export const portfolio: PortfolioItem[] = [
+  {
+    slug: "aquamarine",
+    title: "Аквамарин",
+    client: "Стоматологический центр «Аквамарин»",
+    category: "landing",
+    categoryLabel: "Лендинг",
+    year: "2025",
+    tagline: "Улыбка, которой хочется делиться",
+    summary:
+      "Премиальный лендинг стоматологии нового поколения, где высокие технологии встречают заботу.",
+    accent: "#18b4cf",
+    orientation: "landscape",
+    cover: img("aquamarine", "5.webp"),
+    gallery: ["5.webp", "1.webp", "2.webp", "3.webp", "4.webp"].map((f) =>
+      img("aquamarine", f),
+    ),
+    overview: [
+      "«Аквамарин» - стоматологический центр, где медицина премиум-класса сочетается с уютом. Лечат бережно и без боли, а результат остаётся с пациентом на годы.",
+      "Мы спроектировали спокойный, дорогой лендинг: чистая типографика, мягкие градиенты морской волны, фотогерой и плавающие карточки доверия - рейтинг 4.9, подтверждение записи и «лечение без боли».",
+      "Каждый блок ведёт к записи на приём: цены прозрачны, план лечения согласован заранее - без навязанных процедур.",
+    ],
+    services: ["UX/UI-дизайн", "Веб-разработка", "Анимации", "Лендинг"],
+    stats: [
+      { value: "18", label: "лет на рынке" },
+      { value: "27 000+", label: "счастливых улыбок" },
+      { value: "4.9", label: "рейтинг клиники" },
+      { value: "99%", label: "пациентов возвращаются" },
+    ],
+    highlights: [
+      {
+        title: "Технологии",
+        text: "3D-томограф, цифровые слепки и микроскоп - точность до микрона.",
+      },
+      {
+        title: "Забота",
+        text: "Бережный подход и анестезия нового поколения - без стресса и боли.",
+      },
+      {
+        title: "За один визит",
+        text: "Лечение и протезирование под ключ в день обращения.",
+      },
+      {
+        title: "Гарантия",
+        text: "Официальная гарантия на все работы и установленные материалы.",
+      },
+    ],
+  },
+  {
+    slug: "nordan",
+    title: "NORDAN",
+    client: "Обувной бренд NORDAN",
+    category: "ecommerce",
+    categoryLabel: "E-commerce",
+    year: "2024",
+    tagline: "Комфорт в каждом шаге, вместе с NORDAN",
+    summary:
+      "Интернет-магазин обувного бренда: мужская, женская, детская и повседневная линейки.",
+    accent: "#f59311",
+    orientation: "landscape",
+    cover: img("nordan", "6.webp"),
+    gallery: [
+      "6.webp",
+      "2.webp",
+      "9.webp",
+      "3.webp",
+      "4.webp",
+      "7.webp",
+      "5.webp",
+      "1.webp",
+      "8.webp",
+    ].map((f) => img("nordan", f)),
+    overview: [
+      "NORDAN - обувной бренд для города и гор. Главная задача магазина - показать продукт во всей фактуре и удержать фирменный тёплый характер.",
+      "Сделали витрину с крупными карточками на чистом фоне, удобной навигацией по коллекциям «Mountain» и «Everyday» и фирменным оранжевым акцентом, который ведёт взгляд по странице.",
+      "Отдельный блок рассказывает о ценностях бренда - экологичной упаковке и поддержке благотворительных проектов: 1% от продаж идёт на охрану природы и образование.",
+    ],
+    services: ["E-commerce", "UX/UI-дизайн", "Каталог", "Брендинг"],
+    stats: [
+      { value: "4", label: "линейки обуви" },
+      { value: "2", label: "коллекции: Mountain & Everyday" },
+      { value: "1%", label: "продаж - на благотворительность" },
+    ],
+    highlights: [
+      {
+        title: "Мужская и женская",
+        text: "Сезонные коллекции «Urban» и «Mountain» с крупными съёмками лукбука.",
+      },
+      {
+        title: "Детская линейка",
+        text: "Отдельный раздел с лёгкими моделями серии «Everyday».",
+      },
+      {
+        title: "Эко-упаковка",
+        text: "Перерабатываемые материалы и забота о планете как часть бренда.",
+      },
+    ],
+  },
+  {
+    slug: "big",
+    title: "Опоры ЛЭП",
+    client: "Завод металлоконструкций",
+    category: "landing",
+    categoryLabel: "Лендинг",
+    year: "2023",
+    tagline: "Опоры ЛЭП новой унификации 220 кВ и 500 кВ",
+    summary:
+      "B2B-лендинг завода металлоконструкций: опоры ЛЭП 35–750 кВ и стальные порталы ОРУ.",
+    accent: "#f5c518",
+    orientation: "landscape",
+    cover: img("big", "1.webp"),
+    gallery: [
+      "1.webp",
+      "2.webp",
+      "3.webp",
+      "4.webp",
+      "5.webp",
+      "6.webp",
+      "7.webp",
+      "8.webp",
+    ].map((f) => img("big", f)),
+    overview: [
+      "Завод больше 10 лет производит и реализует металлические опоры ЛЭП 35–750 кВ и стальные порталы ОРУ. Лендинг должен был говорить с инженерами и закупщиками на их языке.",
+      "Сделали строгий промышленный дизайн с жёлто-чёрной фирменной палитрой: круговая схема типов опор - анкерно-угловые, промежуточные, переходные, ответвительные - и понятные блоки преимуществ.",
+      "Каждая секция ведёт к одной цели - получить КП с расчётом стоимости, сроков производства и доставки. Менеджер сориентирует по деталям и пришлёт полное коммерческое предложение.",
+    ],
+    services: ["Веб-дизайн", "Лендинг", "Лидогенерация"],
+    stats: [
+      { value: "10+", label: "лет производства" },
+      { value: "35–750", label: "кВ - диапазон опор" },
+      { value: "4", label: "типа опор ЛЭП" },
+    ],
+    highlights: [
+      {
+        title: "Полный цикл",
+        text: "Металлические опоры ЛЭП 35–750 кВ и стальные порталы ОРУ.",
+      },
+      {
+        title: "Горячее цинкование",
+        text: "Обрабатываем каждую деталь конструкций - защита на десятилетия.",
+      },
+      {
+        title: "Инженерная поддержка",
+        text: "Согласуем и дорабатываем чертежи, технически консультируем.",
+      },
+    ],
+  },
+  {
+    slug: "binomo",
+    title: "Binomo × Borja",
+    client: "Binomo",
+    category: "promo",
+    categoryLabel: "Промо",
+    year: "2024",
+    tagline: "¡Hazte una foto con Miguel Borja y gana premios!",
+    summary:
+      "Промо-кампания трейдинг-платформы Binomo с футболистом Мигелем Борхой: AI-фото и розыгрыш призов.",
+    accent: "#ffd400",
+    orientation: "landscape",
+    cover: img("binomo", "8.webp"),
+    gallery: [
+      "8.webp",
+      "2.webp",
+      "1.webp",
+      "3.webp",
+      "4.webp",
+      "5.webp",
+      "6.webp",
+      "7.webp",
+    ].map((f) => img("binomo", f)),
+    overview: [
+      "Промо-лендинг для трейдинг-платформы Binomo, приуроченный к кампании с колумбийским нападающим «Ривер Плейт» Мигелем Анхелем Борхой.",
+      "Пользователь создаёт собственное виртуальное фото со звездой футбола и участвует в розыгрыше эксклюзивных призов - фанатская механика для любителей футбола и трейдинга.",
+      "29 ноября платформа случайным образом выбирает 50 победителей: фирменные футболки и мячи с автографом, билеты на финал Лиги чемпионов и бонусы x2 на депозит.",
+    ],
+    services: ["Промо-сайт", "AI-фотогенерация", "Геймификация"],
+    stats: [
+      { value: "50", label: "победителей" },
+      { value: "x2", label: "бонус на депозит" },
+      { value: "3", label: "категории призов" },
+    ],
+    highlights: [
+      {
+        title: "Фото со звездой",
+        text: "AI создаёт виртуальное фото пользователя с Мигелем Борхой.",
+      },
+      {
+        title: "Розыгрыш призов",
+        text: "Футболки с автографом, билеты на футбол и бонусы на депозит.",
+      },
+    ],
+  },
+  {
+    slug: "august",
+    title: "Август",
+    client: "Фильм «Август» · Дирекция кино",
+    category: "promo",
+    categoryLabel: "Промо",
+    year: "2025",
+    tagline: "Курс разведчика - интерактивный конкурс по фильму",
+    summary:
+      "Промо-сайт военной драмы «Август»: интерактивный «Курс разведчика» с 6 спецзаданиями и розыгрышем.",
+    accent: "#e6a532",
+    orientation: "landscape",
+    cover: img("august", "1.webp"),
+    gallery: ["1.webp", "5.webp", "2.webp", "3.webp", "4.webp"].map((f) =>
+      img("august", f),
+    ),
+    overview: [
+      "Промо-сайт военной драмы «Август» по мотивам романа В. Богомолова «Момент истины». В кино с 25 сентября - в ролях Безруков, Кологривый и Табаков.",
+      "Мы собрали интерактивный «Курс разведчика»: шесть спецзаданий - «Распознавание лиц», «Свой-чужой», «Точки контакта», вопрос на засыпку, подписка и репост - в кинематографичной тёмной стилистике фильма.",
+      "Авторизация через VK, прогресс по заданиям и розыгрыш: среди самых быстрых и находчивых разыгрываются колонки Яндекс Street в лимитированном дизайне с символикой фильма.",
+    ],
+    services: ["Промо-сайт", "Геймификация", "VK-интеграция"],
+    stats: [
+      { value: "6", label: "спецзаданий" },
+      { value: "25.09", label: "премьера в кино" },
+      { value: "VK", label: "вход и розыгрыш" },
+    ],
+    highlights: [
+      {
+        title: "Курс разведчика",
+        text: "Шесть интерактивных мини-игр по мотивам сюжета фильма.",
+      },
+      {
+        title: "Розыгрыш",
+        text: "Колонки Яндекс Street в лимитированном дизайне «Августа».",
+      },
+    ],
+  },
+  {
+    slug: "fonbet",
+    title: "Путь скаута",
+    client: "FONBET",
+    category: "game",
+    categoryLabel: "Игра",
+    year: "2024",
+    tagline: "Станьте футбольным скаутом",
+    summary:
+      "Интерактивная промо-игра FONBET: выбирайте игроков для тренерского штаба и набирайте очки.",
+    accent: "#e11d2a",
+    orientation: "portrait",
+    cover: img("fonbet", "1.png"),
+    gallery: [
+      "1.png",
+      "2.png",
+      "3.png",
+      "4.png",
+      "5.png",
+      "6.png",
+      "7.png",
+    ].map((f) => img("fonbet", f)),
+    overview: [
+      "Интерактивная промо-игра для FONBET. Игрок становится футбольным скаутом и собирает состав для тренерского штаба, проходя «выпускной экзамен в школе скаутов».",
+      "В каждом раунде показывают 10 футболистов, и лишь 5 из них - нужные. За правильный выбор +1 балл, за неправильный −1. Чтобы пройти дальше, нужно набрать проходной порог очков.",
+      "Тёмный интерфейс с фирменным красным акцентом FONBET, чёткая механика на 16 раундов и адаптив под мобильный экран, где игра живёт в первую очередь.",
+    ],
+    services: ["Веб-игра", "Геймификация", "UI-дизайн"],
+    stats: [
+      { value: "16", label: "раундов" },
+      { value: "10", label: "игроков в раунде" },
+      { value: "±1", label: "балл за выбор" },
+    ],
+    highlights: [
+      {
+        title: "Школа скаутов",
+        text: "Сюжетная рамка с главами и выпускным экзаменом.",
+      },
+      {
+        title: "Быстрая механика",
+        text: "Выбери нужных игроков из десяти и пройди раунд за раундом.",
+      },
+    ],
+  },
+  {
+    slug: "stockity",
+    title: "Stockity Trading Game",
+    client: "Stockity",
+    category: "game",
+    categoryLabel: "Игра",
+    year: "2025",
+    tagline: "Interactive storytelling - learn how to earn in real life",
+    summary:
+      "Интерактивная сюжетная игра с 3D-персонажами о том, как зарабатывать в реальной жизни.",
+    accent: "#2f7bff",
+    orientation: "portrait",
+    cover: img("stockity", "1.png"),
+    gallery: [
+      "1.png",
+      "2.png",
+      "3.png",
+      "4.png",
+      "5.png",
+      "6.png",
+      "7.png",
+      "8.png",
+    ].map((f) => img("stockity", f)),
+    overview: [
+      "Интерактивная сюжетная игра для платформы Stockity: «Complete our interactive storytelling and learn how to earn in real life».",
+      "Сторителлинг с 3D-персонажами, входящими звонками и развилками: игрок проживает историю, принимает решения и шаг за шагом узнаёт основы трейдинга.",
+      "Яркий синий фирменный стиль Stockity, крупная типографика на фон и финальный экран с промокодом GAMEHERO на 100% к депозиту.",
+    ],
+    services: ["Веб-игра", "Сторителлинг", "3D-интеграция"],
+    stats: [
+      { value: "3D", label: "персонажи" },
+      { value: "100%", label: "бонус по промокоду" },
+      { value: "∞", label: "развилки сюжета" },
+    ],
+    highlights: [
+      {
+        title: "Интерактивный сюжет",
+        text: "Звонки, диалоги и выбор, который ведёт историю героя.",
+      },
+      {
+        title: "Обучение игрой",
+        text: "Игрок осваивает трейдинг через сторителлинг, а не лекции.",
+      },
+    ],
+  },
+  {
+    slug: "stockity-wallpaper",
+    title: "Wallpaper Generator",
+    client: "Stockity",
+    category: "promo",
+    categoryLabel: "Промо",
+    year: "2025",
+    tagline: "Ciptakanlah mimpi bersama Stockity",
+    summary:
+      "Генератор обоев-визуализаций для Stockity: собери доску желаний и скачай её на смартфон.",
+    accent: "#3b82f6",
+    orientation: "landscape",
+    cover: img("stockity-wallpaper", "2.webp"),
+    gallery: ["2.webp", "5.webp", "3.webp", "4.webp", "1.webp"].map((f) =>
+      img("stockity-wallpaper", f),
+    ),
+    overview: [
+      "Веб-приложение для Stockity на рынке Индонезии. «Ciptakanlah mimpi bersama Stockity» - создавай мечту вместе со Stockity.",
+      "Пользователь выбирает близкие ему ценности, собирает доску желаний из трёх образов и скачивает готовые обои прямо на смартфон - личная мотивация всегда на экране блокировки.",
+      "Механика связана с продуктом: депозит от определённой суммы даёт участие в розыгрыше $300, чтобы воплотить желания в реальность.",
+    ],
+    services: ["Веб-приложение", "Генератор контента", "UX/UI-дизайн"],
+    stats: [
+      { value: "$300", label: "призовой фонд" },
+      { value: "3", label: "образа в доске желаний" },
+      { value: "5", label: "наборов ценностей" },
+    ],
+    highlights: [
+      {
+        title: "Доска желаний",
+        text: "Выбор ценностей и сборка персонального коллажа-визуализации.",
+      },
+      {
+        title: "Обои на телефон",
+        text: "Готовый результат скачивается на смартфон в один тап.",
+      },
+    ],
+  },
+];
+
+/** Lookup helper for the dynamic case-study route. */
+export function getPortfolioItem(slug: string): PortfolioItem | undefined {
+  return portfolio.find((p) => p.slug === slug);
+}

@@ -1,0 +1,47 @@
+/* ТЕМЫ ПОВЕРХНОСТЕЙ.
+   data-surface="birzha"  биржа фриланса — слоистая, карточная (по умолчанию)
+   data-surface="web"     сайт и агентство — плоская редакционная страница
+   data-surface="console" консоль Larkins — терминальный регистр */
+
+[data-surface="birzha"] {
+  --lark-bg: #090909;
+  --lark-surface: #161717;
+  --lark-surface-elevated: #2A2B2D;
+}
+
+/* Сайт: одна непрерывная чёрная страница. Карточка не поднимается фоном,
+   а очерчивается волосяной линией — отсюда surface = bg. */
+[data-surface="web"] {
+  --lark-bg: #090909;
+  --lark-surface: #090909;
+  --lark-surface-elevated: #161717;
+  --lark-border: #2A2B2D;
+  --lark-border-strong: #4A4D54;
+}
+[data-surface="web"] .lark-card { border-radius: var(--lark-radius-l) }
+
+/* Консоль Larkins: графит вместо чёрного, жёлтый как рабочий цвет строки. */
+[data-surface="console"] {
+  --lark-bg: #1C1C1C;
+  --lark-surface: #090909;
+  --lark-surface-elevated: #161717;
+  --lark-border: #2A2B2D;
+  --lark-radius-card: var(--lark-radius-s);
+  --lark-radius-l: var(--lark-radius-s);
+  --lark-radius-m: var(--lark-radius-xs);
+}
+
+/* ЛОКАЛЬНОЕ ОТСТУПЛЕНИЕ ОТ ПАКЕТА ДС.
+   В исходнике светлый вариант поверхности web переопределял только surface
+   и surface-elevated, а --lark-bg и границы оставались из тёмного блока
+   [data-surface="web"] — он идёт позже themes.css и с той же специфичностью
+   перебивает [data-theme="light"]. В светлой теме страница оставалась чёрной
+   с тёмными линиями. Дописаны недостающие значения; новых цветов нет —
+   все взяты из светлой темы. Стоит починить в пакете. */
+[data-theme="light"][data-surface="web"], [data-theme="light"] [data-surface="web"] {
+  --lark-bg: #FAFAF8;
+  --lark-surface: #FAFAF8;
+  --lark-surface-elevated: #FFFFFF;
+  --lark-border: #E4E4E2;
+  --lark-border-strong: #C9C9C6;
+}

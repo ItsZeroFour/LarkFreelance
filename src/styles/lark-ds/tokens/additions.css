@@ -1,0 +1,24 @@
+/* ДОБАВЛЕННЫЕ ТОКЕНЫ. Значения выведены из принятых решений системы. */
+:root {
+  --lark-control-h-sm: 36px;
+  --lark-control-h: 44px;
+  --lark-control-h-lg: 52px;
+  --lark-icon-size: 24px;
+  --lark-icon-size-sm: 20px;
+  --lark-icon-size-xs: 16px;
+  --lark-hairline: 1px;
+  --lark-stroke: 1.5px;
+  --lark-radius-xs: 6px;
+  --lark-track-h: 8px;
+  --lark-switch-w: 48px;
+  --lark-switch-h: 28px;
+  --lark-switch-knob: 20px;
+  --lark-avatar-size: 40px;
+  --lark-avatar-overlap: -10px;
+  --lark-tint-weak: 14%;
+  --lark-tint-mid: 22%;
+  --lark-focus-w: 2px;
+  --lark-focus-offset: 3px;
+  --lark-scrim: rgba(9,9,9,.72);
+  --lark-scrim-blur: 6px;
+}

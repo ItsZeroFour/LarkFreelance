@@ -1,0 +1,167 @@
+/* Компоненты. Только var(--lark-*). Неймспейс .lark-. */
+
+/* ---------- КНОПКИ ---------- */
+.lark-btn{font-family:var(--lark-font-text);font-size:var(--lark-size-body);font-weight:600;line-height:1;border-radius:var(--lark-radius-pill);padding:0 var(--lark-space-5);min-height:var(--lark-control-h);border:var(--lark-stroke) solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:var(--lark-space-2);white-space:nowrap;text-decoration:none;transition:background var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),box-shadow var(--lark-motion-rise-duration) var(--lark-motion-rise-ease),transform var(--lark-motion-rise-duration) var(--lark-motion-rise-ease)}
+.lark-btn:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+.lark-btn:active:not(:disabled){transform:translateY(0);box-shadow:none;transition-duration:var(--lark-motion-hover-duration)}
+.lark-btn--primary{background:var(--lark-color-yellow);color:var(--lark-on-accent)}
+.lark-btn--primary:hover:not(:disabled){background:var(--lark-color-yellow-light);transform:translateY(-1px);box-shadow:var(--lark-shadow-md)}
+.lark-btn--secondary{background:transparent;color:var(--lark-accent-ink);border-color:currentColor}
+.lark-btn--secondary:hover:not(:disabled){background:color-mix(in srgb,var(--lark-color-yellow) var(--lark-tint-weak),transparent);transform:translateY(-1px)}
+.lark-btn--ghost{background:transparent;color:var(--lark-text);border-color:var(--lark-border-strong)}
+.lark-btn--ghost:hover:not(:disabled){border-color:var(--lark-text);background:var(--lark-surface-elevated)}
+.lark-btn--quiet{background:transparent;color:var(--lark-text-2);border-color:transparent;padding:0 var(--lark-space-3)}
+.lark-btn--quiet:hover:not(:disabled){color:var(--lark-text);background:var(--lark-surface-elevated)}
+.lark-btn--danger{background:var(--lark-color-error);color:var(--lark-on-accent)}
+.lark-btn--danger:hover:not(:disabled){background:color-mix(in srgb,var(--lark-color-error) 82%,var(--lark-color-yellow-light));transform:translateY(-1px)}
+.lark-btn:disabled,.lark-btn[aria-disabled="true"]{background:var(--lark-surface-elevated);color:var(--lark-text-off);border-color:transparent;cursor:not-allowed;transform:none;box-shadow:none}
+.lark-btn--sm{font-size:var(--lark-size-caption);min-height:var(--lark-control-h-sm);padding:0 var(--lark-space-4)}
+.lark-btn--lg{font-size:var(--lark-size-body-l);min-height:var(--lark-control-h-lg);padding:0 var(--lark-space-6)}
+.lark-btn--icon{padding:0;width:var(--lark-control-h);height:var(--lark-control-h);min-height:var(--lark-control-h)}
+.lark-btn--icon.lark-btn--sm{width:var(--lark-control-h-sm);height:var(--lark-control-h-sm);min-height:var(--lark-control-h-sm)}
+.lark-btn--block{width:100%}
+.lark-btn.is-loading{pointer-events:none;color:transparent}
+.lark-btn.is-loading .lark-spinner{position:absolute}
+.lark-btn.is-loading{position:relative}
+.lark-spinner{width:var(--lark-icon-size-xs);height:var(--lark-icon-size-xs);border:var(--lark-focus-w) solid color-mix(in srgb,currentColor 25%,transparent);border-top-color:currentColor;border-radius:var(--lark-radius-pill);animation:lark-spin .8s linear infinite;flex:none}
+.lark-btn.is-loading .lark-spinner{border-color:color-mix(in srgb,var(--lark-on-accent) 30%,transparent);border-top-color:var(--lark-on-accent)}
+@keyframes lark-spin{to{transform:rotate(360deg)}}
+
+/* ---------- ПОЛЯ ---------- */
+.lark-field{background:var(--lark-surface);border:var(--lark-stroke) solid var(--lark-border);border-radius:var(--lark-radius-m);padding:0 var(--lark-space-4);min-height:var(--lark-control-h);color:var(--lark-text);font-family:var(--lark-font-text);font-size:var(--lark-size-body);line-height:var(--lark-line-body);width:100%;transition:border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),background var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-field:hover:not(:disabled):not(:focus){border-color:var(--lark-border-strong)}
+.lark-field::placeholder{color:var(--lark-text-3)}
+.lark-field:focus{outline:none;border-color:var(--lark-color-yellow)}
+.lark-field:focus-visible{outline:none}
+.lark-field:disabled{background:var(--lark-surface-elevated);color:var(--lark-text-off);cursor:not-allowed}
+.lark-field--error{border-color:var(--lark-color-error)}
+.lark-field-error{color:var(--lark-color-error);font-size:var(--lark-size-caption);line-height:var(--lark-line-caption);margin-top:var(--lark-space-2);display:flex;align-items:center;gap:var(--lark-space-2)}
+.lark-field-hint{color:var(--lark-text-3);font-size:var(--lark-size-caption);line-height:var(--lark-line-caption);margin-top:var(--lark-space-2)}
+.lark-field-label{display:block;margin-bottom:var(--lark-space-2);color:var(--lark-text-2);font-size:var(--lark-size-caption);line-height:var(--lark-line-caption)}
+textarea.lark-field{min-height:var(--lark-space-10);resize:vertical;padding:var(--lark-space-3) var(--lark-space-4)}
+.lark-field-wrap{position:relative;display:flex;align-items:center}
+.lark-field-wrap .lark-icon{position:absolute;left:var(--lark-space-4);color:var(--lark-text-3);pointer-events:none}
+.lark-field-wrap .lark-field{padding-left:var(--lark-space-10)}
+.lark-field-wrap:focus-within .lark-icon{color:var(--lark-accent-ink)}
+
+/* ---------- SWITCH / CHECKBOX / RADIO ---------- */
+.lark-switch{width:var(--lark-switch-w);height:var(--lark-switch-h);border-radius:var(--lark-radius-pill);background:var(--lark-surface-elevated);border:none;padding:0;position:relative;display:inline-block;cursor:pointer;flex:none;transition:background var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-switch i{position:absolute;top:var(--lark-space-1);left:var(--lark-space-1);width:var(--lark-switch-knob);height:var(--lark-switch-knob);border-radius:var(--lark-radius-pill);background:var(--lark-text-3);transition:left var(--lark-motion-rise-duration) var(--lark-motion-rise-ease),background var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-switch.is-on{background:var(--lark-color-yellow)}
+.lark-switch.is-on i{left:calc(var(--lark-switch-w) - var(--lark-switch-knob) - var(--lark-space-1));background:var(--lark-on-accent)}
+.lark-switch:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+.lark-switch:disabled{cursor:not-allowed;opacity:.5}
+.lark-check{width:var(--lark-icon-size-sm);height:var(--lark-icon-size-sm);border-radius:var(--lark-radius-xs);border:var(--lark-stroke) solid var(--lark-border-strong);background:transparent;padding:0;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:none;color:transparent;transition:background var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-check:hover:not(:disabled){border-color:var(--lark-text-2)}
+.lark-check.is-on{background:var(--lark-color-yellow);border-color:var(--lark-color-yellow);color:var(--lark-on-accent)}
+.lark-check:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+.lark-check:disabled{border-color:var(--lark-border);cursor:not-allowed}
+.lark-radio{width:var(--lark-icon-size-sm);height:var(--lark-icon-size-sm);border-radius:var(--lark-radius-pill);border:var(--lark-stroke) solid var(--lark-border-strong);background:transparent;padding:0;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:none;transition:border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-radio i{width:var(--lark-space-2);height:var(--lark-space-2);border-radius:var(--lark-radius-pill);background:transparent;transition:background var(--lark-motion-rise-duration) var(--lark-motion-rise-ease),transform var(--lark-motion-rise-duration) var(--lark-motion-rise-ease);transform:scale(.4)}
+.lark-radio:hover:not(:disabled){border-color:var(--lark-text-2)}
+.lark-radio.is-on{border-color:var(--lark-color-yellow)}
+.lark-radio.is-on i{background:var(--lark-color-yellow);transform:scale(1)}
+.lark-radio:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+.lark-radio:disabled{border-color:var(--lark-border);cursor:not-allowed}
+.lark-control{display:inline-flex;align-items:center;gap:var(--lark-space-3);min-height:var(--lark-control-h);cursor:pointer}
+.lark-control > span{font-size:var(--lark-size-body);line-height:var(--lark-line-body)}
+
+/* ---------- БЕЙДЖИ ---------- */
+.lark-badge{font-size:var(--lark-size-caption);line-height:var(--lark-line-caption);font-weight:600;padding:0 var(--lark-space-3);min-height:var(--lark-space-6);border-radius:var(--lark-radius-pill);display:inline-flex;align-items:center;gap:var(--lark-space-2);white-space:nowrap}
+.lark-badge--sm{font-size:var(--lark-size-label);letter-spacing:var(--lark-track-caption);min-height:var(--lark-space-5);padding:0 var(--lark-space-2)}
+.lark-badge--brand{background:color-mix(in srgb,var(--lark-color-yellow) var(--lark-tint-weak),transparent);color:var(--lark-accent-ink)}
+.lark-badge--success{background:color-mix(in srgb,var(--lark-color-success) var(--lark-tint-weak),transparent);color:var(--lark-color-success)}
+.lark-badge--warning{background:color-mix(in srgb,var(--lark-color-warning) var(--lark-tint-weak),transparent);color:var(--lark-color-warning)}
+.lark-badge--error{background:color-mix(in srgb,var(--lark-color-error) var(--lark-tint-weak),transparent);color:var(--lark-color-error)}
+.lark-badge--info{background:color-mix(in srgb,var(--lark-color-info) var(--lark-tint-weak),transparent);color:var(--lark-color-info)}
+.lark-badge--neutral{background:var(--lark-surface-elevated);color:var(--lark-text-2)}
+.lark-badge--solid{background:var(--lark-color-yellow);color:var(--lark-on-accent)}
+.lark-badge--outline{background:transparent;box-shadow:inset 0 0 0 var(--lark-hairline) var(--lark-border-strong);color:var(--lark-text-2)}
+/* типы офферов — механика биржи, см. tokens/offer-types.css */
+.lark-badge--hot{background:color-mix(in srgb,var(--lark-offer-hot) var(--lark-tint-weak),transparent);color:var(--lark-offer-hot)}
+.lark-badge--normal{background:var(--lark-surface-elevated);color:var(--lark-offer-normal)}
+.lark-badge--calm{background:color-mix(in srgb,var(--lark-offer-calm) var(--lark-tint-weak),transparent);color:var(--lark-offer-calm)}
+.lark-dot{width:var(--lark-space-2);height:var(--lark-space-2);border-radius:var(--lark-radius-pill);background:currentColor;flex:none}
+
+/* ---------- КАРТОЧКИ ---------- */
+.lark-card{background:var(--lark-surface);border:var(--lark-hairline) solid var(--lark-border);border-radius:var(--lark-radius-card);padding:var(--lark-space-5);transition:border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),transform var(--lark-motion-rise-duration) var(--lark-motion-rise-ease),box-shadow var(--lark-motion-rise-duration) var(--lark-motion-rise-ease)}
+.lark-card--flat{background:transparent}
+.lark-card--elevated{background:var(--lark-surface-elevated);box-shadow:var(--lark-shadow-md)}
+.lark-card--interactive{cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit;display:block}
+.lark-card--interactive:hover{border-color:var(--lark-border-strong);transform:translateY(-2px);box-shadow:var(--lark-shadow-md)}
+.lark-card--interactive:active{transform:translateY(0);box-shadow:none}
+.lark-card--interactive:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+.lark-card__media{width:var(--lark-control-h);height:var(--lark-control-h);border-radius:var(--lark-radius-m);background:color-mix(in srgb,var(--lark-color-yellow) var(--lark-tint-weak),transparent);color:var(--lark-accent-ink);display:flex;align-items:center;justify-content:center;flex:none}
+.lark-card__head{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--lark-space-3);margin-bottom:var(--lark-space-4)}
+.lark-card__foot{display:flex;align-items:center;justify-content:space-between;gap:var(--lark-space-3);margin-top:var(--lark-space-5);padding-top:var(--lark-space-4);border-top:var(--lark-hairline) solid var(--lark-border)}
+
+/* ---------- ПРОГРЕСС ---------- */
+.lark-progress{height:var(--lark-track-h);border-radius:var(--lark-radius-pill);background:var(--lark-surface-elevated);overflow:hidden}
+.lark-progress i{display:block;height:100%;background:var(--lark-color-yellow);border-radius:var(--lark-radius-pill);transition:width var(--lark-motion-land-duration) var(--lark-motion-land-ease)}
+.lark-progress--hot i{background:var(--lark-offer-hot)}
+
+/* ---------- ТАБЫ ---------- */
+.lark-tabs{display:inline-flex;gap:var(--lark-space-1);background:var(--lark-surface);padding:var(--lark-space-1);border-radius:var(--lark-radius-pill);border:var(--lark-hairline) solid var(--lark-border)}
+.lark-tab{font-family:var(--lark-font-text);font-size:var(--lark-size-caption);font-weight:600;padding:0 var(--lark-space-4);min-height:var(--lark-control-h-sm);display:inline-flex;align-items:center;gap:var(--lark-space-2);border-radius:var(--lark-radius-pill);color:var(--lark-text-2);cursor:pointer;border:none;background:transparent;transition:background var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-tab:hover:not(.is-active){color:var(--lark-text);background:var(--lark-surface-elevated)}
+.lark-tab.is-active{background:var(--lark-color-yellow);color:var(--lark-on-accent)}
+.lark-tab:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+.lark-tab:disabled{color:var(--lark-text-off);cursor:not-allowed}
+.lark-tabs--line{background:transparent;border:none;border-bottom:var(--lark-hairline) solid var(--lark-border);border-radius:0;padding:0;gap:var(--lark-space-5);display:flex}
+.lark-tabs--line .lark-tab{border-radius:0;padding:0;min-height:var(--lark-control-h);box-shadow:inset 0 -2px 0 transparent}
+.lark-tabs--line .lark-tab:hover:not(.is-active){background:transparent}
+.lark-tabs--line .lark-tab.is-active{background:transparent;color:var(--lark-text);box-shadow:inset 0 -2px 0 var(--lark-color-yellow)}
+
+/* ---------- АВАТАР ---------- */
+.lark-avatar{width:var(--lark-avatar-size);height:var(--lark-avatar-size);border-radius:var(--lark-radius-pill);background:var(--lark-surface-elevated);display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:var(--lark-size-caption);color:var(--lark-accent-ink);flex:none;overflow:hidden;position:relative}
+.lark-avatar img{width:100%;height:100%;object-fit:cover}
+.lark-avatar--sm{width:var(--lark-space-6);height:var(--lark-space-6);font-size:var(--lark-size-label)}
+.lark-avatar--lg{width:var(--lark-space-8);height:var(--lark-space-8);font-size:var(--lark-size-body-l)}
+.lark-avatar--brand{background:var(--lark-color-yellow);color:var(--lark-on-accent)}
+.lark-avatar__online{position:absolute;right:0;bottom:0;width:var(--lark-space-3);height:var(--lark-space-3);border-radius:var(--lark-radius-pill);background:var(--lark-color-success);box-shadow:0 0 0 var(--lark-focus-w) var(--lark-surface)}
+.lark-avatar-group{display:inline-flex}
+.lark-avatar-group .lark-avatar+.lark-avatar{margin-left:var(--lark-avatar-overlap);box-shadow:0 0 0 var(--lark-focus-w) var(--lark-bg)}
+
+/* ---------- ОПОВЕЩЕНИЯ ---------- */
+.lark-alert{display:flex;gap:var(--lark-space-3);padding:var(--lark-space-4);border-radius:var(--lark-radius-m);background:var(--lark-surface);border:var(--lark-hairline) solid var(--lark-border);align-items:flex-start}
+.lark-alert__icon{width:var(--lark-space-6);height:var(--lark-space-6);border-radius:var(--lark-radius-s);display:flex;align-items:center;justify-content:center;flex:none;background:color-mix(in srgb,var(--lark-color-yellow) var(--lark-tint-weak),transparent);color:var(--lark-accent-ink)}
+.lark-alert--success .lark-alert__icon{background:color-mix(in srgb,var(--lark-color-success) var(--lark-tint-weak),transparent);color:var(--lark-color-success)}
+.lark-alert--error .lark-alert__icon{background:color-mix(in srgb,var(--lark-color-error) var(--lark-tint-weak),transparent);color:var(--lark-color-error)}
+.lark-alert--info .lark-alert__icon{background:color-mix(in srgb,var(--lark-color-info) var(--lark-tint-weak),transparent);color:var(--lark-color-info)}
+.lark-alert--error{border-color:color-mix(in srgb,var(--lark-color-error) 35%,var(--lark-border))}
+.lark-alert__body{display:flex;flex-direction:column;gap:var(--lark-space-1);min-width:0}
+.lark-alert__title{font-size:var(--lark-size-body);line-height:var(--lark-line-body);font-weight:600}
+
+/* ---------- ПУСТОЕ СОСТОЯНИЕ ---------- */
+.lark-empty{text-align:center;padding:var(--lark-space-7) var(--lark-space-4);color:var(--lark-text-2);display:flex;flex-direction:column;align-items:center;gap:var(--lark-space-2)}
+.lark-empty__icon{width:var(--lark-space-8);height:var(--lark-space-8);border-radius:var(--lark-radius-pill);background:var(--lark-surface-elevated);color:var(--lark-text-3);display:flex;align-items:center;justify-content:center;margin-bottom:var(--lark-space-2)}
+.lark-empty__title{color:var(--lark-text);font-size:var(--lark-size-body-l);line-height:var(--lark-line-body-l);font-weight:600}
+
+/* ---------- SKELETON ---------- */
+.lark-skeleton{background:linear-gradient(90deg,var(--lark-surface) 25%,var(--lark-surface-elevated) 50%,var(--lark-surface) 75%);background-size:200% 100%;background-position:100% 0;animation:lark-shimmer 1.4s var(--lark-motion-hover-ease) infinite;border-radius:var(--lark-radius-s);height:var(--lark-space-4)}
+.lark-skeleton--text{height:var(--lark-space-3)}
+.lark-skeleton--block{height:var(--lark-space-10);border-radius:var(--lark-radius-m)}
+.lark-skeleton--circle{width:var(--lark-avatar-size);height:var(--lark-avatar-size);border-radius:var(--lark-radius-pill)}
+@keyframes lark-shimmer{to{background-position:-100% 0}}
+
+/* ---------- НАВБАР ---------- */
+.lark-navbar{display:flex;align-items:center;justify-content:space-between;gap:var(--lark-space-5);padding:var(--lark-space-3) var(--lark-grid-desktop-margin);background:color-mix(in srgb,var(--lark-surface) 80%,transparent);backdrop-filter:blur(var(--lark-scrim-blur));border-bottom:var(--lark-hairline) solid var(--lark-border);position:sticky;top:0;z-index:20}
+.lark-navbar__logo{height:var(--lark-space-6);display:block}
+/* Ряд ссылок сжимается и при нехватке места прокручивается, а не выталкивает
+   правую группу с кнопкой за край экрана. */
+.lark-navbar__links{display:flex;align-items:center;gap:var(--lark-space-1);min-width:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.lark-navbar__links::-webkit-scrollbar{display:none}
+.lark-navbar__actions{display:flex;align-items:center;gap:var(--lark-space-3);flex:none}
+.lark-navlink{color:var(--lark-text-2);font-size:var(--lark-size-body);text-decoration:none;padding:var(--lark-space-2) var(--lark-space-3);border-radius:var(--lark-radius-s);border:none;background:transparent;font-family:inherit;white-space:nowrap;cursor:pointer;transition:color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),background var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-navlink:hover{color:var(--lark-text);background:var(--lark-surface-elevated);border-bottom-color:transparent}
+.lark-navlink.is-active{color:var(--lark-text);box-shadow:inset 0 -2px 0 var(--lark-color-yellow)}
+.lark-navlink:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+
+/* ---------- СВЕТЛАЯ ТЕМА: ЗАЩИТА ----------
+   Бренд-жёлтый на светлом даёт 1,44:1 и запрещён как текст, иконка и линия. */
+[data-theme="light"] .lark-progress i{background:var(--lark-color-warning)}
+[data-theme="light"] .lark-navlink.is-active{box-shadow:inset 0 -2px 0 var(--lark-accent-ink)}
+[data-theme="light"] .lark-tabs--line .lark-tab.is-active{box-shadow:inset 0 -2px 0 var(--lark-accent-ink)}
+[data-theme="light"] .lark-badge--warning{color:var(--lark-accent-ink)}
+[data-theme="light"] .lark-badge--hot{color:var(--lark-accent-ink)}
+[data-theme="light"] .lark-avatar__online{box-shadow:0 0 0 var(--lark-focus-w) var(--lark-surface)}

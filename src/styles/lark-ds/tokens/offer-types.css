@@ -1,0 +1,6 @@
+/* ТИПЫ ОФФЕРОВ — для биржи. На сайте не используются. */
+:root {
+  --lark-offer-hot: var(--lark-color-warning);
+  --lark-offer-normal: var(--lark-text-2);
+  --lark-offer-calm: var(--lark-color-info);
+}

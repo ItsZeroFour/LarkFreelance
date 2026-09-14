@@ -1,0 +1,12 @@
+/* МОНОШИРИННЫЙ НАБОР — JETBRAINS MONO.
+   Семейства объявляет next/font/local в src/app/layout.tsx, поэтому
+   @font-face здесь не дублируется — остаются только токены. */
+:root {
+  --lark-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --lark-size-mono: 14px;
+  --lark-line-mono: 22px;
+  --lark-track-mono: 0;
+  /* Лигатуры кода в интерфейсе выключены. */
+  --lark-mono-features: "liga" 0, "calt" 0;
+  --lark-mono-features-code: "liga" 1, "calt" 1, "zero" 1;
+}

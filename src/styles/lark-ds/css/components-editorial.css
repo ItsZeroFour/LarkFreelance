@@ -1,0 +1,127 @@
+/* Редакционные приёмы. Пришли с сайта, годятся всей экосистеме.
+   Те же правила: только var(--lark-*), неймспейс .lark-. */
+
+/* ---------- НУМЕРАЦИЯ РАЗДЕЛА СКВОЗНОЙ ЛИНИЕЙ ----------
+   «01 — Кто мы» и линия, уходящая через всю страницу. */
+.lark-marker{display:flex;align-items:center;gap:var(--lark-space-4);width:100%}
+.lark-marker__num{font-family:var(--lark-font-display);font-weight:var(--lark-weight-h3);font-size:var(--lark-size-caption);line-height:1;letter-spacing:var(--lark-track-label);color:var(--lark-accent-ink);font-variant-numeric:tabular-nums;flex:none}
+.lark-marker__dash{width:var(--lark-space-6);height:var(--lark-hairline);background:var(--lark-border-strong);flex:none}
+.lark-marker__title{font-size:var(--lark-size-label);line-height:var(--lark-line-label);letter-spacing:var(--lark-track-label);font-weight:var(--lark-weight-label);text-transform:uppercase;color:var(--lark-text-2);flex:none}
+.lark-marker__rule{flex:1;height:var(--lark-hairline);background:var(--lark-border);min-width:var(--lark-space-5)}
+.lark-marker--accent .lark-marker__num{color:var(--lark-color-yellow)}
+[data-theme="light"] .lark-marker--accent .lark-marker__num{color:var(--lark-accent-ink)}
+.lark-section{padding:var(--lark-space-9) 0;border-top:var(--lark-hairline) solid transparent}
+.lark-section__head{display:flex;flex-direction:column;gap:var(--lark-space-5);margin-bottom:var(--lark-space-7)}
+
+/* ---------- КУРСИВНОЕ АКЦЕНТНОЕ СЛОВО ----------
+   Не больше одного акцента на заголовок, иначе приём исчезает. */
+.lark-accent{font-style:italic;color:var(--lark-color-yellow);font-weight:inherit}
+[data-theme="light"] .lark-accent{color:var(--lark-accent-ink)}
+.lark-accent--ink{color:var(--lark-accent-ink)}
+.lark-accent--plain{color:inherit}
+
+/* ---------- БЕГУЩАЯ СТРОКА ---------- */
+.lark-marquee{overflow:hidden;display:flex;position:relative;border-top:var(--lark-hairline) solid var(--lark-border);border-bottom:var(--lark-hairline) solid var(--lark-border);padding:var(--lark-space-4) 0;user-select:none}
+.lark-marquee__track{display:flex;flex:none;gap:var(--lark-space-6);padding-right:var(--lark-space-6);align-items:center;animation:lark-marquee var(--lark-marquee-dur,32s) linear infinite}
+.lark-marquee:hover .lark-marquee__track{animation-play-state:paused}
+.lark-marquee__item{font-family:var(--lark-font-display);font-weight:var(--lark-weight-h2);font-size:var(--lark-size-h3);line-height:1.1;letter-spacing:var(--lark-track-h3);color:var(--lark-text);white-space:nowrap;display:flex;align-items:center;gap:var(--lark-space-6)}
+.lark-marquee__item::after{content:"";width:var(--lark-space-2);height:var(--lark-space-2);border-radius:var(--lark-radius-pill);background:var(--lark-color-yellow);flex:none}
+.lark-marquee--quiet .lark-marquee__item{font-family:var(--lark-font-text);font-weight:var(--lark-weight-label);font-size:var(--lark-size-label);letter-spacing:var(--lark-track-label);text-transform:uppercase;color:var(--lark-text-2)}
+.lark-marquee--quiet .lark-marquee__item::after{background:var(--lark-border-strong)}
+@keyframes lark-marquee{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.lark-marquee__track{animation:none}.lark-marquee{overflow:auto}}
+
+/* ---------- КАРТОЧКА УСЛУГИ: НОМЕР И СПИСОК ---------- */
+.lark-service{display:flex;flex-direction:column;gap:var(--lark-space-4);padding:var(--lark-space-5) 0;border-top:var(--lark-hairline) solid var(--lark-border);position:relative;transition:border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-service:hover{border-top-color:var(--lark-color-yellow)}
+.lark-service__num{font-family:var(--lark-font-display);font-weight:var(--lark-weight-display);font-size:var(--lark-size-h2);line-height:1;letter-spacing:var(--lark-track-h2);color:var(--lark-text-off);font-variant-numeric:tabular-nums;transition:color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-service:hover .lark-service__num{color:var(--lark-accent-ink)}
+.lark-service__title{font-family:var(--lark-font-display);font-weight:var(--lark-weight-h3);font-size:var(--lark-size-h3);line-height:var(--lark-line-h3);letter-spacing:var(--lark-track-h3);color:var(--lark-text)}
+.lark-service__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--lark-space-2)}
+.lark-service__list li{display:flex;gap:var(--lark-space-3);align-items:flex-start;font-size:var(--lark-size-body);line-height:var(--lark-line-body);color:var(--lark-text-2)}
+.lark-service__list li::before{content:"";width:var(--lark-space-4);height:var(--lark-hairline);background:var(--lark-border-strong);flex:none;margin-top:calc(var(--lark-line-body) / 2)}
+
+/* ---------- ШАГ ПРОЦЕССА ---------- */
+.lark-step-card{display:flex;gap:var(--lark-space-5);align-items:flex-start;position:relative;padding-bottom:var(--lark-space-6)}
+.lark-step-card:last-child{padding-bottom:0}
+.lark-step-card__rail{display:flex;flex-direction:column;align-items:center;align-self:stretch;flex:none}
+.lark-step-card__dot{width:var(--lark-space-6);height:var(--lark-space-6);border-radius:var(--lark-radius-pill);border:var(--lark-stroke) solid var(--lark-border-strong);display:flex;align-items:center;justify-content:center;font-family:var(--lark-font-display);font-size:var(--lark-size-caption);font-weight:var(--lark-weight-h3);color:var(--lark-text-2);font-variant-numeric:tabular-nums;flex:none;background:var(--lark-bg);transition:border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-step-card__line{width:var(--lark-hairline);flex:1;background:var(--lark-border);min-height:var(--lark-space-4)}
+.lark-step-card__body{padding-bottom:var(--lark-space-2);display:flex;flex-direction:column;gap:var(--lark-space-2)}
+.lark-step-card__title{font-family:var(--lark-font-display);font-weight:var(--lark-weight-h3);font-size:var(--lark-size-body-l);line-height:var(--lark-line-body-l);letter-spacing:var(--lark-track-h3);color:var(--lark-text)}
+.lark-step-card__meta{font-size:var(--lark-size-label);line-height:var(--lark-line-label);letter-spacing:var(--lark-track-label);text-transform:uppercase;font-weight:var(--lark-weight-label);color:var(--lark-text-3)}
+.lark-step-card.is-now .lark-step-card__dot{border-color:var(--lark-color-yellow);color:var(--lark-accent-ink)}
+
+/* ---------- КАРТОЧКА КЕЙСА ---------- */
+.lark-case{display:flex;flex-direction:column;gap:var(--lark-space-4);text-align:left;width:100%;font:inherit;color:inherit;background:transparent;border:none;padding:0;cursor:pointer;text-decoration:none}
+.lark-case__shot{position:relative;overflow:hidden;border-radius:var(--lark-radius-l);border:var(--lark-hairline) solid var(--lark-border);aspect-ratio:16 / 10;background:var(--lark-surface-elevated)}
+.lark-case__shot img{width:100%;height:100%;object-fit:cover;transition:transform var(--lark-motion-land-duration) var(--lark-motion-rise-ease),opacity var(--lark-motion-hover-duration) var(--lark-motion-hover-ease);opacity:.78}
+.lark-case:hover .lark-case__shot img{transform:scale(1.03);opacity:1}
+.lark-case:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+.lark-case__tags{position:absolute;left:var(--lark-space-3);bottom:var(--lark-space-3);display:flex;gap:var(--lark-space-2);flex-wrap:wrap}
+.lark-case__head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--lark-space-4)}
+.lark-case__title{font-family:var(--lark-font-display);font-weight:var(--lark-weight-h3);font-size:var(--lark-size-h3);line-height:var(--lark-line-h3);letter-spacing:var(--lark-track-h3);color:var(--lark-text)}
+.lark-case__year{font-size:var(--lark-size-caption);color:var(--lark-text-3);font-variant-numeric:tabular-nums;flex:none}
+.lark-case__result{display:flex;gap:var(--lark-space-6);flex-wrap:wrap;padding-top:var(--lark-space-3);border-top:var(--lark-hairline) solid var(--lark-border)}
+.lark-case__metric{display:flex;flex-direction:column;gap:var(--lark-space-1)}
+.lark-case__metric b{font-family:var(--lark-font-display);font-weight:var(--lark-weight-h3);font-size:var(--lark-size-body-l);line-height:1.1;color:var(--lark-text);font-variant-numeric:tabular-nums}
+.lark-case__metric span{font-size:var(--lark-size-label);line-height:var(--lark-line-label);letter-spacing:var(--lark-track-label);text-transform:uppercase;color:var(--lark-text-3)}
+
+/* ---------- ЧЕЛОВЕК: ИНИЦИАЛЫ ВМЕСТО ФОТО ---------- */
+.lark-person{display:flex;flex-direction:column;gap:var(--lark-space-4)}
+.lark-person__mark{aspect-ratio:1;border-radius:var(--lark-radius-l);border:var(--lark-hairline) solid var(--lark-border);display:flex;align-items:center;justify-content:center;font-family:var(--lark-font-display);font-weight:var(--lark-weight-display);font-size:var(--lark-size-display);line-height:1;letter-spacing:var(--lark-track-display);color:var(--lark-text-3);background:var(--lark-surface-elevated);transition:color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease),background var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-person:hover .lark-person__mark{color:var(--lark-on-accent);background:var(--lark-color-yellow);border-color:var(--lark-color-yellow)}
+.lark-person__name{font-family:var(--lark-font-display);font-weight:var(--lark-weight-h3);font-size:var(--lark-size-body-l);line-height:var(--lark-line-body-l);letter-spacing:var(--lark-track-h3);color:var(--lark-text)}
+.lark-person__role{font-size:var(--lark-size-caption);line-height:var(--lark-line-caption);color:var(--lark-text-2)}
+
+/* ---------- АККОРДЕОН ВОПРОСОВ ---------- */
+.lark-faq{border-top:var(--lark-hairline) solid var(--lark-border)}
+.lark-faq__item{border-bottom:var(--lark-hairline) solid var(--lark-border)}
+.lark-faq__q{display:flex;align-items:center;gap:var(--lark-space-4);width:100%;text-align:left;background:transparent;border:none;padding:var(--lark-space-5) 0;font:inherit;color:var(--lark-text);cursor:pointer;font-family:var(--lark-font-display);font-weight:var(--lark-weight-h3);font-size:var(--lark-size-body-l);line-height:var(--lark-line-body-l);letter-spacing:var(--lark-track-h3);transition:color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-faq__q:hover{color:var(--lark-accent-ink)}
+.lark-faq__q:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+.lark-faq__q .lark-icon{margin-left:auto;color:var(--lark-text-3);transition:transform var(--lark-motion-rise-duration) var(--lark-motion-rise-ease),color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-faq__item.is-open .lark-faq__q .lark-icon{transform:rotate(180deg);color:var(--lark-accent-ink)}
+.lark-faq__num{font-size:var(--lark-size-caption);color:var(--lark-text-3);font-variant-numeric:tabular-nums;font-family:var(--lark-font-text);font-weight:400;flex:none}
+.lark-faq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--lark-motion-rise-duration) var(--lark-motion-rise-ease)}
+.lark-faq__item.is-open .lark-faq__a{grid-template-rows:1fr}
+.lark-faq__a > div{overflow:hidden}
+.lark-faq__a p{margin:0 0 var(--lark-space-5);max-width:68ch;color:var(--lark-text-2);font-size:var(--lark-size-body);line-height:var(--lark-line-body)}
+
+/* ---------- ПЛИТКИ КОНТАКТОВ ---------- */
+.lark-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--lark-hairline);background:var(--lark-border);border:var(--lark-hairline) solid var(--lark-border);border-radius:var(--lark-radius-l);overflow:hidden}
+.lark-tile{display:flex;flex-direction:column;gap:var(--lark-space-2);padding:var(--lark-space-5);background:var(--lark-bg);min-height:calc(var(--lark-space-10) + var(--lark-space-5));text-decoration:none;color:inherit;border:none;font:inherit;text-align:left;cursor:pointer;transition:background var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-tile:hover{background:var(--lark-surface-elevated)}
+.lark-tile:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:calc(var(--lark-focus-offset) * -1)}
+.lark-tile__label{font-size:var(--lark-size-label);line-height:var(--lark-line-label);letter-spacing:var(--lark-track-label);text-transform:uppercase;font-weight:var(--lark-weight-label);color:var(--lark-text-3)}
+.lark-tile__value{font-family:var(--lark-font-display);font-weight:var(--lark-weight-h3);font-size:var(--lark-size-body-l);line-height:var(--lark-line-body-l);letter-spacing:var(--lark-track-h3);color:var(--lark-text);margin-top:auto;transition:color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-tile:hover .lark-tile__value{color:var(--lark-accent-ink)}
+.lark-tile__note{font-size:var(--lark-size-caption);line-height:var(--lark-line-caption);color:var(--lark-text-2)}
+.lark-tile--accent{background:var(--lark-color-yellow)}
+.lark-tile--accent .lark-tile__label,.lark-tile--accent .lark-tile__note{color:color-mix(in srgb,var(--lark-on-accent) 70%,transparent)}
+.lark-tile--accent .lark-tile__value{color:var(--lark-on-accent)}
+.lark-tile--accent:hover{background:var(--lark-color-yellow-light)}
+.lark-tile--accent:hover .lark-tile__value{color:var(--lark-on-accent)}
+
+/* ---------- ТЕРМИНАЛЬНЫЙ РЕГИСТР КОНСОЛИ LARKINS ---------- */
+.lark-term{font-family:var(--lark-font-mono);font-feature-settings:var(--lark-mono-features);font-size:var(--lark-size-mono);line-height:var(--lark-line-mono);background:var(--lark-surface);border:var(--lark-hairline) solid var(--lark-border);border-radius:var(--lark-radius-m);overflow:hidden;display:flex;flex-direction:column;min-height:0}
+.lark-term__bar{display:flex;align-items:center;gap:var(--lark-space-3);padding:var(--lark-space-3) var(--lark-space-4);border-bottom:var(--lark-hairline) solid var(--lark-border);background:var(--lark-surface-elevated);flex:none}
+.lark-term__dots{display:flex;gap:var(--lark-space-2)}
+.lark-term__dots i{width:var(--lark-space-2);height:var(--lark-space-2);border-radius:var(--lark-radius-pill);background:var(--lark-border-strong)}
+.lark-term__name{font-size:var(--lark-size-label);letter-spacing:var(--lark-track-label);text-transform:uppercase;color:var(--lark-text-3);font-family:var(--lark-font-text);font-weight:var(--lark-weight-label)}
+.lark-term__log{padding:var(--lark-space-4);display:flex;flex-direction:column;gap:var(--lark-space-1);overflow:auto;flex:1;min-height:0}
+.lark-term__row{display:flex;gap:var(--lark-space-3);align-items:flex-start;white-space:pre-wrap;word-break:break-word}
+.lark-term__gut{color:var(--lark-text-off);flex:none;user-select:none;font-variant-numeric:tabular-nums}
+.lark-term__cmd{color:var(--lark-color-yellow)}
+.lark-term__out{color:var(--lark-text-2)}
+.lark-term__ok{color:var(--lark-color-success)}
+.lark-term__warn{color:var(--lark-color-warning)}
+.lark-term__err{color:var(--lark-color-error)}
+.lark-term__dim{color:var(--lark-text-3)}
+.lark-term__prompt{color:var(--lark-color-yellow);flex:none;user-select:none}
+.lark-term__input{flex:1;background:transparent;border:none;outline:none;color:var(--lark-text);font:inherit;padding:0;min-width:0}
+.lark-term__input::placeholder{color:var(--lark-text-off)}
+.lark-term__caret{display:inline-block;width:var(--lark-space-2);height:var(--lark-line-mono);background:var(--lark-color-yellow);animation:lark-caret 1s steps(1) infinite;vertical-align:text-bottom;flex:none}
+@keyframes lark-caret{50%{opacity:0}}
+[data-theme="light"] .lark-term__cmd,[data-theme="light"] .lark-term__prompt{color:var(--lark-accent-ink)}
+[data-theme="light"] .lark-term__caret{background:var(--lark-accent-ink)}

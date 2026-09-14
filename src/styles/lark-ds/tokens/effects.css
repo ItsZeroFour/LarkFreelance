@@ -1,0 +1,10 @@
+:root {
+  --lark-shadow-sm: 0 1px 2px rgba(0,0,0,.6);
+  --lark-shadow-md: 0 6px 16px rgba(0,0,0,.55);
+  --lark-shadow-lg: 0 16px 40px rgba(0,0,0,.6);
+  --lark-icon-grid: 24;
+  --lark-icon-stroke: 1.5px;
+  --lark-icon-linecap: round;
+  --lark-icon-linejoin: round;
+  --lark-icon-style: outline;
+}

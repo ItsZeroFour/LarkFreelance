@@ -1,0 +1,47 @@
+/* База. Тёмная тема по умолчанию. */
+.lark{background:var(--lark-bg);color:var(--lark-text);font-family:var(--lark-font-text);font-size:var(--lark-size-body);line-height:var(--lark-line-body)}
+.lark *,.lark *::before,.lark *::after{box-sizing:border-box}
+.lark ::selection{background:var(--lark-color-yellow);color:var(--lark-on-accent)}
+/* ЛОКАЛЬНОЕ ОТСТУПЛЕНИЕ ОТ ПАКЕТА ДС.
+   В исходнике селектор `.lark a` (специфичность 0,1,1) перебивает классы
+   компонентов (0,1,0): подпись .lark-btn--primary становится жёлтой на
+   жёлтом, пункты .lark-navlink — жёлтыми, и любая утилита цвета на ссылке
+   не работает. Обёртка в :where() опускает специфичность до 0,1,0, и правило
+   снова работает как умолчание, а не как перебивка. Стоит починить в пакете.  */
+.lark :where(a){color:var(--lark-accent-ink);text-decoration:none;border-bottom:var(--lark-hairline) solid transparent;transition:border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark :where(a):hover{border-bottom-color:currentColor}
+.lark a:focus-visible,.lark [tabindex]:focus-visible{outline:var(--lark-focus-w) solid var(--lark-color-yellow);outline-offset:var(--lark-focus-offset)}
+.lark ::-webkit-scrollbar{width:var(--lark-space-2);height:var(--lark-space-2)}
+.lark ::-webkit-scrollbar-thumb{background:var(--lark-border);border-radius:var(--lark-radius-pill)}
+.lark ::-webkit-scrollbar-track{background:transparent}
+@media (prefers-reduced-motion:reduce){.lark *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ---------- ТИПОГРАФИКА ---------- */
+.lark-display,.lark-h1,.lark-h2,.lark-h3{font-family:var(--lark-font-display);color:var(--lark-text);margin:0;text-wrap:pretty}
+.lark-display{font-size:var(--lark-size-display);line-height:var(--lark-line-display);letter-spacing:var(--lark-track-display);font-weight:var(--lark-weight-display)}
+.lark-h1{font-size:var(--lark-size-h1);line-height:var(--lark-line-h1);letter-spacing:var(--lark-track-h1);font-weight:var(--lark-weight-h1)}
+.lark-h2{font-size:var(--lark-size-h2);line-height:var(--lark-line-h2);letter-spacing:var(--lark-track-h2);font-weight:var(--lark-weight-h2)}
+.lark-h3{font-size:var(--lark-size-h3);line-height:var(--lark-line-h3);letter-spacing:var(--lark-track-h3);font-weight:var(--lark-weight-h3)}
+.lark-body-l{font-size:var(--lark-size-body-l);line-height:var(--lark-line-body-l);letter-spacing:var(--lark-track-body-l);font-weight:var(--lark-weight-body-l)}
+.lark-body{font-size:var(--lark-size-body);line-height:var(--lark-line-body);letter-spacing:var(--lark-track-body);font-weight:var(--lark-weight-body)}
+.lark-caption{font-size:var(--lark-size-caption);line-height:var(--lark-line-caption);letter-spacing:var(--lark-track-caption);color:var(--lark-text-2)}
+.lark-label{font-size:var(--lark-size-label);line-height:var(--lark-line-label);letter-spacing:var(--lark-track-label);font-weight:var(--lark-weight-label);text-transform:uppercase;color:var(--lark-text-3)}
+.lark-dim{color:var(--lark-text-2)}
+.lark-num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+/* Моноширинный набор: служебные метки, номера, технические подписи.
+   Лигатуры выключены — «01 — Кто мы» не код. */
+.lark-mono{font-family:var(--lark-font-mono);font-feature-settings:var(--lark-mono-features);font-size:var(--lark-size-caption);line-height:var(--lark-line-caption);letter-spacing:.02em}
+.lark-mono--sm{font-size:var(--lark-size-label);line-height:var(--lark-line-label)}
+.lark-mono--code{font-feature-settings:var(--lark-mono-features-code)}
+
+/* ---------- СЕТКА ---------- */
+.lark-container{max-width:var(--lark-grid-desktop-max);margin:0 auto;padding:0 var(--lark-grid-desktop-margin)}
+.lark-grid{display:grid;grid-template-columns:repeat(var(--lark-grid-desktop-columns),1fr);gap:var(--lark-grid-desktop-gutter)}
+.lark-row{display:flex;align-items:center;gap:var(--lark-space-3)}
+.lark-col{display:flex;flex-direction:column;gap:var(--lark-space-3)}
+@media (max-width:768px){.lark-container{padding:0 var(--lark-grid-mobile-margin)}.lark-grid{grid-template-columns:repeat(var(--lark-grid-mobile-columns),1fr);gap:var(--lark-grid-mobile-gutter)}}
+
+/* ---------- ИКОНКИ ---------- */
+.lark-icon{width:var(--lark-icon-size);height:var(--lark-icon-size);stroke:currentColor;fill:none;stroke-width:var(--lark-icon-stroke);stroke-linecap:var(--lark-icon-linecap);stroke-linejoin:var(--lark-icon-linejoin);flex:none}
+.lark-icon--sm{width:var(--lark-icon-size-sm);height:var(--lark-icon-size-sm)}
+.lark-icon--xs{width:var(--lark-icon-size-xs);height:var(--lark-icon-size-xs)}

@@ -1,0 +1,12 @@
+:root {
+  /* подъём */
+  --lark-motion-rise-duration: 220ms;
+  --lark-motion-rise-ease: cubic-bezier(.16,.84,.44,1);
+  /* зависание */
+  --lark-motion-hover-duration: 120ms;
+  --lark-motion-hover-ease: cubic-bezier(.4,0,.6,1);
+  /* опора */
+  --lark-motion-land-duration: 400ms;
+  --lark-motion-land-ease: cubic-bezier(.32,0,.67,0);
+  --lark-motion-stagger: 40ms;
+}

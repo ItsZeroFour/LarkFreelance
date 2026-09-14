@@ -1,0 +1,36 @@
+:root {
+  --lark-font-display: "Involve", system-ui, sans-serif;
+  --lark-font-text: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --lark-size-display: 64px;
+  --lark-size-h1: 48px;
+  --lark-size-h2: 36px;
+  --lark-size-h3: 28px;
+  --lark-size-body-l: 20px;
+  --lark-size-body: 16px;
+  --lark-size-caption: 14px;
+  --lark-size-label: 12px;
+  --lark-line-display: 68px;
+  --lark-line-h1: 54px;
+  --lark-line-h2: 42px;
+  --lark-line-h3: 36px;
+  --lark-line-body-l: 30px;
+  --lark-line-body: 26px;
+  --lark-line-caption: 20px;
+  --lark-line-label: 16px;
+  --lark-track-display: -0.03em;
+  --lark-track-h1: -0.02em;
+  --lark-track-h2: -0.015em;
+  --lark-track-h3: -0.01em;
+  --lark-track-body-l: 0;
+  --lark-track-body: 0;
+  --lark-track-caption: 0.01em;
+  --lark-track-label: 0.14em;
+  --lark-weight-display: 700;
+  --lark-weight-h1: 700;
+  --lark-weight-h2: 700;
+  --lark-weight-h3: 700;
+  --lark-weight-body-l: 400;
+  --lark-weight-body: 400;
+  --lark-weight-caption: 400;
+  --lark-weight-label: 600;
+}

@@ -1,0 +1,9 @@
+:root {
+  --lark-grid-desktop-columns: 12;
+  --lark-grid-desktop-gutter: 24px;
+  --lark-grid-desktop-margin: 40px;
+  --lark-grid-desktop-max: 1440px;
+  --lark-grid-mobile-columns: 4;
+  --lark-grid-mobile-gutter: 16px;
+  --lark-grid-mobile-margin: 16px;
+}

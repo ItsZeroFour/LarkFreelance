@@ -1,0 +1,39 @@
+/* ============================================================
+   Lark Freelance — токены сайта.
+   Файл больше не объявляет цвета: их даёт дизайн-система.
+   Свои значения остаются только у того, чего нет в инварианте ДС.
+   ============================================================ */
+@import "./lark-ds/styles.css";
+
+:root {
+  color-scheme: dark;
+
+  /* ЛОКАЛЬНЫЕ ТОКЕНЫ САЙТА — чего нет в инварианте ДС.
+     Все выведены из принятых значений системы, литералов нет. */
+  --site-grid-line: color-mix(in srgb, var(--lark-border) 55%, transparent);
+  --site-grid-step: 64px;
+  --site-shell-max: var(--lark-grid-desktop-max);   /* 1440 */
+  --site-shell-pad: var(--lark-grid-desktop-margin); /* 40 */
+  --site-rhythm: var(--lark-space-10);               /* 96 */
+  --site-rhythm-sm: var(--lark-space-9);             /* 80 */
+
+  /* Тонировка акцентом — через color-mix, а не прибитая к тёмному rgba:
+     сама подстраивается под тему. Заменяет старый --accent-soft. */
+  --site-accent-soft: color-mix(in srgb, var(--lark-color-yellow) var(--lark-tint-weak), transparent);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --site-shell-pad: var(--lark-grid-mobile-margin); /* 16 */
+    --site-rhythm: var(--lark-space-8);               /* 64 */
+    --site-rhythm-sm: var(--lark-space-7);            /* 48 */
+  }
+}
+
+/* Поверхность и тема ставятся на <html> в layout.tsx:
+   <html lang="ru" data-theme="dark" data-surface="web">
+   Класс .lark нужен на <body> — на нём висит база типографики ДС. */

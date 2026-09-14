@@ -1,0 +1,29 @@
+/* ТЁМНАЯ ТЕМА — ПО УМОЛЧАНИЮ */
+:root, [data-theme="dark"] {
+  --lark-bg: #090909;
+  --lark-surface: #161717;
+  --lark-surface-elevated: #2A2B2D;
+  --lark-border: #33353A;
+  --lark-border-strong: #4A4D54;
+  --lark-text: #F5F5F6;
+  --lark-text-2: #A2A5AC;
+  --lark-text-3: #6E7178;
+  --lark-text-off: #4A4D54;
+  --lark-on-accent: #0B0B0C;
+  --lark-accent-ink: var(--lark-color-yellow);
+}
+
+/* СВЕТЛАЯ ТЕМА */
+[data-theme="light"] {
+  --lark-bg: #FAFAF8;
+  --lark-surface: #FFFFFF;
+  --lark-surface-elevated: #F2F2F0;
+  --lark-border: #E4E4E2;
+  --lark-border-strong: #C9C9C6;
+  --lark-text: #101114;
+  --lark-text-2: #5A5D64;
+  --lark-text-3: #8A8D94;
+  --lark-text-off: #B4B7BC;
+  --lark-accent-ink: #8A6410;
+  --lark-on-accent: #0B0B0C;
+}

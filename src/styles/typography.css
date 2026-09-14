@@ -1,0 +1,97 @@
+/* ============================================================
+   Текучие ступени поверх токенов ДС.
+   Ступени системы фиксированы в px — сайту нужна текучесть,
+   поэтому каждая строка едет от мобильного значения к ступени
+   системы и на 1280px попадает в неё точно.
+   ============================================================ */
+
+.t-hero,
+.t-section,
+.t-card {
+  font-family: var(--lark-font-display);
+  font-weight: 700;
+  color: var(--lark-text);
+  text-wrap: pretty;
+  margin: 0;
+}
+
+.t-hero {
+  font-size: clamp(36px, 7vw, 64px);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+
+.t-section {
+  font-size: clamp(28px, 4.5vw, 36px);
+  line-height: 1.17;
+  letter-spacing: -0.015em;
+  max-width: 20ch;
+}
+
+.t-card {
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+
+.t-lead {
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.5;
+  max-width: 52ch;
+  color: var(--lark-text-2);
+}
+
+/* Единственная ступень без текучести: 16px — минимум читаемости,
+   расти основному тексту незачем. */
+.t-body {
+  font-size: var(--lark-size-body);
+  line-height: var(--lark-line-body);
+  max-width: 68ch;
+  color: var(--lark-text-2);
+}
+
+/* Акцентное слово — настоящее наклонное начертание Involve */
+.t-hero em,
+.t-section em,
+.t-card em,
+.lark-accent {
+  font-style: oblique 11deg;
+  font-weight: inherit;
+  color: var(--lark-color-yellow);
+}
+
+[data-theme="light"] .t-hero em,
+[data-theme="light"] .t-section em,
+[data-theme="light"] .t-card em {
+  color: var(--lark-accent-ink);
+}
+
+/* Фолио-номер раздела — парная часть маркера, не декоративное пятно */
+.t-folio {
+  position: absolute;
+  /* Правый верхний угол контейнера — по краю колонки контента у .shell,
+     чтобы во всех разделах номер стоял единообразно у правого края. */
+  right: var(--site-shell-pad);
+  top: 0;
+  z-index: -1;
+  font-family: var(--lark-font-display);
+  font-weight: 700;
+  font-size: clamp(80px, 14vw, 160px);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--lark-text-off) 45%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Ниже 640px фолио не выводится: на 390 он либо перекрывает заголовок,
+   либо тянет горизонтальный скролл. */
+@media (max-width: 640px) {
+  .t-folio {
+    display: none;
+  }
+}
+
+/* Удалено: .font-display (шрифт задаёт .t-*), .t-meta и .t-mono —
+   их роль закрывают .lark-label и .lark-mono из базы системы. */

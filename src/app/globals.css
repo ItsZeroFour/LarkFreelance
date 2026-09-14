@@ -1,0 +1,111 @@
+@import "../styles/variables.css";
+@import "../styles/typography.css";
+@import "../styles/animations.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   База
+   Цвет фона, цвет текста, семейство, выделение, скроллбар и
+   focus-ring задаёт класс .lark из базы дизайн-системы — он висит
+   на <body>. Здесь остаётся только то, что относится к документу.
+   ============================================================ */
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    /* Страховка от горизонтального скролла на мобильном: `clip` режет
+       надёжно и не создаёт скролл-контейнер, поэтому sticky и якорная
+       навигация продолжают работать. */
+    overflow-x: clip;
+  }
+
+  /* Плавная прокрутка — только если пользователь не просил меньше движения */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+}
+
+/* ============================================================
+   Утилиты сайта
+   ============================================================ */
+@layer components {
+  /* Контейнер страницы — обёртка над сеткой ДС */
+  .shell {
+    width: 100%;
+    max-width: var(--site-shell-max);
+    margin-inline: auto;
+    padding-inline: var(--site-shell-pad);
+  }
+
+  /* Вертикальный ритм раздела. Один отступ между разделами, не два:
+     иначе воздух складывается в 192px и ритм рассыпается. */
+  .section {
+    position: relative;
+    scroll-margin-top: var(--lark-space-10);
+    padding-block-end: var(--site-rhythm);
+  }
+
+  /* Плавающие поверхности — навбар и мобильное меню, больше нигде.
+     Нижняя линия убрана: под логотипом не должно быть светлой полосы,
+     подложку держит только фон с размытием. */
+  .floating {
+    background: color-mix(in srgb, var(--lark-surface) 80%, transparent);
+    backdrop-filter: blur(var(--lark-scrim-blur));
+    -webkit-backdrop-filter: blur(var(--lark-scrim-blur));
+  }
+
+  /* Единственная фоновая текстура на сайте. Один экран — одно применение. */
+  .grid-lines {
+    background-image:
+      linear-gradient(var(--site-grid-line) var(--lark-hairline), transparent var(--lark-hairline)),
+      linear-gradient(90deg, var(--site-grid-line) var(--lark-hairline), transparent var(--lark-hairline));
+    background-size: var(--site-grid-step) var(--site-grid-step);
+  }
+
+  .hairline {
+    height: var(--lark-hairline);
+    background: var(--lark-border);
+  }
+
+  /* Полоса прогресса чтения под навбаром. В светлой теме жёлтый как тонкая
+     линия запрещён — роль берёт warning. */
+  .reading-progress {
+    height: 2px;
+    background: var(--lark-color-yellow);
+    transform-origin: left;
+  }
+  [data-theme="light"] .reading-progress {
+    background: var(--lark-color-warning);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Края бегущей строки. Единственная маска, которой есть работа. */
+  .mask-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+}
+
+/* Удалено вместе с декоративным слоем: .surface (заменён на .lark-card),
+   .dot-field (вторая текстура при одной разрешённой), .amber (заменён на
+   color: var(--lark-accent-ink)), .mask-radial и .mask-t (обслуживали
+   свечения и фоновые сетки, которых больше нет), кастомный скроллбар
+   и правила ::selection — их задаёт база системы. */
