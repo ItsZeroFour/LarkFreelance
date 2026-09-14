@@ -252,15 +252,17 @@ export function Larkins() {
 
       {/* Семь колонок диалога и пять колонок КП: диалог шире.
           Стек на 1024. */}
-      <div className="grid gap-5 lg:grid-cols-12 lg:gap-6">
-        <div data-surface="console" className="lg:col-span-7">
+      {/* grid-cols-1 = minmax(0, 1fr): без него колонка на мобильном берёт
+          ширину по содержимому, и в Safari консоль и КП уходят за правый край. */}
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-12 lg:gap-6">
+        <div data-surface="console" className="min-w-0 lg:col-span-7">
           <div className="lark-term h-[400px] sm:h-[460px]">
             <div className="lark-term__bar">
-              <span className="lark-term__dots" aria-hidden="true">
+              <span className="lark-term__dots shrink-0" aria-hidden="true">
                 <i /><i /><i />
               </span>
-              <span className="lark-term__name min-w-0 truncate">larkins · бриф</span>
-              <span className="lark-term__dim ml-auto shrink-0 whitespace-nowrap">
+              <span className="lark-term__name shrink-0 whitespace-nowrap">larkins · бриф</span>
+              <span className="lark-term__dim ml-auto min-w-0 truncate">
                 {statusLabel}
               </span>
             </div>
@@ -329,7 +331,7 @@ export function Larkins() {
         {/* КП собирается по шагам. На мобильном панель идёт под диалогом. */}
         <motion.aside
           initial={false}
-          className="lark-card flex flex-col gap-4 lg:col-span-5"
+          className="lark-card flex min-w-0 flex-col gap-4 lg:col-span-5"
         >
           <div className="flex items-baseline justify-between gap-3">
             <p className="lark-label">Коммерческое предложение</p>
