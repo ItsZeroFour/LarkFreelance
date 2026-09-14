@@ -9,6 +9,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { BrowserFrame, PhoneFrame } from "./Frames";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
+import { contact } from "@/data/contacts";
 import type { PortfolioItem } from "@/data/portfolio";
 
 interface CaseStudyProps {
@@ -53,7 +54,6 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             fill
             priority
             sizes="100vw"
-            unoptimized
             className="object-cover object-top"
           />
         </div>
@@ -218,7 +218,11 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
               {isPortrait ? (
                 <PhoneFrame src={src} alt={`${item.title} - экран ${i + 1}`} />
               ) : (
-                <BrowserFrame src={src} alt={`${item.title} - экран ${i + 1}`} />
+                <BrowserFrame
+                  src={src}
+                  alt={`${item.title} - экран ${i + 1}`}
+                  hideBar={item.hideBrowserBar}
+                />
               )}
             </motion.button>
           ))}
@@ -237,7 +241,7 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             и назовём сроки и вилку стоимости.
           </p>
           <div className="flex flex-col gap-3 xs:flex-row">
-            <Button href="/#contact" size="lg">
+            <Button href={contact.phone.href} size="lg">
               Обсудить проект
               <Icon name="arrow-right" scale="xs" />
             </Button>
@@ -289,7 +293,6 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
               width={1400}
               height={900}
               sizes="92vw"
-              unoptimized
               className="max-h-full w-auto max-w-full rounded-m object-contain"
             />
           </motion.div>

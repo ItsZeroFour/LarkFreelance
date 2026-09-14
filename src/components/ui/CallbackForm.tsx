@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { contact } from "@/data/contacts";
-import { cn } from "@/lib/utils";
+import { cn, formatRuPhone } from "@/lib/utils";
 
 type State = "idle" | "sending" | "sent" | "error";
 
@@ -109,9 +109,10 @@ export function CallbackForm({
             type="tel"
             required
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => setPhone(formatRuPhone(e.target.value))}
             className={cn("lark-field", state === "error" && "lark-field--error")}
             placeholder="+7 (___) ___-__-__"
+            maxLength={18}
             autoComplete="tel"
             inputMode="tel"
             aria-invalid={state === "error"}

@@ -91,7 +91,6 @@ export function PortfolioGallery() {
                       ? "(min-width: 640px) 92vw, 92vw"
                       : "(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
                   }
-                  unoptimized
                   className="object-cover"
                 />
                 <div className="lark-case__tags">

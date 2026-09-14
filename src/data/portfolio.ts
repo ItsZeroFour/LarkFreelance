@@ -43,6 +43,11 @@ export interface PortfolioItem {
   accent: string;
   /** Screenshots are mobile stories (portrait) or desktop pages (landscape). */
   orientation: "landscape" | "portrait";
+  /**
+   * Скрыть строку браузера над десктопными экранами. Нужно кейсам, где
+   * шапка браузера уже впечатана в сам скриншот - иначе рамка дублируется.
+   */
+  hideBrowserBar?: boolean;
   /** Cover image, relative to /public. */
   cover: string;
   /** Full screenshot set, in display order. */
@@ -216,6 +221,8 @@ export const portfolio: PortfolioItem[] = [
       "Промо-кампания трейдинг-платформы Binomo с футболистом Мигелем Борхой: AI-фото и розыгрыш призов.",
     accent: "#ffd400",
     orientation: "landscape",
+    // Скриншоты Binomo сняты вместе с шапкой браузера - собственную рамку не рисуем.
+    hideBrowserBar: true,
     cover: img("binomo", "8.webp"),
     gallery: [
       "8.webp",

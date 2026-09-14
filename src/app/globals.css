@@ -87,6 +87,18 @@
   [data-theme="light"] .reading-progress {
     background: var(--lark-color-warning);
   }
+
+  /* В футере ссылки — навигация, а не текстовые ссылки в абзаце. Базовая
+     подчёркивающая линия при наведении здесь смотрится как лишняя полоса,
+     поэтому гасим её и оставляем только смену цвета. Селектор перебивает
+     `.lark :where(a):hover` из базы дизайн-системы по специфичности. */
+  .lark footer a {
+    transition: color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease);
+  }
+  .lark footer a:hover {
+    border-bottom-color: transparent;
+    color: var(--lark-text);
+  }
 }
 
 @layer utilities {

@@ -62,7 +62,10 @@ async function sendTelegram(text: string): Promise<ChannelOutcome> {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chat_id: chatId, text, disable_notification: false }),
     });
-    if (!res.ok) throw new Error(`Telegram ответил ${res.status}`);
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      throw new Error(`Telegram ответил ${res.status} ${detail}`);
+    }
     return "sent";
   } catch (error) {
     console.error("[delivery] Не удалось доставить в Telegram:", error);

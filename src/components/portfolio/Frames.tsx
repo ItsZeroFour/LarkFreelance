@@ -15,10 +15,12 @@ interface BrowserFrameProps {
   alt: string;
   className?: string;
   priority?: boolean;
+  /** Скрыть строку браузера - для скриншотов, где она уже впечатана в кадр. */
+  hideBar?: boolean;
 }
 
 /** Desktop capture inside a calm browser window. */
-export function BrowserFrame({ src, alt, className }: BrowserFrameProps) {
+export function BrowserFrame({ src, alt, className, hideBar }: BrowserFrameProps) {
   const { width, height } = getImageSize(src);
   return (
     <div
@@ -28,25 +30,26 @@ export function BrowserFrame({ src, alt, className }: BrowserFrameProps) {
       )}
     >
       {/* Title bar */}
-      <div className="flex items-center gap-2 border-b border-border bg-elevated px-4 py-2.5">
-        <span className="flex gap-1.5" aria-hidden="true">
-          <span className="h-2.5 w-2.5 rounded-pill bg-text-3/60" />
-          <span className="h-2.5 w-2.5 rounded-pill bg-text-3/40" />
-          <span className="h-2.5 w-2.5 rounded-pill bg-text-3/30" />
-        </span>
-        <span className="mx-auto hidden h-5 w-1/2 max-w-[260px] items-center rounded-md bg-bg/60 px-2 sm:flex">
-          <span className="lark-mono truncate text-[0.62rem] text-text-3">
-            lark.work
+      {!hideBar && (
+        <div className="flex items-center gap-2 border-b border-border bg-elevated px-4 py-2.5">
+          <span className="flex gap-1.5" aria-hidden="true">
+            <span className="h-2.5 w-2.5 rounded-pill bg-text-3/60" />
+            <span className="h-2.5 w-2.5 rounded-pill bg-text-3/40" />
+            <span className="h-2.5 w-2.5 rounded-pill bg-text-3/30" />
           </span>
-        </span>
-      </div>
+          <span className="mx-auto hidden h-5 w-1/2 max-w-[260px] items-center rounded-md bg-bg/60 px-2 sm:flex">
+            <span className="lark-mono truncate text-[0.62rem] text-text-3">
+              lark.work
+            </span>
+          </span>
+        </div>
+      )}
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
         sizes="(min-width: 768px) 820px, 100vw"
-        unoptimized
         className="block h-auto w-full"
       />
     </div>
@@ -82,7 +85,6 @@ export function PhoneFrame({ src, alt, className }: PhoneFrameProps) {
           width={width}
           height={height}
           sizes="260px"
-          unoptimized
           className="block h-auto w-full"
         />
       </div>

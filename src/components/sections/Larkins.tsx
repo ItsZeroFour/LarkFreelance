@@ -98,12 +98,20 @@ export function Larkins() {
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const idRef = useRef(1);
+  // При первом рендере фокус не забираем: иначе браузер прокручивает страницу
+  // к консоли сразу при заходе на сайт. Фокус нужен только после диалога.
+  const didMount = useRef(false);
 
   // Каретка остаётся в строке ввода после каждого ответа: пока идёт
   // запрос, поле только для чтения, а не disabled - disabled снимает фокус,
-  // и вернуть его без явного focus() уже нельзя.
+  // и вернуть его без явного focus() уже нельзя. preventScroll не даёт
+  // странице прыгнуть к консоли при возврате фокуса.
   useEffect(() => {
-    if (!busy && !done) inputRef.current?.focus();
+    if (!didMount.current) {
+      didMount.current = true;
+      return;
+    }
+    if (!busy && !done) inputRef.current?.focus({ preventScroll: true });
   }, [busy, done]);
 
   // Keep the latest message in view - inside the console only.
