@@ -197,10 +197,11 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
 
       {/* ===== Экраны ===== */}
       <Section>
-        {/* Каждый экран проявляется на своём въезде в вид. Раньше анимацией
-            управлял общий контейнер с whileInView, но галерея выше вьюпорта,
-            и порог amount:0.2 в ней недостижим - экраны так и оставались
-            невидимыми (пустой экран при прокрутке). */}
+        {/* Экраны рендерятся сразу видимыми - без scroll-анимации (whileInView).
+            В высокой галерее (nordan/binomo и т.п.) порог видимости контейнера
+            был недостижим, и нижние экраны оставались скрытыми (пустой экран
+            при прокрутке). Плавность даёт ленивая подгрузка + blur-заглушка,
+            а корректность важнее анимации. */}
         <div
           className={
             isPortrait
@@ -209,13 +210,9 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
           }
         >
           {item.gallery.map((src, i) => (
-            <motion.button
+            <button
               key={src}
               type="button"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
-              variants={revealVariants("up")}
               onClick={() => setLightbox(i)}
               aria-label={`Открыть экран ${i + 1}`}
               className="block w-full cursor-zoom-in border-none bg-transparent p-0 text-left
@@ -230,7 +227,7 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
                   hideBar={item.hideBrowserBar}
                 />
               )}
-            </motion.button>
+            </button>
           ))}
         </div>
       </Section>
