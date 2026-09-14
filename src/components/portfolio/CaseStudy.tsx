@@ -243,7 +243,9 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             Оставьте номер - перезвоним за 15 минут, предложим решение
             и назовём сроки и вилку стоимости.
           </p>
-          <div className="flex flex-col gap-3 xs:flex-row">
+          {/* Две кнопки lg в ряд помещаются только от ~600px: до sm они идут
+              столбцом на всю ширину, дальше - в ряд с переносом. */}
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
             <Button href={contact.phone.href} size="lg">
               Обсудить проект
               <Icon name="arrow-right" scale="xs" />
@@ -280,7 +282,9 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             aria-modal="true"
             aria-label={`${item.title} - экран ${lightbox + 1}`}
             onClick={() => setLightbox(null)}
-            className="lark-scrim cursor-zoom-out"
+            // На мобильном ДС прижимает содержимое .lark-scrim к низу - это
+            // шторка для модалок. Просмотр экрана должен стоять по центру.
+            className="lark-scrim cursor-zoom-out !items-center !p-4"
           >
             <button
               type="button"
