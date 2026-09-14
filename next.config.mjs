@@ -6,10 +6,12 @@ const nextConfig = {
   compress: true,
 
   images: {
-    // Serve modern formats first; the optimizer falls back automatically.
-    formats: ["image/avif", "image/webp"],
-    // Cache optimized images on the CDN/edge for a month.
-    minimumCacheTTL: 60 * 60 * 24 * 30,
+    // Только WebP. AVIF даёт файлы чуть меньше, но кодируется в разы дольше:
+    // на слабом VPS первый посетитель кейса ждёт, пока сервер перекодирует
+    // все скриншоты галереи. WebP кодируется быстро и всё так же сжимает.
+    formats: ["image/webp"],
+    // Держим оптимизированные варианты в кэше подольше - год.
+    minimumCacheTTL: 60 * 60 * 24 * 365,
     // Trim the breakpoint list to the sizes this layout actually requests,
     // so fewer variants are generated and cached.
     deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536],

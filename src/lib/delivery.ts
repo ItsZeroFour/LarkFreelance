@@ -17,18 +17,26 @@
  *   TELEGRAM_CHAT_ID   — id чата или канала, куда падают заявки
  */
 
-const DEFAULT_TO = "larkcosystem@proton.me";
+// Адрес владельца аккаунта Resend: пока домен не подтверждён, письма уходят
+// только сюда. Заявки читаем здесь же, поэтому это разумный дефолт.
+const DEFAULT_TO = "larkecosystem@gmail.com";
 const DEFAULT_FROM = "Lark Freelance <onboarding@resend.dev>";
 
 type ChannelOutcome = "sent" | "skipped" | "failed";
 
+/** Прочитать переменную окружения без хвостовых пробелов/переводов строки. */
+function env(name: string): string | undefined {
+  const value = process.env[name]?.trim();
+  return value ? value : undefined;
+}
+
 /** Письмо на почту через Resend. */
 async function sendEmail(subject: string, text: string): Promise<ChannelOutcome> {
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = env("RESEND_API_KEY");
   if (!apiKey) return "skipped";
 
-  const to = process.env.LEAD_EMAIL_TO || DEFAULT_TO;
-  const from = process.env.RESEND_FROM || DEFAULT_FROM;
+  const to = env("LEAD_EMAIL_TO") || DEFAULT_TO;
+  const from = env("RESEND_FROM") || DEFAULT_FROM;
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -52,9 +60,22 @@ async function sendEmail(subject: string, text: string): Promise<ChannelOutcome>
 
 /** Сообщение в Telegram-бота. */
 async function sendTelegram(text: string): Promise<ChannelOutcome> {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  // Частая причина 404: в токен из .env попал пробел/перевод строки или
+  // лишний префикс "bot". Чистим то, что можем, до формирования URL.
+  let token = env("TELEGRAM_BOT_TOKEN");
+  const chatId = env("TELEGRAM_CHAT_ID");
   if (!token || !chatId) return "skipped";
+  if (token.startsWith("bot")) token = token.slice(3);
+
+  // Валидный токен BotFather всегда вида "<id_бота>:<секрет>". Без двоеточия
+  // URL получается битым и Telegram отвечает 404 - ловим это заранее и пишем
+  // понятную причину, а не глухой сетевой сбой.
+  if (!/^\d+:[\w-]+$/.test(token)) {
+    console.error(
+      "[delivery] TELEGRAM_BOT_TOKEN неверного формата: нужен полный токен BotFather вида 1234567890:AA... (с цифрами и двоеточием).",
+    );
+    return "failed";
+  }
 
   try {
     const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
