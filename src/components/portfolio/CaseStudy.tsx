@@ -197,11 +197,11 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
 
       {/* ===== Экраны ===== */}
       <Section>
-        <motion.div
-          variants={staggerContainer(0.08)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={revealViewport}
+        {/* Каждый экран проявляется на своём въезде в вид. Раньше анимацией
+            управлял общий контейнер с whileInView, но галерея выше вьюпорта,
+            и порог amount:0.2 в ней недостижим - экраны так и оставались
+            невидимыми (пустой экран при прокрутке). */}
+        <div
           className={
             isPortrait
               ? "grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
@@ -212,6 +212,9 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             <motion.button
               key={src}
               type="button"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
               variants={revealVariants("up")}
               onClick={() => setLightbox(i)}
               aria-label={`Открыть экран ${i + 1}`}
@@ -229,7 +232,7 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
               )}
             </motion.button>
           ))}
-        </motion.div>
+        </div>
       </Section>
 
       {/* ===== Отклик ===== */}

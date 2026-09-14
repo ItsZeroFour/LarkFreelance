@@ -36,7 +36,7 @@ export const imageSizes: Record<string, ImageSize> = {
   "/portfolio/binomo/5.webp": { width: 1280, height: 604 },
   "/portfolio/binomo/6.webp": { width: 1280, height: 594 },
   "/portfolio/binomo/7.webp": { width: 1280, height: 607 },
-  "/portfolio/binomo/8.webp": { width: 1280, height: 656 },
+  "/portfolio/binomo/8.webp": { width: 1280, height: 608 },
   "/portfolio/fonbet/1.webp": { width: 662, height: 807 },
   "/portfolio/fonbet/2.webp": { width: 680, height: 804 },
   "/portfolio/fonbet/3.webp": { width: 641, height: 761 },
