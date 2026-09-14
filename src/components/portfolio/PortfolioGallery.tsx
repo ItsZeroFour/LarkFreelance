@@ -10,6 +10,7 @@ import {
   portfolioFilters,
   type PortfolioCategory,
 } from "@/data/portfolio";
+import { getBlur } from "@/data/blurData";
 import { cn } from "@/lib/utils";
 
 type Filter = PortfolioCategory | "all";
@@ -91,6 +92,8 @@ export function PortfolioGallery() {
                       ? "(min-width: 640px) 92vw, 92vw"
                       : "(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
                   }
+                  placeholder={getBlur(item.cover) ? "blur" : "empty"}
+                  blurDataURL={getBlur(item.cover)}
                   className="object-cover"
                 />
                 <div className="lark-case__tags">

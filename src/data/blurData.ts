@@ -1,0 +1,67 @@
+/**
+ * Крошечные размытые превью (LQIP) для скриншотов портфолио.
+ * Сгенерировано из /public/portfolio. Перегенерировать:
+ *   node scripts/gen-blur.cjs
+ */
+export const blurData: Record<string, string> = {
+  "/portfolio/aquamarine/1.webp": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoQAAcAA4BaJYwAAtzzQJSoAP73PiTl0ZsdSWztrpaH5obv771cwqIIhLboS2dZAAA=",
+  "/portfolio/aquamarine/2.webp": "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAAAwAQCdASoQAAcAA4BaJZQAA3AA/vPFZoPJ5S0AAAA=",
+  "/portfolio/aquamarine/3.webp": "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAAAwAQCdASoQAAcAA4BaJZQAA3AA/vPFX0i840swAAA=",
+  "/portfolio/aquamarine/4.webp": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoQAAYAA4BaJbACdAEPyMtHGAD+9wd6GPN28OPhW1ERhMC/DO183Qz2BQHZNb+dtHaGbo24H8AAAA==",
+  "/portfolio/aquamarine/5.webp": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAQCdASoQAAgAA4BaJQAAW12XQ4tAAP72F7IEM30es8F9Y4PMgFAfEks+czf4gpvvdJkM635bgvj1/JR2PeREAAA=",
+  "/portfolio/august/1.webp": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAgAA4BaJbACdAEN5ekwcAD+8aNtWy+sKtu5SN8pXZUJcPOFPb3fSDOpN+pXSRComUHe181m59na3in7mk9i55WBI1fKOQt1IviByRlAAA==",
+  "/portfolio/august/2.webp": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACwAQCdASoQAAgAA4BaJaQAAfcPS1gAAP70cls8icELSX1oUWtLzVSz2+5P30sAAAA=",
+  "/portfolio/august/3.webp": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACQAQCdASoQAAgAA4BaJaQAApBVI6AA/vRyWu4pEFjhmIbK9t+DcwDMsL/wAAAA",
+  "/portfolio/august/4.webp": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAADQAQCdASoQAAgAA4BaJaQAAueBKiUrQAD+9HhYvJOk7dF5vKwTAAAA",
+  "/portfolio/august/5.webp": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAAAQAgCdASoQAAgAA4BaJQBdj+ADAIXsdy0AAP70eFnUCWLyhjEqIeloLZmoAU/C9N+xqNzQoAA=",
+  "/portfolio/big/1.webp": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoQAAkAA4BaJZACw7EO+mL4AAD++AP6EWoLD/vMZ2kE5gPqgwh31r1s8ke+GDNgAAA=",
+  "/portfolio/big/2.webp": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAoAA4BaJbACdAD0iDQ1dgD+9xKL43c7Y2b7cPeH5+CBE8EWHlUrYg0x9Jj1Y2Vjnt7+xFO/nvqF51n5XK9/qrfNzzmMGbPCM2+0O6siAA==",
+  "/portfolio/big/3.webp": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAQCdASoQAAgAA4BaJbACdAEUgwsNMyAA/vZ13dpdPB8Au4BN7twxvXP4NsEfo2qyFh9oyLwS+mf86UJyzI53IPGdayqyvjwuMscMTPlxf4zxsZ7Zj5ETAMV9DbBAAAA=",
+  "/portfolio/big/4.webp": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAAAwAQCdASoQAAkAA4BaJaQAA3AA/vR1+XuFdSMMaj8x1Umq11FYAAAA",
+  "/portfolio/big/5.webp": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAsAA4BaJQBOgCFopR56AAD+yp2Run44o7JqVvvl7y9GEP97oXouDcnt/avd33jWt2ALcoY6qVSnvCMKbGnJ480vD4xsgkz1dVJ7gAA=",
+  "/portfolio/big/6.webp": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwAgCdASoQAAsAA4BaJbACdAEP5IqGwarCAAD+9xJQ8cLq3GDnb4A7l6gyR5C1rnEDfNwQR7uyGlnGLFS88Xq1V52XW36KXVD3ZFNs50P/Jxum2VnghCX+VCVrd9GSMvmYnvYYxe9hmt1OKwAAAA==",
+  "/portfolio/big/7.webp": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoQAAgAA4BaJaQAAvcycn6AAP71Iylsks7vypE47LrZ+bPBuRCxAAAA",
+  "/portfolio/big/8.webp": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwAgCdASoQAAkAA4BaJbACdAEPSpNBoJjPAAD+9xIQgV2wsbQr5z+MKtgwy4R2YgzrlD9Aafxk2c3BtoIsKkBEcIIsT1fts6X43+2F+V4Ea/X5FHVI78nHsVVd8AAA",
+  "/portfolio/binomo/1.webp": "data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAAAwAQCdASoQAAgAA4BaJaQAA3AA/vEMUQaNAzAA",
+  "/portfolio/binomo/2.webp": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADwAQCdASoQAAgAA4BaJZQAD42Qj8ty0QAA/uiToYRktGBKNBZJP530ZxFXEyDU2lvHzco1h6M6SnyQg7rgTaV5n7pA+FtCWmNDHDfvFxVMps87EYjYRIYwTtf1NX3o2GgapofQAAA=",
+  "/portfolio/binomo/3.webp": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwAgCdASoQAAgAA4BaJbACdAEPhxJhijAwgAD+9AlCrMfJk2VM8Rf+m+JI9Tf+Z920ghGyex6+e2q94DrShf1pK/JW3h6tsrtjAAAA",
+  "/portfolio/binomo/4.webp": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAQCdASoQAAgAA4BaJZgC7AEQD1TUjADif9Hf3Tpz9/4g400RTVTKHee6NFlGspiS9o9dghi+uoufSf1yyJQAZGbdstCeBQkYAPRzKH6HRF1GH7+NysCR+sWgAA==",
+  "/portfolio/binomo/5.webp": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAQCdASoQAAgAA4BaJZwAAv9RYpTwVcAA/ubxr0fe/pCRr17fbm2SGOYmGoCZR+dFOFaNy65WjdQSzuL7AyBUfHdijfHj/946Z3wvw/oTog3AgB4sA/gAAAA=",
+  "/portfolio/binomo/6.webp": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAcAA4BaJYwAApytR5b4gAD+9mgy+UWqcVnnrlnJyigfU2vH3Pudwna+Xyjh8N1+gavpcxUrtuiR5d/Fi2cYnvKh67Ffot3QsSkrdAAAAA==",
+  "/portfolio/binomo/7.webp": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAgAA4BaJbAC7AEPSrO3pKAA/vCkcjr4PZDpr30cCJsOuXI+SnzsTkvVAWE6hJO22RFsF0nPvB5KiN6Y5ktzaP5GDFtvCc0AAA==",
+  "/portfolio/binomo/8.webp": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAQCdASoQAAgAA4BaJbACdAEOQGmHUAD+tCDSZB6wB47mY82hxD8T+YnVSiud9V+IzZXEKN/BLni2ylp97L4s0/6WlIqWYuEvCJxj/+Qil76eiW1nJMx/ob+NFNftqxLpZ8yeUAA=",
+  "/portfolio/fonbet/1.webp": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQBACdASoQABQAPu1iqk2ppaQiMAgBMB2JZACdMoADTp8pR8pToyQKu76gAP7ypbQ2aWoK7UFaDW6+BW+IBLHs9b9zDD2NeeiAGrvmSSZ6BisfUB6Cs88sEvz39kouVO7Z/PGAdjjAAA==",
+  "/portfolio/fonbet/2.webp": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQAwCdASoQABMAPu1iqU2ppaOiMAgBMB2JQBOgBDvxuTXHVjKAAP7yqh80qgyw5eMC4ADGmZ8wEE2q6h9LlahXQnvnVuF2cvmWYzfxczzPFAOj0Mb8dYK7Mocy6uD//0dj+FJnQAA=",
+  "/portfolio/fonbet/3.webp": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBACdASoQABMAPu1iqU2ppaOiMAgBMB2JbAC7MoADVXyNDGXjRBO/gQAA/vK1J0i3fWL7eEaT/kqaSdILBrGMxOMyc7w6jr0ybwQg6TMiM3MW5VFqqPcvyn4T9Gj3y+wvvOaTARsd/YTcqJFyoeGFJ0uYAAAA",
+  "/portfolio/fonbet/4.webp": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACQAwCdASoQABMAPu1iqU2ppaOiMAgBMB2JQBOmUABNWb2DU0kAAP7w36ZM7ZHk8Tc9wSJ2Zp5lTFNl0AFKqX44QLMkCHlegeO2/2V+CPAxD1WBfWTLzSk5PA5rooAA",
+  "/portfolio/fonbet/5.webp": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABQAwCdASoQABEAPu1iqU2ppaQiMAgBMB2JZwC/OCK56ctSgAD+9CYJqEW+xt5vUuUgNcaCvsOm/rvzpnnZNtAA",
+  "/portfolio/fonbet/6.webp": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAgCdASoQABQAPu1kqU2ppaQiMAgBMB2JTRbKaAJ/QAD+73zPP079R/3/33Q0lwUb86i+otnTOhioY51+mhOb/gGzxa0LVDFaRxgA",
+  "/portfolio/fonbet/7.webp": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAACwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JbAAASmZbmfzakDnHoAD+8zWz7WvZXETErJQh55UUYhWMLYmv/3YzM3mAR/cmGzMMUUiMwYYLBJDnIaalL1Fkf1UYEGy6phBsR24Tx5Wb80tp43+XgwiLxkA5w1tMhggAAA==",
+  "/portfolio/nordan/1.webp": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwAgCdASoQAAgAA4BaJZQAL4ALKCSaxz4yAAD+sdik7TgfCbQJMlOksYMfy1bj+MxL95E9jtnyGbGdOlzt1ZMjGtZTSE7SPUbiAAAA",
+  "/portfolio/nordan/2.webp": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAQCdASoQAAgAA4BaJbACdADcX93yAAD+ePl3NJWRG0R0d98nmaKzOwvJQb7ygT3Akw9hMX/zPMvjhyZan3dtgWqzP/Zoe+bIcA9CEMQej62lu/YdW9hmtoAAAA==",
+  "/portfolio/nordan/3.webp": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAgAA4BaJaACdAEedMW9sAAA/oon4O56rB2Fz31WY3bLskhKGe/19WDPNcqyTBHpRYOybhbhCVx+xwq4KVReF2vb3yJdq/m6RYAA",
+  "/portfolio/nordan/4.webp": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAgAA4BaJbACdAEVzlpV/UAA/vP7pxgRR0PtgPBi3WmY9MEbmzBlXZ0XGIgFDjpVGDTsBL3h+q0CiFJc8vn4CCR+4UMGl/aayGnhN1AAAA==",
+  "/portfolio/nordan/5.webp": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAgAA4BaJZQCdACeET8zAAD+QPhkUs3Z9HbRUua3aWEce+v+OSXKTpfrj+0PijT2qKKCR0fWSgQAe15E4N7gzxGMAA==",
+  "/portfolio/nordan/6.webp": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAgAA4BaJQAAXTSW7il4AAD+9hlTo9z6gQqxPIcaPmDn9C7aDvie3i+q0rz8oJpq4TPKj9NBUvqfXqnJqlscfxCx7362qPHAAA==",
+  "/portfolio/nordan/7.webp": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoQAAgAA4BaJbACdADHHrGSAAD+2BKz7CYFKV7u7xx2YlWcl/i1D9Zfh0eVvvGTlPSu48Ix6Z29lUp12cKVhyOrbr6Kb8r7B9g/3k/H87cf+AAA",
+  "/portfolio/nordan/8.webp": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAgAA4BaJaQAAp3TULpfsAD+9PWkiFcRXFpHpVWtHQqeiu6C6W5JyF9EDTFSHvfTY2dRSMf8/rvkmAAAAA==",
+  "/portfolio/nordan/9.webp": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAgCdASoQAAgAA4BaJQBOjXAW/+B6QdYo0BgA/vIWYsk612afv95mDROkN022Yj0oKVyF/KEiw/W5tSg5o2su6N8ctVzUpy4/klctmlvgAAAA",
+  "/portfolio/stockity/1.webp": "data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAACQBQCdASoQABsALrV2u12jqampiYC0S2AE6ZQjgRYFCA2wF2AegB0vBEdF+AHSUSk788m0EAD+wksau5HfRRjpdkjZx25YiZagM+JMh8vpHiR5rFyE42b4yNWxrWBkG1JDc5P8PVAP9YKAmocblmXv2qCNCn/WCFtHqg4URk/aOYTYAPMZ/uv4Zp8Jj4thrKvwoY9L41Rir4l9sC3xFR/L6hTVykwFxePl5aDA3MEd5ppVpJ+W/Kz6289JjxI/CSAK1Jbag5QQ+det4BQ519Nmst9TnXg+npYRkqJOF8csUAAA",
+  "/portfolio/stockity/2.webp": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAADwBQCdASoQABkAPu1iqU2ppaOiMAgBMB2JbACdMoR3EuAdYB/APUA/QAewFBd421zJ0ePEV/1UcAD+idMCVEl+toIFFdIHMdA8d/6CUvKmVYKk40UzP8y4zc7gPQu6M4uWR7fZKxBMquJJNrWb+zMKJq9ucLJIAuc7HSaCr0qej3U1C2wal64ltGuiGEFG57eQ5X3BDNThMTSxgiHeC+babzD2S4VMeHa4fm0IB+TOO6/NP3TVkbhflU/m4ZceKT78kbVJ/sjSYv82+FqsUOJXoH1q/4OcyBLWu8+ZnvjmbwA/WcFB16kuS6dd11AAAAA=",
+  "/portfolio/stockity/3.webp": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAAAQBQCdASoQABoAPu1iqU2ppaOiMAgBMB2JbACdMoR3IsChb5gBkgAFKN5izEA1vWCAAP3D5eashhg0ztSaDK2hsnC3Ep0Y5YP7WAHatStgM1aPC3+lMlSsJ8GnotS2QBXFVWxEaT+FSxNDYSgbfc2yXK8fqLhF+HZf5S/Xj5W5tapSV1wXGaD9nPbfCQZiPbk2he/LGKyJrHdkPXv8yqBuTFBxUu26tPRk7jeRARaNrfUvfLA3HWtCoBlBfYAA",
+  "/portfolio/stockity/4.webp": "data:image/webp;base64,UklGRgoBAABXRUJQVlA4IP4AAADQBQCdASoQABwAPu1iqU2ppaOiMAgBMB2JbACdMoR3IsChAbYDn//QBvAB2AC/medTPkU82pEAAP5IsFo3zBbbNks5g4YXwwlI1YiAz8uaO6tgYWY0yFQbNA7Eb5bzrFDTh9k/tPbvvkojwxT5gE8TeSD/c+9L2Hls6vJvduh5VqR/qZHpfZQuLY4w+RgCPq032s252pFENk7g5TKwCqQgjJduemo8xhRMooi0/RWL7cjPp974taE6OKG34QA7IMIjxH/BdKvI+oY/Q1zjDNLcbKcgYJ1iz8pmzru/nj7GV22T0drDDATYzWayKtJtwuS59ruDWXaMLg1nFgBaAA==",
+  "/portfolio/stockity/5.webp": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAADwAwCdASoQABwAPu1iqU2ppaQiMAgBMB2JQAB8sUHDW5jD+OmZyxNwAP38D32hgNDXc15HuCSkkT81UI3zBOadExMF3zWzSBfZBDIUkl0KQ7H1cDSuobMhkideifIqSWSq4A+XPrNe4b7JRqCto6vrUcEQDHU8Og/OCFwjy1/fYpWGjUbpi0LD9ZZ6//5eP5TxLVI2vMAAAA==",
+  "/portfolio/stockity/6.webp": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAwBACdASoQABwAPu1qrU8ppiQiMAgBMB2JYgAxQDJAAJIxvAD7xDkAKAAA/rhMo6ud9tOKSZ6WIeXL6lb9s1CRuYaz/Vye98ZwbnfHsVCiNuEs02g63r3VpQqwFBq9XMD++as5y/m/5vA9+Y3ntPP8B6nXZYjc8eHoPiuif9TIBdV4RW/Rt+3/ydHq+cGM4Kg5qlAA",
+  "/portfolio/stockity/7.webp": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAACwBQCdASoQABsAPu1iqU2ppaOiMAgBMB2JbACdMoMYPYDejeIB6/9j/voASXiPqlNISJZxlwAA9rACTGsufi1TDYHc2+FfbQgkwqH5XahZWUw7pLFgNEfyIKJfPsdkTHws4VhX4u50oi5NE1ShubKrEGlN2paHJMYvPNwmfMDD5U/ZykUDSpKfC//Up9YXN77bOr0KIimJdiF6kGQr8yxqd3H7DQx+dLPf+7JHD10JykbZtVFzY8AA",
+  "/portfolio/stockity/8.webp": "data:image/webp;base64,UklGRhIBAABXRUJQVlA4IAYBAADQBQCdASoQABwAPu1kqk4ppaQiMAgBMB2JbACdMoRwN5LTAbgCZABydUGweQ8dzcjFvrzIwZEAAP21J2ksb8FJBJLOQwNXzsLmhWLBtQCmLvoMYV4KuM9eZCCZp22QEcqYIAie9aegxrQ9vOTzGhEjY//OqDK50fbrRv+kKZiNLElxHFxomuxWilS/uvf7AvIl/rmofzNCgKvnJWXXpMbf/0dHdc9651kjoev3EXtzDh5Hqn+fM9ko9IVoz//bAM/2XXno2NvS+S7d76v3P+Zd/CypabHb1F01+T+zJ25jmWMfl/9Uy270rWGad45BczbZsOkhRPfOmR7ivtGY8MRh70wLAAAA",
+  "/portfolio/stockity-wallpaper/1.webp": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACQAQCdASoQAAgAA4BaJYwCw7CHwsAA/vOW4SEvxRS5S99f64Otbt9el2QPSDa2eNOh7+aXtzxzRbbyUwKCazDQ19wAAA==",
+  "/portfolio/stockity-wallpaper/2.webp": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAgAA4BaJaACdAEOyGs+AAD8EU0lcDysnpkGfdMeSi7xZqful3KTqUEKozxlaOPUVzRx7sz5bT/iwsQlbY2xZ3CfYw2XcNmkm8FSAkoAAA==",
+  "/portfolio/stockity-wallpaper/3.webp": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoQAAgAA4BaJZwAAujarlky8AD+9R2A0FZPQApUU0pxT+bla6VodKpZvbYfiWxcrAKNXCeg9kJeAAAA",
+  "/portfolio/stockity-wallpaper/4.webp": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAQCdASoQAAgAA4BaJZwAAtaWjW8AAP7uW7U984si48CN1ATAUBmHNrWmEC3nTujgsybvoNtKoLBqaa9PKrpEypaSjlFi23FAAA==",
+  "/portfolio/stockity-wallpaper/5.webp": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAgAA4BaJbACdAEOuDfSAAD5UuhNhcmBKlU4kPgEq3lhfHovobCrlVe5ZH0Tq7nRYkrJ+Ri0GKoJ0kcV8b92D49HqiHtARN/3SWUAAA=",
+};
+
+/** Blur-заглушка для пути; undefined - если превью нет. */
+export function getBlur(src: string): string | undefined {
+  return blurData[src];
+}

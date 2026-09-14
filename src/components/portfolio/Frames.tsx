@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { getImageSize } from "@/data/imageSizes";
+import { getBlur } from "@/data/blurData";
 
 /**
  * Рамки устройств: снимок получает достоверный корпус - строка браузера
@@ -22,6 +23,7 @@ interface BrowserFrameProps {
 /** Desktop capture inside a calm browser window. */
 export function BrowserFrame({ src, alt, className, hideBar }: BrowserFrameProps) {
   const { width, height } = getImageSize(src);
+  const blur = getBlur(src);
   return (
     <div
       className={cn(
@@ -50,6 +52,8 @@ export function BrowserFrame({ src, alt, className, hideBar }: BrowserFrameProps
         width={width}
         height={height}
         sizes="(min-width: 768px) 820px, 100vw"
+        placeholder={blur ? "blur" : "empty"}
+        blurDataURL={blur}
         className="block h-auto w-full"
       />
     </div>
@@ -65,6 +69,7 @@ interface PhoneFrameProps {
 /** Mobile story capture inside a notched phone shell. */
 export function PhoneFrame({ src, alt, className }: PhoneFrameProps) {
   const { width, height } = getImageSize(src);
+  const blur = getBlur(src);
   return (
     <div
       className={cn(
@@ -85,6 +90,8 @@ export function PhoneFrame({ src, alt, className }: PhoneFrameProps) {
           width={width}
           height={height}
           sizes="260px"
+          placeholder={blur ? "blur" : "empty"}
+          blurDataURL={blur}
           className="block h-auto w-full"
         />
       </div>

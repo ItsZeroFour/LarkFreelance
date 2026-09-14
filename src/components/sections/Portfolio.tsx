@@ -9,6 +9,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
 import { portfolio } from "@/data/portfolio";
+import { getBlur } from "@/data/blurData";
 
 /**
  * 04 - Портфолио. Три колонки по четыре, шесть кейсов из восьми.
@@ -51,6 +52,8 @@ export function Portfolio() {
                   alt=""
                   fill
                   sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
+                  placeholder={getBlur(item.cover) ? "blur" : "empty"}
+                  blurDataURL={getBlur(item.cover)}
                   className="object-cover"
                 />
                 <div className="lark-case__tags">

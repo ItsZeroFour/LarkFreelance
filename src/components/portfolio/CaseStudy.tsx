@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { BrowserFrame, PhoneFrame } from "./Frames";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
 import { contact } from "@/data/contacts";
+import { getBlur } from "@/data/blurData";
 import type { PortfolioItem } from "@/data/portfolio";
 
 interface CaseStudyProps {
@@ -54,6 +55,8 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             fill
             priority
             sizes="100vw"
+            placeholder={getBlur(item.cover) ? "blur" : "empty"}
+            blurDataURL={getBlur(item.cover)}
             className="object-cover object-top"
           />
         </div>
@@ -293,6 +296,8 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
               width={1400}
               height={900}
               sizes="92vw"
+              placeholder={getBlur(item.gallery[lightbox]) ? "blur" : "empty"}
+              blurDataURL={getBlur(item.gallery[lightbox])}
               className="max-h-full w-auto max-w-full rounded-m object-contain"
             />
           </motion.div>
