@@ -28,7 +28,7 @@ const channels: Channel[] = [
     href: contact.telegram.url,
     external: true,
     primary: true,
-    note: "Самый быстрый способ - ответим в течение часа",
+    note: `Самый быстрый способ - ответим ${contact.responseTime}`,
   },
   {
     icon: "phone",

@@ -56,8 +56,7 @@ export const metadata: Metadata = {
     default: "Lark Freelance - IT-агентство нового поколения",
     template: "%s · Lark Freelance",
   },
-  description:
-    "Lark Freelance - технологическая команда нового поколения. Веб-разработка, AI-автоматизация и IT под ключ в одном контуре. Стратегия, дизайн и execution. Ответ в течение часа.",
+  description: `Lark Freelance - технологическая команда нового поколения. Веб-разработка, AI-автоматизация и IT под ключ в одном контуре. Стратегия, дизайн и execution. Ответ ${contact.responseTime}.`,
   keywords: [
     "Lark Freelance",
     "IT-агентство",

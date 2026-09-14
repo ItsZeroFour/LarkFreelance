@@ -1,12 +1,8 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import { Trajectory } from "./Trajectory";
 import { Button } from "@/components/ui/Button";
 import { CallbackForm } from "@/components/ui/CallbackForm";
 import { Icon } from "@/components/ui/Icon";
 import { AccentText } from "@/components/ui/SectionHeading";
-import { revealVariants, staggerContainer } from "@/hooks/useReveal";
 import { contact } from "@/data/contacts";
 
 const capabilities = [
@@ -26,6 +22,17 @@ const capabilities = [
 const clients = ["FONBET", "Binomo", "Stockity", "NORDAN", "Дирекция кино", "Аквамарин"];
 
 /**
+ * Появление первого экрана - CSS-анимация, а не framer-motion. Framer
+ * рендерит на сервере `opacity:0` и проявляет элементы только после
+ * гидрации: на медленном мобильном заголовок и форма звонка секундами
+ * оставались невидимыми. CSS-анимация стартует вместе с HTML, а при
+ * prefers-reduced-motion её гасит база дизайн-системы.
+ */
+const rise = (delay: number) => ({
+  animation: `lark-rise 0.62s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s both`,
+});
+
+/**
  * Первый экран.
  *
  * Композиция 1c: центр, симметричная дуга, один графический элемент.
@@ -40,8 +47,6 @@ const clients = ["FONBET", "Binomo", "Stockity", "NORDAN", "Дирекция к�
  * а имена клиентов - самый дешёвый и честный аргумент из тех, что у нас есть.
  */
 export function Hero() {
-  const reduce = useReducedMotion();
-
   return (
     <section
       id="top"
@@ -55,48 +60,34 @@ export function Hero() {
       />
 
       <div className="shell relative flex min-h-[82svh] flex-col justify-center py-8">
-        <motion.div
-          variants={staggerContainer(reduce ? 0 : 0.08, 0.1)}
-          initial="hidden"
-          animate="visible"
-          className="relative flex flex-col items-center text-center"
-        >
-          <motion.span
-            variants={revealVariants("up")}
-            className="lark-badge lark-badge--neutral"
-          >
+        <div className="relative flex flex-col items-center text-center">
+          <span className="lark-badge lark-badge--neutral" style={rise(0.1)}>
             <span className="lark-dot text-ink" aria-hidden="true" />
             IT-агентство нового поколения
-          </motion.span>
+          </span>
 
-          <motion.h1 variants={revealVariants("up")} className="t-hero mt-6 text-balance">
+          <h1 className="t-hero mt-6 text-balance" style={rise(0.18)}>
             <AccentText text="*Живые* цифровые решения" />
-          </motion.h1>
+          </h1>
 
-          <motion.p variants={revealVariants("up")} className="t-lead mt-5 text-pretty">
+          <p className="t-lead mt-5 text-pretty" style={rise(0.26)}>
             Стратегия, дизайн и AI автоматизация в одной команде.
             Для бизнеса, который думает вперёд
-          </motion.p>
+          </p>
 
           {/* Самый короткий путь к отклику: номер - и перезвонили.
               Стоит до сгиба, бриф остаётся альтернативой ниже. */}
-          <motion.div
-            variants={revealVariants("up")}
-            className="mt-8 w-full max-w-xl text-left"
-          >
+          <div className="mt-8 w-full max-w-xl text-left" style={rise(0.34)}>
             <CallbackForm source="hero" />
-          </motion.div>
+          </div>
 
           {/* Траектория - единственный графический элемент экрана */}
           <Trajectory className="pointer-events-none mt-2 h-[64px] w-full max-w-4xl sm:h-[132px]" />
-        </motion.div>
+        </div>
 
         {/* Доказательная строка */}
-        <motion.div
-          variants={revealVariants("up")}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.55 }}
+        <div
+          style={rise(0.55)}
           className="mt-6 flex flex-col gap-4 border-t border-border pt-5
                      lg:flex-row lg:items-center lg:justify-between lg:gap-8"
         >
@@ -126,7 +117,7 @@ export function Hero() {
             Смотреть работы
             <Icon name="arrow-up-right" scale="xs" />
           </Button>
-        </motion.div>
+        </div>
       </div>
 
       {/* Бегущая строка направлений. Два трека подряд: анимация уводит

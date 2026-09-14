@@ -7,7 +7,7 @@ import { PortfolioGallery } from "@/components/portfolio/PortfolioGallery";
 import { portfolio } from "@/data/portfolio";
 
 export const metadata: Metadata = {
-  title: "Портфолио - Lark Freelance",
+  title: "Портфолио",
   description:
     "Работы, которые ушли в прод: лендинги, e-commerce, промо-кампании и интерактивные игры. Реальные проекты агентства Lark Freelance.",
   alternates: { canonical: "/portfolio" },

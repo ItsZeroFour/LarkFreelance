@@ -18,11 +18,11 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: PageProps): Metadata {
   const item = getPortfolioItem(params.slug);
-  if (!item) return { title: "Проект не найден - Lark Freelance" };
+  if (!item) return { title: "Проект не найден" };
   const { width, height } = getImageSize(item.cover);
   const path = `/portfolio/${item.slug}`;
   return {
-    title: `${item.title} - ${item.categoryLabel} · Lark Freelance`,
+    title: `${item.title} - ${item.categoryLabel}`,
     description: `${item.client}. ${item.summary}`,
     alternates: { canonical: path },
     openGraph: {

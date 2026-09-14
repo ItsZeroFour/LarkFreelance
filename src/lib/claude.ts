@@ -7,6 +7,8 @@
  * collects the same brief - so the console always works.
  */
 
+import { contact } from "@/data/contacts";
+
 export const LARKINS_SYSTEM = `
 Ты - Larkins, AI-ассистент агентства Lark Freelance.
 
@@ -22,7 +24,7 @@ export const LARKINS_SYSTEM = `
 5. Сроки?
 
 После - выведи краткое саммари
-и сообщи что команда свяжется в течение часа.
+и сообщи что команда свяжется ${contact.responseTime}.
 
 Тон:
 спокойный,
@@ -78,7 +80,7 @@ export function scriptedReply(history: ChatMessage[]): string {
   return (
     "Спасибо. Вот как я понял задачу:\n\n" +
     summary +
-    "\n\nПередаю бриф команде Lark Freelance - мы свяжемся с вами в течение часа."
+    `\n\nПередаю бриф команде Lark Freelance - мы свяжемся с вами ${contact.responseTime}.`
   );
 }
 
