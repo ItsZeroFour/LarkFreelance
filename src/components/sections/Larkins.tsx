@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon } from "@/components/ui/Icon";
 import { LARKINS_GREETING, type ChatMessage } from "@/lib/claude";
 import { contact } from "@/data/contacts";
-import { cn } from "@/lib/utils";
+import { cn, formatRuPhone } from "@/lib/utils";
 
 interface DisplayMessage extends ChatMessage {
   id: number;
@@ -193,11 +193,42 @@ export function Larkins() {
     }
   }
 
+  /* Начали с цифры или "+" - это телефон, форматируем в +7 (___) ___-__-__.
+     Буквы или "@" - Telegram, оставляем как есть. */
+  function changeReplyTo(value: string) {
+    if (sendError) setSendError("");
+    const raw = value.trimStart();
+    if (!/^[+\d(]/.test(raw) || /[^\d\s()+-]/.test(raw)) {
+      setReplyTo(value);
+      return;
+    }
+    let digits = raw.replace(/\D/g, "");
+    // Стёрли скобку, пробел или дефис - стираем и цифру перед ними,
+    // иначе форматтер вернёт символ обратно и курсор застрянет.
+    if (value.length < replyTo.length && digits === replyTo.replace(/\D/g, "")) {
+      digits = digits.slice(0, -1);
+    }
+    if (!digits) {
+      setReplyTo(raw.startsWith("+") && value.length >= replyTo.length ? "+" : "");
+      return;
+    }
+    setReplyTo(digits === "7" || digits === "8" ? "+7 (" : formatRuPhone(digits));
+  }
+
+  const replyIsPhone = replyTo.startsWith("+");
+  const replyReady = replyIsPhone
+    ? replyTo.replace(/\D/g, "").length === 11
+    : replyTo.trim().length > 0;
+
   async function submit() {
     if (!done || sending) return;
     const who = replyTo.trim();
     if (!who) {
       setSendError("Оставьте контакт, чтобы мы могли ответить.");
+      return;
+    }
+    if (!replyReady) {
+      setSendError("Введите номер телефона полностью.");
       return;
     }
     setSending(true);
@@ -388,10 +419,7 @@ export function Larkins() {
                   <input
                     type="text"
                     value={replyTo}
-                    onChange={(e) => {
-                      setReplyTo(e.target.value);
-                      if (sendError) setSendError("");
-                    }}
+                    onChange={(e) => changeReplyTo(e.target.value)}
                     className={cn("lark-field", sendError && "lark-field--error")}
                     placeholder="Телефон или @telegram для ответа"
                     autoComplete="tel"
@@ -408,7 +436,7 @@ export function Larkins() {
               <button
                 type="button"
                 onClick={submit}
-                disabled={!done || sending}
+                disabled={!done || sending || !replyReady}
                 className={cn(
                   "lark-btn lark-btn--primary lark-btn--block",
                   sending && "is-loading",

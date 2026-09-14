@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,9 +11,9 @@ import { team } from "@/data/team";
  * 05 - Команда. Четыре человека по три колонки.
  *
  * Четыре персональных оттенка заменены одним акцентом: инициалы живут
- * на нейтрали и заливаются жёлтым под курсором. Фотографий команды в
- * материалах нет, подставлять сток нельзя - инициалы заголовочным
- * шрифтом это осознанный приём, а не заглушка.
+ * на нейтрали и заливаются жёлтым под курсором. Если у человека есть
+ * фото, оно занимает ту же квадратную плитку вместо инициалов. Сток
+ * не подставляем - без фото остаются инициалы заголовочным шрифтом.
  *
  * Черта выводится сразу, а не по ховеру: скрытый текст на тач-устройствах
  * недоступен.
@@ -39,9 +40,21 @@ export function Team() {
             variants={revealVariants("up")}
             className="lark-person"
           >
-            <span className="lark-person__mark" aria-hidden="true">
-              {member.monogram}
-            </span>
+            {member.photo ? (
+              <span className="lark-person__mark relative overflow-hidden">
+                <Image
+                  src={member.photo}
+                  alt={member.name}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover"
+                />
+              </span>
+            ) : (
+              <span className="lark-person__mark" aria-hidden="true">
+                {member.monogram}
+              </span>
+            )}
             <div className="flex flex-col gap-1">
               <h3 className="lark-person__name">{member.name}</h3>
               <p className="lark-person__role">{member.caption}</p>

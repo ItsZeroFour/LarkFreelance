@@ -10,7 +10,7 @@ export interface TeamMember {
   monogram: string;
   /** Personal accent hue - gives each member a distinct, calm colour. */
   accent: string;
-  /** Portrait photo path. Empty for now - the card shows a placeholder. */
+  /** Portrait photo path (square). Without it the card shows the monogram. */
   photo?: string;
 }
 
@@ -22,6 +22,7 @@ export const team: TeamMember[] = [
     trait: "Видит продукт целиком - связи, а не отдельные экраны.",
     monogram: "ИГ",
     accent: "#e0a92a",
+    photo: "/team/igor.webp",
   },
   {
     id: "daniil",
@@ -30,6 +31,7 @@ export const team: TeamMember[] = [
     trait: "Доводит до состояния, когда система просто работает.",
     monogram: "ДН",
     accent: "#4fab8e",
+    photo: "/team/daniil.webp",
   },
   {
     id: "mikhail",
