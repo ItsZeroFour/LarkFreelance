@@ -6,16 +6,12 @@ const nextConfig = {
   compress: true,
 
   images: {
-    // Только WebP. AVIF даёт файлы чуть меньше, но кодируется в разы дольше:
-    // на слабом VPS первый посетитель кейса ждёт, пока сервер перекодирует
-    // все скриншоты галереи. WebP кодируется быстро и всё так же сжимает.
-    formats: ["image/webp"],
-    // Держим оптимизированные варианты в кэше подольше - год.
-    minimumCacheTTL: 60 * 60 * 24 * 365,
-    // Trim the breakpoint list to the sizes this layout actually requests,
-    // so fewer variants are generated and cached.
-    deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Скриншоты портфолио заранее ужаты и переведены в WebP скриптом
+    // scripts/optimize-portfolio.cjs (ландшафт ≤1280px, телефоны ≤720px,
+    // q80). Поэтому рантайм-оптимизацию Next выключаем: файлы отдаются
+    // статикой напрямую, с иммутабельным кэшем (см. headers ниже) — это
+    // мгновенно и не грузит CPU слабого VPS перекодированием.
+    unoptimized: true,
   },
 
   experimental: {
