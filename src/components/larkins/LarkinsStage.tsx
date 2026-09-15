@@ -85,9 +85,12 @@ export function LarkinsStage() {
           {/* Actions */}
           <motion.div
             variants={revealVariants("up")}
-            className="mt-11 flex w-full flex-col gap-3 xs:w-auto xs:flex-row"
+            className="mt-11 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center"
           >
-            <Link href="/#larkins-brief" className="lark-btn lark-btn--primary lark-btn--lg">
+            <Link
+              href="/#larkins-brief"
+              className="lark-btn lark-btn--primary lark-btn--lg lark-btn--block sm:w-auto"
+            >
               Собрать бриф сейчас
               <Icon name="arrow-right" scale="xs" />
             </Link>
@@ -95,7 +98,7 @@ export function LarkinsStage() {
               href={contact.telegram.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="lark-btn lark-btn--ghost lark-btn--lg"
+              className="lark-btn lark-btn--ghost lark-btn--lg lark-btn--block sm:w-auto"
             >
               <Icon name="telegram" scale="xs" />
               Написать в Telegram
