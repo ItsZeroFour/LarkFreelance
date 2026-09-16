@@ -88,11 +88,19 @@ export function LarkinsStage() {
               ряд выходил шире экрана и правую кнопку срезало. */}
           <m.div
             variants={revealVariants("up")}
+<<<<<<< HEAD
             className="mt-11 flex w-full min-w-0 flex-wrap gap-3"
           >
             <Link
               href="/#larkins-brief"
               className="lark-btn lark-btn--primary lark-btn--lg w-full max-sm:px-5 sm:w-auto"
+=======
+            className="mt-11 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center"
+          >
+            <Link
+              href="/#larkins-brief"
+              className="lark-btn lark-btn--primary lark-btn--lg lark-btn--block sm:w-auto"
+>>>>>>> a3f551c416d92b04bb875f7d2157a0342090ce6c
             >
               Собрать бриф сейчас
               <Icon name="arrow-right" scale="xs" />
@@ -101,7 +109,11 @@ export function LarkinsStage() {
               href={contact.telegram.url}
               target="_blank"
               rel="noopener noreferrer"
+<<<<<<< HEAD
               className="lark-btn lark-btn--ghost lark-btn--lg w-full max-sm:px-5 sm:w-auto"
+=======
+              className="lark-btn lark-btn--ghost lark-btn--lg lark-btn--block sm:w-auto"
+>>>>>>> a3f551c416d92b04bb875f7d2157a0342090ce6c
             >
               <Icon name="telegram" scale="xs" />
               Написать в Telegram
