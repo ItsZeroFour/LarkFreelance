@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Logo } from "@/components/ui/Logo";
 import { AccentText } from "@/components/ui/SectionHeading";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
@@ -37,14 +37,14 @@ export function Footer() {
   return (
     <footer className="border-t border-border">
       <div className="shell">
-        <motion.div
+        <m.div
           variants={staggerContainer(0.1)}
           initial="hidden"
           whileInView="visible"
           viewport={revealViewport}
           className="grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-6"
         >
-          <motion.div
+          <m.div
             variants={revealVariants("up")}
             className="flex flex-col gap-3 sm:col-span-2 lg:col-span-5"
           >
@@ -56,10 +56,10 @@ export function Footer() {
               и IT под ключ.
             </p>
             <p className="lark-caption">{contact.location}</p>
-          </motion.div>
+          </m.div>
 
           {footerNav.map((group) => (
-            <motion.nav
+            <m.nav
               key={group.title}
               variants={revealVariants("up")}
               className="flex flex-col gap-3 lg:col-span-3"
@@ -75,10 +75,10 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </motion.nav>
+            </m.nav>
           ))}
 
-          <motion.div
+          <m.div
             variants={revealVariants("up")}
             className="flex flex-col gap-3 lg:col-span-4"
           >
@@ -97,8 +97,8 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
         <div className="flex flex-col gap-4 border-t border-border py-8 sm:flex-row
                         sm:items-baseline sm:justify-between">

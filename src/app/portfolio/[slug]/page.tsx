@@ -62,9 +62,13 @@ export default function CaseStudyPage({ params }: PageProps) {
         url: `${SITE_URL}/portfolio/${item.slug}`,
         image: `${SITE_URL}${item.cover}`,
         dateCreated: item.year,
-        inLanguage: "ru-RU",
         keywords: item.services.join(", "),
-        creator: { "@type": "Organization", name: "Lark Freelance", url: SITE_URL },
+        /* Ссылка по @id, а не второе описание организации: иначе в графе
+           появляется дубль Lark Freelance и сигналы размазываются по двум
+           сущностям. Узел с этим @id отдаёт корневой layout. */
+        creator: { "@id": `${SITE_URL}/#organization` },
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        inLanguage: "ru-RU",
         about: item.client,
       },
       {

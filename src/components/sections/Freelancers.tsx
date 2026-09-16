@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -33,7 +33,7 @@ const offers = [
 export function Freelancers() {
   return (
     <Section id="freelancers">
-      <motion.div
+      <m.div
         variants={staggerContainer(0.1)}
         initial="hidden"
         whileInView="visible"
@@ -41,24 +41,24 @@ export function Freelancers() {
         className="flex flex-col items-center gap-5 rounded-card border border-border-strong
                    px-5 py-10 text-center sm:px-10 sm:py-12"
       >
-        <motion.span
+        <m.span
           variants={revealVariants("up")}
           className="lark-badge lark-badge--brand"
         >
           <Icon name="wing" scale="xs" />
           Для фрилансеров
-        </motion.span>
+        </m.span>
 
-        <motion.h2 variants={revealVariants("up")} className="t-hero text-balance">
+        <m.h2 variants={revealVariants("up")} className="t-hero text-balance">
           <AccentText text="Летим *вместе*" />
-        </motion.h2>
+        </m.h2>
 
-        <motion.p variants={revealVariants("up")} className="t-lead text-pretty">
+        <m.p variants={revealVariants("up")} className="t-lead text-pretty">
           Lark - не биржа исполнителей. Это закрытый круг людей, которые умеют
           доводить до результата. Если вы из таких - в команде есть место рядом.
-        </motion.p>
+        </m.p>
 
-        <motion.ul
+        <m.ul
           variants={revealVariants("up")}
           className="lark-tiles mt-3 w-full text-left !grid-cols-1 lg:!grid-cols-3"
         >
@@ -68,15 +68,15 @@ export function Freelancers() {
               <span className="lark-tile__note">{offer.body}</span>
             </li>
           ))}
-        </motion.ul>
+        </m.ul>
 
-        <motion.div variants={revealVariants("up")} className="mt-2">
+        <m.div variants={revealVariants("up")} className="mt-2">
           <Button href={contact.joinEmail.href} variant="secondary" external>
             Отправить заявку
             <Icon name="arrow-up-right" scale="xs" />
           </Button>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </Section>
   );
 }

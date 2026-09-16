@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
+import { MotionProvider } from "@/components/animations/MotionProvider";
 import { ConsoleSignature } from "@/components/easter/ConsoleSignature";
 import { IconSprite } from "@/components/ui/IconSprite";
 import { contact } from "@/data/contacts";
@@ -43,10 +44,12 @@ const mono = localFont({
   ],
 });
 
+/* Без weight next/font отдаёт вариативный Inter: два файла (latin + cyrillic)
+   вместо восьми статических начертаний, при этом доступны все веса 100-900,
+   которыми оперирует ДС. Минус ~6 запросов и ~120 КБ на первой загрузке. */
 const text = Inter({
   variable: "--lark-font-text",
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -72,6 +75,7 @@ export const metadata: Metadata = {
   creator: "Lark Freelance",
   applicationName: "Lark Freelance",
   alternates: { canonical: "/" },
+  formatDetection: { telephone: false, email: false, address: false },
   openGraph: {
     type: "website",
     locale: "ru_RU",
@@ -90,7 +94,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   category: "technology",
 };
@@ -98,38 +108,74 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#090909",
+  /* Верхнего предела масштаба нет намеренно: запрет зума ломает доступность. */
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#090909" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  ],
 };
 
-/** Organization / ProfessionalService structured data for SEO. */
+/**
+ * Структурированные данные уровня сайта.
+ *
+ * Один @graph вместо двух отдельных блоков: узлы связаны через @id, поэтому
+ * Google видит, что организация из ProfessionalService и издатель сайта -
+ * это одно лицо. logo обязателен, чтобы значок попал в панель знаний;
+ * без него Organization остаётся безымянной строкой.
+ */
+const ORG_ID = `${SITE_URL}/#organization`;
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Lark Freelance",
-  description:
-    "IT-агентство нового поколения: веб-разработка, AI-автоматизация и IT под ключ.",
-  url: SITE_URL,
-  email: contact.email.label,
-  telephone: contact.phone.label,
-  areaServed: "RU",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "Республика Крым",
-    addressCountry: "RU",
-  },
-  sameAs: [contact.telegram.url],
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "sales",
-    telephone: contact.phone.label,
-    email: contact.email.label,
-    availableLanguage: ["Russian"],
-  },
-  knowsAbout: [
-    "Веб-разработка",
-    "AI-автоматизация",
-    "IT под ключ",
-    "Продуктовая стратегия",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": ORG_ID,
+      name: "Lark Freelance",
+      alternateName: "Ларк Фриланс",
+      description:
+        "IT-агентство нового поколения: веб-разработка, AI-автоматизация и IT под ключ.",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/logo.png`,
+        width: 512,
+        height: 512,
+      },
+      image: `${SITE_URL}/opengraph-image.png`,
+      email: contact.email.label,
+      telephone: contact.phone.label,
+      priceRange: "$",
+      areaServed: { "@type": "Country", name: "Россия" },
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "Республика Крым",
+        addressCountry: "RU",
+      },
+      sameAs: [contact.telegram.url],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        telephone: contact.phone.label,
+        email: contact.email.label,
+        areaServed: "RU",
+        availableLanguage: ["Russian"],
+      },
+      knowsAbout: [
+        "Веб-разработка",
+        "AI-автоматизация",
+        "IT под ключ",
+        "Продуктовая стратегия",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Lark Freelance",
+      inLanguage: "ru-RU",
+      publisher: { "@id": ORG_ID },
+    },
   ],
 };
 
@@ -154,8 +200,10 @@ export default function RootLayout({
       </head>
       <body className="lark">
         <IconSprite />
-        {children}
-        <ConsoleSignature />
+        <MotionProvider>
+          {children}
+          <ConsoleSignature />
+        </MotionProvider>
       </body>
     </html>
   );

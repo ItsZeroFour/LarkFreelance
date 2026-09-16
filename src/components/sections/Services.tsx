@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
@@ -23,7 +23,7 @@ export function Services() {
         description="Закрываем полный цикл цифровой работы - без передачи задач между подрядчиками."
       />
 
-      <motion.div
+      <m.div
         variants={staggerContainer(0.09)}
         initial="hidden"
         whileInView="visible"
@@ -31,7 +31,7 @@ export function Services() {
         className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
       >
         {services.map((service) => (
-          <motion.article
+          <m.article
             key={service.id}
             variants={revealVariants("up")}
             className={`lark-service ${service.featured ? "border-t-border-strong" : ""}`}
@@ -56,9 +56,9 @@ export function Services() {
             </ul>
 
             <p className="lark-caption lark-num mt-auto pt-2">{service.price}</p>
-          </motion.article>
+          </m.article>
         ))}
-      </motion.div>
+      </m.div>
     </Section>
   );
 }

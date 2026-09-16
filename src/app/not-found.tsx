@@ -4,6 +4,8 @@ import { SleepingOrb } from "@/components/easter/SleepingOrb";
 export const metadata: Metadata = {
   title: "404 - спящий слой",
   description: "Страница ускользнула. Но Larkins пока спит - разбудите его.",
+  /* 404 не должна попадать в индекс и передавать вес по ссылкам с неё. */
+  robots: { index: false, follow: false },
 };
 
 export default function NotFound() {

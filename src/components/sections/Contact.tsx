@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon } from "@/components/ui/Icon";
@@ -83,7 +83,7 @@ export function Contact() {
 
           <p className="lark-label">{contact.location}</p>
 
-          <motion.ul
+          <m.ul
             variants={staggerContainer(0.08)}
             initial="hidden"
             whileInView="visible"
@@ -91,19 +91,19 @@ export function Contact() {
             className="flex flex-col"
           >
             {guarantees.map((row) => (
-              <motion.li
+              <m.li
                 key={row}
                 variants={revealVariants("up")}
                 className="flex items-center gap-3 border-t border-border py-3 lark-caption"
               >
                 <Icon name="check" scale="xs" className="shrink-0 text-ink" />
                 {row}
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ul>
+          </m.ul>
         </div>
 
-        <motion.div
+        <m.div
           variants={revealVariants("up")}
           initial="hidden"
           whileInView="visible"
@@ -126,7 +126,7 @@ export function Contact() {
               <span className="lark-tile__value">{channel.value}</span>
             </a>
           ))}
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Дуга-приземление закрывает страницу: открылись размахом на первом

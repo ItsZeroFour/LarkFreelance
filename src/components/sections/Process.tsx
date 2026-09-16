@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
@@ -23,7 +23,7 @@ export function Process() {
         description="Каждый этап виден: вы всегда знаете, что происходит и что будет дальше."
       />
 
-      <motion.ol
+      <m.ol
         variants={staggerContainer(0.09)}
         initial="hidden"
         whileInView="visible"
@@ -31,7 +31,7 @@ export function Process() {
         className="lg:w-8/12"
       >
         {processStages.map((stage, i) => (
-          <motion.li
+          <m.li
             key={stage.id}
             variants={revealVariants("up")}
             className="lark-step-card"
@@ -50,9 +50,9 @@ export function Process() {
               <h3 className="lark-step-card__title">{stage.title}</h3>
               <p className="lark-body lark-dim">{stage.description}</p>
             </div>
-          </motion.li>
+          </m.li>
         ))}
-      </motion.ol>
+      </m.ol>
     </Section>
   );
 }

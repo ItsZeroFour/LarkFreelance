@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { ReactNode } from "react";
 import {
   revealVariants,
@@ -27,7 +27,7 @@ export function Reveal({
   className,
   as = "div",
 }: RevealProps) {
-  const MotionTag = motion[as] as typeof motion.div;
+  const MotionTag = m[as] as typeof m.div;
   return (
     <MotionTag
       className={className}

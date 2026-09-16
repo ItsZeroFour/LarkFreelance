@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon } from "@/components/ui/Icon";
@@ -360,7 +360,7 @@ export function Larkins() {
         </div>
 
         {/* КП собирается по шагам. На мобильном панель идёт под диалогом. */}
-        <motion.aside
+        <m.aside
           initial={false}
           className="lark-card flex min-w-0 flex-col gap-4 lg:col-span-5"
         >
@@ -454,7 +454,7 @@ export function Larkins() {
               </button>
             </div>
           )}
-        </motion.aside>
+        </m.aside>
       </div>
     </Section>
   );

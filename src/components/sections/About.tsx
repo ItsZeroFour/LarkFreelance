@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
@@ -38,26 +38,26 @@ export function About() {
             title="Команда, которая делает *живые* цифровые продукты"
             className="!mb-0"
           />
-          <motion.div
+          <m.div
             variants={staggerContainer(0.08)}
             initial="hidden"
             whileInView="visible"
             viewport={revealViewport}
             className="flex flex-col gap-4"
           >
-            <motion.p variants={revealVariants("up")} className="t-body">
+            <m.p variants={revealVariants("up")} className="t-body">
               Мы не digital-агентство в привычном смысле и не биржа исполнителей.
               Мы - небольшая технологическая команда, которая берёт задачу
               целиком: от первой формулировки до работающего продукта в проде.
-            </motion.p>
-            <motion.p variants={revealVariants("up")} className="t-body">
+            </m.p>
+            <m.p variants={revealVariants("up")} className="t-body">
               Без презентационного тумана. Есть задача бизнеса - есть инженерное
               решение, доведённое до результата.
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </div>
 
-        <motion.ul
+        <m.ul
           variants={staggerContainer(0.09)}
           initial="hidden"
           whileInView="visible"
@@ -65,7 +65,7 @@ export function About() {
           className="flex flex-col lg:col-span-5"
         >
           {principles.map((principle, i) => (
-            <motion.li
+            <m.li
               key={principle.title}
               variants={revealVariants("up")}
               className="flex flex-col gap-2 border-t border-border py-5"
@@ -79,9 +79,9 @@ export function About() {
                 </h3>
               </div>
               <p className="lark-body lark-dim">{principle.body}</p>
-            </motion.li>
+            </m.li>
           ))}
-        </motion.ul>
+        </m.ul>
       </div>
     </Section>
   );

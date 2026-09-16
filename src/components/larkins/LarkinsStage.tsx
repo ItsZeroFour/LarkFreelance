@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Icon } from "@/components/ui/Icon";
 import { revealVariants, staggerContainer } from "@/hooks/useReveal";
 import { contact } from "@/data/contacts";
@@ -26,50 +26,50 @@ export function LarkinsStage() {
     <section className="relative flex min-h-[100svh] items-center overflow-hidden py-32">
 
       <div className="shell relative">
-        <motion.div
+        <m.div
           variants={staggerContainer(0.1, 0.05)}
           initial="hidden"
           animate="visible"
           className="flex flex-col items-center text-center"
         >
-          <motion.span
+          <m.span
             variants={revealVariants("up")}
             className="lark-badge lark-badge--brand"
           >
             <span className="lark-dot" aria-hidden="true" />
             coming soon
-          </motion.span>
+          </m.span>
 
-          <motion.h1
+          <m.h1
             variants={revealVariants("up")}
             className="font-display mt-6 leading-none tracking-tight"
             style={{ fontSize: "clamp(3rem, 14vw, 8.5rem)" }}
           >
             Larkins
-          </motion.h1>
+          </m.h1>
 
-          <motion.p
+          <m.p
             variants={revealVariants("up")}
             className="lark-label mt-4 text-text-3"
           >
             Lark Freelance · intelligence layer
-          </motion.p>
+          </m.p>
 
-          <motion.p
+          <m.p
             variants={revealVariants("up")}
             className="t-lead text-pretty mt-7 text-text-2"
           >
             AI-ассистент нового поколения для вашего бизнеса. Спокойный
             интеллект, встроенный в работу команды.
-          </motion.p>
+          </m.p>
 
           {/* Traits */}
-          <motion.ul
+          <m.ul
             variants={staggerContainer(0.08)}
             className="mt-12 grid w-full gap-3 text-left sm:grid-cols-3"
           >
             {traits.map((t) => (
-              <motion.li
+              <m.li
                 key={t.title}
                 variants={revealVariants("up")}
                 className="rounded-l lark-card p-5"
@@ -78,16 +78,22 @@ export function LarkinsStage() {
                 <p className="mt-2 text-sm leading-relaxed text-text-2">
                   {t.body}
                 </p>
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ul>
+          </m.ul>
 
-          {/* Actions */}
-          <motion.div
+          {/* Actions.
+              Подписи кнопок lg не переносятся, поэтому в ряд пара встаёт
+              только от sm. Раньше стоял xs (400px): на айфонах 414-430px
+              ряд выходил шире экрана и правую кнопку срезало. */}
+          <m.div
             variants={revealVariants("up")}
-            className="mt-11 flex w-full flex-col gap-3 xs:w-auto xs:flex-row"
+            className="mt-11 flex w-full min-w-0 flex-wrap gap-3"
           >
-            <Link href="/#larkins-brief" className="lark-btn lark-btn--primary lark-btn--lg">
+            <Link
+              href="/#larkins-brief"
+              className="lark-btn lark-btn--primary lark-btn--lg w-full max-sm:px-5 sm:w-auto"
+            >
               Собрать бриф сейчас
               <Icon name="arrow-right" scale="xs" />
             </Link>
@@ -95,14 +101,14 @@ export function LarkinsStage() {
               href={contact.telegram.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="lark-btn lark-btn--ghost lark-btn--lg"
+              className="lark-btn lark-btn--ghost lark-btn--lg w-full max-sm:px-5 sm:w-auto"
             >
               <Icon name="telegram" scale="xs" />
               Написать в Telegram
             </a>
-          </motion.div>
+          </m.div>
 
-          <motion.div variants={revealVariants("up")} className="mt-8">
+          <m.div variants={revealVariants("up")} className="mt-8">
             <Link
               href="/"
               className="inline-flex items-center gap-2 text-sm text-text-3
@@ -111,8 +117,8 @@ export function LarkinsStage() {
               <Icon name="arrow-right" scale="xs" className="rotate-180" />
               На главную
             </Link>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon } from "@/components/ui/Icon";
@@ -39,7 +39,7 @@ export function Portfolio() {
         </Button>
       </div>
 
-      <motion.div
+      <m.div
         variants={staggerContainer(0.08)}
         initial="hidden"
         whileInView="visible"
@@ -47,7 +47,7 @@ export function Portfolio() {
         className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
       >
         {featured.map((item) => (
-          <motion.article key={item.slug} variants={revealVariants("up")}>
+          <m.article key={item.slug} variants={revealVariants("up")}>
             <Link href={`/portfolio/${item.slug}`} className="lark-case">
               <div className="lark-case__shot">
                 <Image
@@ -75,9 +75,9 @@ export function Portfolio() {
                 <p className="lark-caption text-text-3">{item.client}</p>
               </div>
             </Link>
-          </motion.article>
+          </m.article>
         ))}
-      </motion.div>
+      </m.div>
     </Section>
   );
 }

@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
 import {
   portfolio,
@@ -58,7 +58,7 @@ export function PortfolioGallery() {
         })}
       </div>
 
-      <motion.div
+      <m.div
         key={active}
         variants={staggerContainer(0.07)}
         initial="hidden"
@@ -67,7 +67,7 @@ export function PortfolioGallery() {
         className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
         {items.map((item, i) => (
-          <motion.article
+          <m.article
             key={item.slug}
             variants={revealVariants("up")}
             className={cn(i === 0 && "sm:col-span-2 lg:col-span-3")}
@@ -114,9 +114,9 @@ export function PortfolioGallery() {
                 )}
               </div>
             </Link>
-          </motion.article>
+          </m.article>
         ))}
-      </motion.div>
+      </m.div>
 
       {items.length === 0 && (
         <div className="lark-empty">

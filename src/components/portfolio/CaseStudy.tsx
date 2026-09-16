@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
@@ -71,29 +71,29 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
         />
 
         <div className="shell relative flex min-h-[62svh] flex-col justify-end pb-10 pt-28 sm:pb-14 sm:pt-32">
-          <motion.div
+          <m.div
             variants={staggerContainer(0.09)}
             initial="hidden"
             animate="visible"
             className="flex max-w-3xl flex-col gap-4"
           >
-            <motion.div variants={revealVariants("up")} className="lark-crumbs">
+            <m.div variants={revealVariants("up")} className="lark-crumbs">
               <Link href="/portfolio">Работы</Link>
               <span className="lark-crumbs__sep" aria-hidden="true">
                 <Icon name="arrow-right" scale="xs" />
               </span>
               <span className="lark-crumbs__now">{item.title}</span>
-            </motion.div>
+            </m.div>
 
-            <motion.h1 variants={revealVariants("up")} className="t-hero">
+            <m.h1 variants={revealVariants("up")} className="t-hero">
               {item.title}
-            </motion.h1>
+            </m.h1>
 
-            <motion.p variants={revealVariants("up")} className="t-lead">
+            <m.p variants={revealVariants("up")} className="t-lead">
               {item.tagline}
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               variants={revealVariants("up")}
               className="flex flex-wrap items-center gap-3"
             >
@@ -102,15 +102,15 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
               </span>
               <span className="lark-caption lark-num">{item.year}</span>
               <span className="lark-caption">{item.client}</span>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </header>
 
       {/* ===== Что делали ===== */}
       <Section>
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-6">
-          <motion.div
+          <m.div
             variants={staggerContainer(0.08)}
             initial="hidden"
             whileInView="visible"
@@ -118,13 +118,13 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             className="flex flex-col gap-4 lg:col-span-7"
           >
             {item.overview.map((paragraph, i) => (
-              <motion.p key={i} variants={revealVariants("up")} className="t-body">
+              <m.p key={i} variants={revealVariants("up")} className="t-body">
                 {paragraph}
-              </motion.p>
+              </m.p>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             variants={revealVariants("up")}
             initial="hidden"
             whileInView="visible"
@@ -160,14 +160,14 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </Section>
 
       {/* ===== Решения ===== */}
       {item.highlights.length > 0 && (
         <Section>
-          <motion.ul
+          <m.ul
             variants={staggerContainer(0.08)}
             initial="hidden"
             whileInView="visible"
@@ -175,7 +175,7 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             className="grid gap-x-6 sm:grid-cols-2"
           >
             {item.highlights.map((highlight, i) => (
-              <motion.li
+              <m.li
                 key={highlight.title}
                 variants={revealVariants("up")}
                 className="flex flex-col gap-2 border-t border-border py-5"
@@ -189,9 +189,9 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
                   </h2>
                 </div>
                 <p className="lark-body lark-dim">{highlight.text}</p>
-              </motion.li>
+              </m.li>
             ))}
-          </motion.ul>
+          </m.ul>
         </Section>
       )}
 
@@ -243,14 +243,27 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             Оставьте номер - перезвоним {contact.responseTime}, предложим решение
             и назовём сроки и вилку стоимости.
           </p>
-          {/* Две кнопки lg в ряд помещаются только от ~600px: до sm они идут
-              столбцом на всю ширину, дальше - в ряд с переносом. */}
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
-            <Button href={contact.phone.href} size="lg">
+          {/* Подпись кнопки lg не переносится (white-space: nowrap), поэтому
+              две штуки в ряд встают только от sm. Ниже - каждая на всю ширину
+              карточки и с урезанным внутренним отступом: на 320px «Обсудить
+              проект» со стрелкой иначе вылезает за край и срезается (у html
+              стоит overflow-x: clip). flex-wrap страхует промежуточные
+              ширины, где вторая кнопка уже не влезает в остаток строки. */}
+          <div className="flex w-full min-w-0 flex-wrap gap-3">
+            <Button
+              href={contact.phone.href}
+              size="lg"
+              className="w-full max-sm:px-5 sm:w-auto"
+            >
               Обсудить проект
               <Icon name="arrow-right" scale="xs" />
             </Button>
-            <Button href="/portfolio" variant="ghost" size="lg">
+            <Button
+              href="/portfolio"
+              variant="ghost"
+              size="lg"
+              className="w-full max-sm:px-5 sm:w-auto"
+            >
               Другие работы
             </Button>
           </div>
@@ -273,7 +286,7 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
       {/* ===== Просмотр экрана ===== */}
       <AnimatePresence>
         {lightbox !== null && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -304,7 +317,7 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
               blurDataURL={getBlur(item.gallery[lightbox])}
               className="max-h-full w-auto max-w-full rounded-m object-contain"
             />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </article>

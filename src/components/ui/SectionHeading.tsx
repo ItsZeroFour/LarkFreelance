@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
 import { cn } from "@/lib/utils";
 
@@ -34,7 +34,7 @@ export function SectionHeading({
   const label = eyebrow?.replace(/^\s*\d+\s*[-–]\s*/, "").trim();
 
   return (
-    <motion.div
+    <m.div
       variants={staggerContainer(0.1)}
       initial="hidden"
       whileInView="visible"
@@ -54,32 +54,32 @@ export function SectionHeading({
       )}
 
       {eyebrow && (
-        <motion.div variants={revealVariants("up")} className="lark-marker">
+        <m.div variants={revealVariants("up")} className="lark-marker">
           {folio && (
             <span className="lark-marker__num lark-mono lark-mono--sm">{folio}</span>
           )}
           <span className="lark-marker__dash" aria-hidden="true" />
           {label && <span className="lark-marker__title">{label}</span>}
           <span className="lark-marker__rule" aria-hidden="true" />
-        </motion.div>
+        </m.div>
       )}
 
-      <motion.h2
+      <m.h2
         variants={revealVariants("up")}
         className="t-section text-balance"
       >
         <AccentText text={title} />
-      </motion.h2>
+      </m.h2>
 
       {description && (
-        <motion.p
+        <m.p
           variants={revealVariants("up")}
           className={cn("t-lead", align === "center" && "mx-auto")}
         >
           {description}
-        </motion.p>
+        </m.p>
       )}
-    </motion.div>
+    </m.div>
   );
 }
 

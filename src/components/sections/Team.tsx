@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
@@ -26,7 +26,7 @@ export function Team() {
         description="Небольшая команда, где каждый отвечает за свой контур и видит продукт целиком."
       />
 
-      <motion.ul
+      <m.ul
         variants={staggerContainer(0.09)}
         initial="hidden"
         whileInView="visible"
@@ -34,7 +34,7 @@ export function Team() {
         className="grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4 lg:gap-6"
       >
         {team.map((member) => (
-          <motion.li
+          <m.li
             key={member.id}
             variants={revealVariants("up")}
             className="lark-person"
@@ -47,9 +47,9 @@ export function Team() {
               <p className="lark-person__role">{member.caption}</p>
             </div>
             <p className="lark-caption">{member.trait}</p>
-          </motion.li>
+          </m.li>
         ))}
-      </motion.ul>
+      </m.ul>
     </Section>
   );
 }

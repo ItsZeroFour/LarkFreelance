@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { m, useScroll, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { Icon } from "@/components/ui/Icon";
@@ -92,7 +92,7 @@ export function Navbar() {
 
   return (
     <>
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="reading-progress fixed inset-x-0 top-0 z-[55]"
         style={{ scaleX: progress }}

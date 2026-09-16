@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Icon } from "@/components/ui/Icon";
 
 const COPY = {
@@ -50,7 +50,7 @@ export function SleepingOrb() {
         disabled={awake}
       >
         {/* Outer breathing glow */}
-        <motion.span
+        <m.span
           aria-hidden="true"
           className="absolute inset-0 rounded-pill"
           style={{
@@ -73,7 +73,7 @@ export function SleepingOrb() {
         />
 
         {/* The orb body */}
-        <motion.span
+        <m.span
           aria-hidden="true"
           className="relative grid h-[150px] w-[150px] place-items-center rounded-pill"
           style={{
@@ -97,13 +97,13 @@ export function SleepingOrb() {
         >
           {/* Eye - closed when asleep, opens on wake */}
           <Eye stage={stage} reduce={!!reduce} />
-        </motion.span>
+        </m.span>
 
         {/* Sleep "Z" particles */}
         {!awake && !reduce && (
           <>
             {[0, 1, 2].map((i) => (
-              <motion.span
+              <m.span
                 key={i}
                 aria-hidden="true"
                 className="absolute font-mono text-xs text-text-3"
@@ -122,7 +122,7 @@ export function SleepingOrb() {
                 }}
               >
                 z
-              </motion.span>
+              </m.span>
             ))}
           </>
         )}
@@ -130,7 +130,7 @@ export function SleepingOrb() {
         {/* Wake-up burst */}
         <AnimatePresence>
           {awake && (
-            <motion.span
+            <m.span
               aria-hidden="true"
               className="absolute inset-0 rounded-pill border border-[color:var(--lark-accent-ink)]/70"
               initial={{ scale: 0.4, opacity: 0 }}
@@ -156,7 +156,7 @@ export function SleepingOrb() {
       </div>
 
       <AnimatePresence mode="wait">
-        <motion.p
+        <m.p
           key={stage}
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
@@ -165,7 +165,7 @@ export function SleepingOrb() {
           className="t-lead max-w-md text-balance text-text-2"
         >
           {COPY[stage]}
-        </motion.p>
+        </m.p>
       </AnimatePresence>
 
       <Link
@@ -192,7 +192,7 @@ function Eye({ stage, reduce }: { stage: "asleep" | "waking" | "awake"; reduce: 
         </radialGradient>
       </defs>
       {/* Closed-eye line */}
-      <motion.path
+      <m.path
         d="M 6 16 Q 28 22, 50 16"
         stroke="rgba(20,16,8,0.85)"
         strokeWidth="2"
@@ -202,14 +202,14 @@ function Eye({ stage, reduce }: { stage: "asleep" | "waking" | "awake"; reduce: 
         transition={{ duration: 0.25 }}
       />
       {/* Open eye */}
-      <motion.g
+      <m.g
         animate={{ opacity: closed ? 0 : 1, scale: closed ? 0.3 : 1 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         style={{ transformOrigin: "28px 16px" }}
       >
         <ellipse cx="28" cy="16" rx="14" ry="9" fill="rgba(20,16,8,0.55)" />
         <circle cx="28" cy="16" r="6.5" fill="url(#orb-iris)" />
-        <motion.circle
+        <m.circle
           cx="28"
           cy="16"
           r="2.4"
@@ -222,7 +222,7 @@ function Eye({ stage, reduce }: { stage: "asleep" | "waking" | "awake"; reduce: 
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
         <circle cx="30" cy="14.5" r="1" fill="rgba(255,255,255,0.85)" />
-      </motion.g>
+      </m.g>
     </svg>
   );
 }
