@@ -85,22 +85,17 @@ export function LarkinsStage() {
           {/* Actions.
               Подписи кнопок lg не переносятся, поэтому в ряд пара встаёт
               только от sm. Раньше стоял xs (400px): на айфонах 414-430px
-              ряд выходил шире экрана и правую кнопку срезало. */}
+              ряд выходил шире экрана и правую кнопку срезало.
+              До sm каждая кнопка на всю ширину (--block) и с урезанным
+              внутренним отступом, чтобы «Написать в Telegram» помещалось
+              на 320px. От sm - ряд по центру: экран центрированный. */}
           <m.div
             variants={revealVariants("up")}
-<<<<<<< HEAD
-            className="mt-11 flex w-full min-w-0 flex-wrap gap-3"
+            className="mt-11 flex w-full min-w-0 flex-wrap gap-3 sm:w-auto sm:justify-center"
           >
             <Link
               href="/#larkins-brief"
-              className="lark-btn lark-btn--primary lark-btn--lg w-full max-sm:px-5 sm:w-auto"
-=======
-            className="mt-11 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center"
-          >
-            <Link
-              href="/#larkins-brief"
-              className="lark-btn lark-btn--primary lark-btn--lg lark-btn--block sm:w-auto"
->>>>>>> a3f551c416d92b04bb875f7d2157a0342090ce6c
+              className="lark-btn lark-btn--primary lark-btn--lg lark-btn--block max-sm:px-5 sm:w-auto"
             >
               Собрать бриф сейчас
               <Icon name="arrow-right" scale="xs" />
@@ -109,11 +104,7 @@ export function LarkinsStage() {
               href={contact.telegram.url}
               target="_blank"
               rel="noopener noreferrer"
-<<<<<<< HEAD
-              className="lark-btn lark-btn--ghost lark-btn--lg w-full max-sm:px-5 sm:w-auto"
-=======
-              className="lark-btn lark-btn--ghost lark-btn--lg lark-btn--block sm:w-auto"
->>>>>>> a3f551c416d92b04bb875f7d2157a0342090ce6c
+              className="lark-btn lark-btn--ghost lark-btn--lg lark-btn--block max-sm:px-5 sm:w-auto"
             >
               <Icon name="telegram" scale="xs" />
               Написать в Telegram
