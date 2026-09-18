@@ -3,7 +3,12 @@
  * delivered projects under /public/portfolio/<slug>.
  */
 
-export type PortfolioCategory = "landing" | "ecommerce" | "promo" | "game";
+export type PortfolioCategory =
+  | "landing"
+  | "corporate"
+  | "ecommerce"
+  | "promo"
+  | "game";
 
 export interface PortfolioFilter {
   id: PortfolioCategory | "all";
@@ -13,6 +18,7 @@ export interface PortfolioFilter {
 export const portfolioFilters: PortfolioFilter[] = [
   { id: "all", label: "Все" },
   { id: "landing", label: "Лендинги" },
+  { id: "corporate", label: "Корпоративные" },
   { id: "ecommerce", label: "E-commerce" },
   { id: "promo", label: "Промо" },
   { id: "game", label: "Игры" },
@@ -37,6 +43,8 @@ export interface PortfolioItem {
   year: string;
   /** Hero one-liner pulled from the site itself. */
   tagline: string;
+  /** Адрес живого сайта, если он ещё в проде - ссылка на кейсе. */
+  url?: string;
   /** Short copy for the gallery card. */
   summary: string;
   /** Brand accent - tints the whole case page. */
@@ -63,6 +71,59 @@ export interface PortfolioItem {
 const img = (slug: string, file: string) => `/portfolio/${slug}/${file}`;
 
 export const portfolio: PortfolioItem[] = [
+  {
+    slug: "sdstroy",
+    title: "СД Строй",
+    client: "Строительная компания «СД Строй»",
+    category: "corporate",
+    categoryLabel: "Корпоративный сайт",
+    year: "2025",
+    url: "https://sdstroy21.ru/",
+    tagline: "Строительство каменных и каркасных домов с фиксацией цены",
+    summary:
+      "Корпоративный сайт застройщика с каталогом проектов домов, фильтрами и видеоотзывами клиентов.",
+    accent: "#232e78",
+    orientation: "landscape",
+    cover: img("sdstroy", "1.webp"),
+    gallery: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"].map((f) =>
+      img("sdstroy", f),
+    ),
+    overview: [
+      "«СД Строй» - строительная компания полного цикла из Чувашии: с 2012 года строит малоэтажные дома в республике, Москве и Московской области. Обещание, вынесенное в первый экран, - фиксация цены в договоре.",
+      "Сайт мы собрали вокруг каталога: каменные, каркасные и уже построенные дома, фильтры по цене, площади, числу комнат и этажей. В карточке проекта сразу видно площадь, комнаты и этажность - клиент выбирает дом так же спокойно, как товар в магазине.",
+      "Доверие держат отдельные блоки: видеоотзывы реальных заказчиков с адресами объектов, страница «О компании» со словами руководителя о прозрачных сметах и цифры компании. Каждый экран ведёт к одной цели - оставить заявку и получить расчёт.",
+    ],
+    services: [
+      "Корпоративный сайт",
+      "Каталог проектов",
+      "UX/UI-дизайн",
+      "Веб-разработка",
+    ],
+    stats: [
+      { value: "2012", label: "год основания компании" },
+      { value: "120+", label: "реализованных проектов" },
+      { value: "22", label: "проекта в работе" },
+      { value: "3", label: "региона строительства" },
+    ],
+    highlights: [
+      {
+        title: "Каталог с фильтрами",
+        text: "Каменные, каркасные и построенные дома: отбор по цене, площади, комнатам и этажам.",
+      },
+      {
+        title: "Фиксация цены",
+        text: "Главное обещание компании вынесено в первый экран и повторяется в карточках проектов.",
+      },
+      {
+        title: "Видеоотзывы",
+        text: "Плеер с реальными отзывами заказчиков и привязкой к конкретным построенным домам.",
+      },
+      {
+        title: "Заявка с любого экрана",
+        text: "Телефон, часы работы и кнопка заявки закреплены в шапке на всех страницах.",
+      },
+    ],
+  },
   {
     slug: "aquamarine",
     title: "Аквамарин",

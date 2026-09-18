@@ -102,6 +102,13 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
               </span>
               <span className="lark-caption lark-num">{item.year}</span>
               <span className="lark-caption">{item.client}</span>
+              {/* Работа живая - даём открыть её вживую прямо с обложки. */}
+              {item.url && (
+                <Button href={item.url} external variant="secondary" size="sm">
+                  Открыть сайт
+                  <Icon name="arrow-up-right" scale="xs" />
+                </Button>
+              )}
             </m.div>
           </m.div>
         </div>

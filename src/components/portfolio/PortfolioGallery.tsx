@@ -121,7 +121,9 @@ export function PortfolioGallery() {
       {items.length === 0 && (
         <div className="lark-empty">
           <p className="lark-empty__title">В этой категории пока пусто</p>
-          <p className="lark-caption">Посмотрите остальные работы - их восемь.</p>
+          <p className="lark-caption">
+            Посмотрите остальные работы - их {portfolio.length}.
+          </p>
         </div>
       )}
     </div>
