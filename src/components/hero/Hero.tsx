@@ -96,7 +96,7 @@ export function Hero() {
               <span className="text-text">10+</span> проектов запущено
             </p>
             <p className="lark-caption shrink-0">
-              Перезваниваем {contact.responseTime}
+              Перезваниваем {contact.responseTime} - {contact.workHours}
             </p>
           </div>
 

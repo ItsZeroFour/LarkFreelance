@@ -8,6 +8,13 @@ export interface Service {
   capabilities: string[];
   /** Display price - "от …" for project work, "По подписке" for Larkins. */
   price: string;
+  /**
+   * Действие карточки. Без него человек, выбравший направление, вынужден
+   * искать форму сам - а он уже сказал, о чём хочет говорить.
+   */
+  cta: string;
+  /** Ссылка вместо формы. Есть только у Larkins: у него своя страница. */
+  href?: string;
   /** Larkins gets a distinct, almost-released treatment. */
   featured?: boolean;
   status?: string;
@@ -26,6 +33,7 @@ export const services: Service[] = [
       "Высоконагруженные интеграции",
     ],
     price: "от 80 000 ₽",
+    cta: "Обсудить сайт",
   },
   {
     id: "ai",
@@ -39,6 +47,7 @@ export const services: Service[] = [
       "Внутренние интеллект-инструменты",
     ],
     price: "от 70 000 ₽",
+    cta: "Обсудить автоматизацию",
   },
   {
     id: "turnkey",
@@ -52,6 +61,7 @@ export const services: Service[] = [
       "Технологический консалтинг",
     ],
     price: "от 200 000 ₽",
+    cta: "Обсудить проект под ключ",
   },
   {
     id: "larkins",
@@ -65,6 +75,8 @@ export const services: Service[] = [
       "Адаптивный AI-интерфейс",
     ],
     price: "По подписке",
+    cta: "Посмотреть Larkins",
+    href: "/larkins",
     featured: true,
     status: "coming soon",
   },

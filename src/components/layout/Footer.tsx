@@ -16,6 +16,8 @@ const footerNav = [
       { label: "Работы", href: "/portfolio" },
       { label: "Команда", href: "/#team" },
       { label: "Larkins", href: "/larkins" },
+      // Найм живёт здесь: на главной он перехватывал путь заказчика к заявке.
+      { label: "Работа в Lark", href: "/join" },
     ],
   },
 ];
@@ -105,9 +107,14 @@ export function Footer() {
           <p className="t-section !max-w-none">
             <AccentText text="Расправь *свои крылья*" />
           </p>
-          <p className="lark-caption lark-num">
-            © {new Date().getFullYear()} Lark Freelance
-          </p>
+          <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
+            <Link href="/privacy" className="lark-caption text-text-2">
+              Политика обработки персональных данных
+            </Link>
+            <p className="lark-caption lark-num">
+              © {new Date().getFullYear()} Lark Freelance
+            </p>
+          </div>
         </div>
       </div>
     </footer>

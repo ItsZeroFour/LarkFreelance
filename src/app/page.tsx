@@ -9,7 +9,6 @@ import { Team } from "@/components/sections/Team";
 import { Larkins } from "@/components/sections/Larkins";
 import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
-import { Freelancers } from "@/components/sections/Freelancers";
 import { faq } from "@/data/faq";
 
 /** FAQ structured data - eligible for rich results in search. */
@@ -27,8 +26,8 @@ const faqJsonLd = {
  * Lark Freelance - главная.
  *
  * Поток под отклик: ценность → доказательство → возражения → контакт.
- * Контакты закрывают страницу: блок для фрилансеров адресован не заказчику,
- * и оставлять его последним значит прощаться не с тем человеком.
+ * Страница от первого до последнего экрана обращается к заказчику: блок
+ * для фрилансеров уехал на /join, ссылка на него осталась в подвале.
  */
 export default function HomePage() {
   return (
@@ -47,7 +46,6 @@ export default function HomePage() {
         <Team />
         <Larkins />
         <FAQ />
-        <Freelancers />
         <Contact />
       </main>
       <Footer />

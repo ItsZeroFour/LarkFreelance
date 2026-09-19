@@ -44,7 +44,13 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: { phone?: string; name?: string; source?: string; company?: string };
+  let body: {
+    phone?: string;
+    name?: string;
+    source?: string;
+    company?: string;
+    topic?: string;
+  };
   try {
     body = await req.json();
   } catch {
@@ -66,11 +72,15 @@ export async function POST(req: Request) {
 
   const name = String(body.name ?? "").trim().slice(0, 80);
   const source = String(body.source ?? "site").trim().slice(0, 40);
+  // Направление, выбранное в карточке услуги. Необязательное: короткая
+  // форма на первом экране его не передаёт.
+  const topic = String(body.topic ?? "").trim().slice(0, 60);
 
   const text = [
     "Заявка с сайта",
     `Телефон: ${phone}`,
     name ? `Имя: ${name}` : null,
+    topic ? `Тема: ${topic}` : null,
     `Откуда: ${source}`,
   ]
     .filter(Boolean)
@@ -81,7 +91,7 @@ export async function POST(req: Request) {
   if (result.unconfigured) {
     console.error(
       "[lead] Заявка получена, но доставка не настроена: нет RESEND_API_KEY и TELEGRAM_BOT_TOKEN/CHAT_ID.",
-      { phone, name, source },
+      { phone, name, topic, source },
     );
     return NextResponse.json(
       { ok: false, error: "Не получилось отправить. Напишите нам напрямую - ответим сразу." },

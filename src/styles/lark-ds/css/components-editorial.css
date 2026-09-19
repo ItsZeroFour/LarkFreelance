@@ -40,6 +40,11 @@
 .lark-service__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--lark-space-2)}
 .lark-service__list li{display:flex;gap:var(--lark-space-3);align-items:flex-start;font-size:var(--lark-size-body);line-height:var(--lark-line-body);color:var(--lark-text-2)}
 .lark-service__list li::before{content:"";width:var(--lark-space-4);height:var(--lark-hairline);background:var(--lark-border-strong);flex:none;margin-top:calc(var(--lark-line-body) / 2)}
+.lark-service__foot{margin-top:auto;display:flex;flex-direction:column;gap:var(--lark-space-2);padding-top:var(--lark-space-2)}
+.lark-service__cta{display:inline-flex;align-items:center;align-self:flex-start;gap:var(--lark-space-2);min-height:var(--lark-control-h);font-size:var(--lark-size-body);line-height:var(--lark-line-body);color:var(--lark-text);transition:color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-service__cta > span{border-bottom:var(--lark-hairline) solid var(--lark-border-strong);transition:border-color var(--lark-motion-hover-duration) var(--lark-motion-hover-ease)}
+.lark-service__cta:hover{color:var(--lark-accent-ink)}
+.lark-service__cta:hover > span{border-bottom-color:var(--lark-accent-ink)}
 
 /* ---------- ШАГ ПРОЦЕССА ---------- */
 .lark-step-card{display:flex;gap:var(--lark-space-5);align-items:flex-start;position:relative;padding-bottom:var(--lark-space-6)}

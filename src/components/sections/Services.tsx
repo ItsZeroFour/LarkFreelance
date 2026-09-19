@@ -1,9 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Icon } from "@/components/ui/Icon";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
+import { requestLeadTopic } from "@/lib/leadTopic";
 import { services } from "@/data/services";
 
 /**
@@ -13,6 +16,10 @@ import { services } from "@/data/services";
  * загорается на ховере, и туда же уходит номер. Карточка Larkins
  * отличается бейджем статуса и плотной линией, а не свечением -
  * жёлтый призыв на экране один, и он не здесь.
+ *
+ * Каждая карточка заканчивается действием: человек, выбравший направление,
+ * попадает в форму с уже проставленной темой, а не идёт искать её сам.
+ * Larkins ведёт на свою страницу - продавать ещё нечего.
  */
 export function Services() {
   return (
@@ -55,7 +62,27 @@ export function Services() {
               ))}
             </ul>
 
-            <p className="lark-caption lark-num mt-auto pt-2">{service.price}</p>
+            <div className="lark-service__foot">
+              <p className="lark-caption lark-num">{service.price}</p>
+
+              {service.href ? (
+                <Link href={service.href} className="lark-service__cta">
+                  <span>{service.cta}</span>
+                  <Icon name="arrow-up-right" scale="xs" />
+                </Link>
+              ) : (
+                <a
+                  href="#contact"
+                  onClick={() =>
+                    requestLeadTopic({ id: service.id, label: service.title })
+                  }
+                  className="lark-service__cta"
+                >
+                  <span>{service.cta}</span>
+                  <Icon name="arrow-right" scale="xs" />
+                </a>
+              )}
+            </div>
           </m.article>
         ))}
       </m.div>

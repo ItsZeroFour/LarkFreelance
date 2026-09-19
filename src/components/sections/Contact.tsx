@@ -4,6 +4,7 @@ import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon } from "@/components/ui/Icon";
+import { CallbackForm } from "@/components/ui/CallbackForm";
 import { Trajectory } from "@/components/hero/Trajectory";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
 import { contact } from "@/data/contacts";
@@ -35,7 +36,7 @@ const channels: Channel[] = [
     label: "Телефон",
     value: contact.phone.label,
     href: contact.phone.href,
-    note: "Звонок в рабочее время",
+    note: `Звоним ${contact.workHours}`,
   },
   {
     icon: "mail",
@@ -47,18 +48,19 @@ const channels: Channel[] = [
 ];
 
 const guarantees = [
-  `Первый ответ ${contact.responseTime}`,
+  `Первый ответ ${contact.responseTime} - ${contact.workHours}`,
   "Разговор ни к чему не обязывает",
-  "Можно оставить номер на первом экране - перезвоним",
+  "Достаточно номера - остальное спросим сами",
 ];
 
 /**
- * 08 - Контакты. Завершающий блок страницы: с ним заказчик остаётся один
- * на один, поэтому он идёт после блока для фрилансеров, а не до.
+ * 08 - Контакты. Завершающий блок страницы: здесь заказчик остаётся с нами
+ * один на один.
  *
- * Здесь только наши каналы, без формы: короткий путь «оставил номер -
- * перезвонили» живёт на первом экране, а страница закрывается тем, как
- * с нами связаться напрямую.
+ * Форма стоит прямо здесь. Раньше её не было - предполагалось, что номер
+ * оставляют на первом экране, - но человек, дочитавший до контактов, ушёл
+ * от той формы на десять экранов вверх, и отправлять его назад значит терять
+ * его на последнем шаге. Сюда же приезжает тема, выбранная в услугах.
  *
  * Плитки идут по старшинству: Telegram занимает всю ширину и он же
  * единственный жёлтый, телефон и почта - под ним. Три равные коробки
@@ -103,30 +105,43 @@ export function Contact() {
           </m.ul>
         </div>
 
-        <m.div
-          variants={revealVariants("up")}
-          initial="hidden"
-          whileInView="visible"
-          viewport={revealViewport}
-          className="lark-tiles h-fit !grid-cols-1 sm:!grid-cols-2 lg:col-span-7"
-        >
-          {channels.map((channel) => (
-            <a
-              key={channel.label}
-              href={channel.href}
-              target={channel.external ? "_blank" : undefined}
-              rel={channel.external ? "noopener noreferrer" : undefined}
-              className={`lark-tile ${channel.primary ? "lark-tile--accent sm:col-span-2" : ""}`}
-            >
-              <span className="lark-tile__label flex items-center gap-2">
-                <Icon name={channel.icon} scale="xs" />
-                {channel.label}
-              </span>
-              <span className="lark-tile__note">{channel.note}</span>
-              <span className="lark-tile__value">{channel.value}</span>
-            </a>
-          ))}
-        </m.div>
+        <div className="flex flex-col gap-6 lg:col-span-7">
+          {/* Форма первая: это и есть действие раздела. Прямые каналы под
+              ней не дублируем - плитки стоят следом. */}
+          <m.div
+            variants={revealVariants("up")}
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+          >
+            <CallbackForm source="contact" variant="block" showChannels={false} />
+          </m.div>
+
+          <m.div
+            variants={revealVariants("up")}
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+            className="lark-tiles h-fit !grid-cols-1 sm:!grid-cols-2"
+          >
+            {channels.map((channel) => (
+              <a
+                key={channel.label}
+                href={channel.href}
+                target={channel.external ? "_blank" : undefined}
+                rel={channel.external ? "noopener noreferrer" : undefined}
+                className={`lark-tile ${channel.primary ? "lark-tile--accent sm:col-span-2" : ""}`}
+              >
+                <span className="lark-tile__label flex items-center gap-2">
+                  <Icon name={channel.icon} scale="xs" />
+                  {channel.label}
+                </span>
+                <span className="lark-tile__note">{channel.note}</span>
+                <span className="lark-tile__value">{channel.value}</span>
+              </a>
+            ))}
+          </m.div>
+        </div>
       </div>
 
       {/* Дуга-приземление закрывает страницу: открылись размахом на первом

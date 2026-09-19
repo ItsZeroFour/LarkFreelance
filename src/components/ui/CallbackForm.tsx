@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { contact } from "@/data/contacts";
+import { LEAD_TOPIC_EVENT, type LeadTopic } from "@/lib/leadTopic";
 import { cn, formatRuPhone } from "@/lib/utils";
 
 type State = "idle" | "sending" | "sent" | "error";
@@ -12,6 +14,11 @@ interface CallbackFormProps {
   source: string;
   /** compact - строка на первом экране, block - завершающий блок страницы. */
   variant?: "compact" | "block";
+  /**
+   * Прямые каналы под формой. В контактах рядом стоят те же плитки -
+   * показывать их дважды значит повторяться на последнем шаге.
+   */
+  showChannels?: boolean;
   className?: string;
 }
 
@@ -28,15 +35,32 @@ interface CallbackFormProps {
 export function CallbackForm({
   source,
   variant = "compact",
+  showChannels = true,
   className,
 }: CallbackFormProps) {
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [company, setCompany] = useState(""); // ловушка для ботов
+  const [topic, setTopic] = useState<LeadTopic | null>(null);
   const [state, setState] = useState<State>("idle");
   const [error, setError] = useState("");
 
   const block = variant === "block";
+
+  /**
+   * Тему слушает только развёрнутая форма: кнопки в услугах ведут якорем
+   * именно к ней, а строка на первом экране остаётся коротким путём
+   * «номер - и перезвонили» без лишних состояний.
+   */
+  useEffect(() => {
+    if (!block) return;
+    const onTopic = (e: Event) => {
+      setTopic((e as CustomEvent<LeadTopic>).detail);
+      setState((s) => (s === "sent" ? "idle" : s));
+    };
+    window.addEventListener(LEAD_TOPIC_EVENT, onTopic);
+    return () => window.removeEventListener(LEAD_TOPIC_EVENT, onTopic);
+  }, [block]);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -48,7 +72,13 @@ export function CallbackForm({
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone, name, company, source }),
+        body: JSON.stringify({
+          phone,
+          name,
+          company,
+          source,
+          topic: topic?.label,
+        }),
       });
       const data: { ok: boolean; error?: string } = await res.json();
       if (!data.ok) {
@@ -72,8 +102,9 @@ export function CallbackForm({
         <div className="lark-alert__body">
           <p className="lark-alert__title">Заявка принята</p>
           <p className="lark-caption">
-            Перезвоним {contact.responseTime}. Если удобнее текстом - пишите
-            в Telegram.
+            Перезвоним {contact.responseTime} в рабочее время ({contact.workHours}).
+            {" "}
+            {contact.callPromise}. Если удобнее текстом - пишите в Telegram.
           </p>
         </div>
       </div>
@@ -82,6 +113,25 @@ export function CallbackForm({
 
   return (
     <div className={cn("flex w-full flex-col gap-3", className)}>
+      {/* Тема, выбранная в услугах. Видна человеку - он должен понимать,
+          что именно уедет команде, - и снимается одним нажатием. */}
+      {topic && (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className="lark-label">Тема</span>
+          <span className="lark-badge lark-badge--sm lark-badge--neutral">
+            {topic.label}
+          </span>
+          <button
+            type="button"
+            onClick={() => setTopic(null)}
+            className="lark-caption inline-flex min-h-[32px] items-center text-text-3
+                       underline underline-offset-4"
+          >
+            другая тема
+          </button>
+        </div>
+      )}
+
       <form
         onSubmit={submit}
         className={cn(
@@ -154,28 +204,39 @@ export function CallbackForm({
       )}
 
       {/* Прямые каналы - для тех, кто номер не оставляет */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-        <span className="lark-caption text-text-3">Или напишите:</span>
-        <a
-          href={contact.telegram.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="lark-caption inline-flex items-center gap-1.5 text-text-2"
-        >
-          <Icon name="telegram" scale="xs" />
-          {contact.telegram.handle}
-        </a>
-        <a
-          href={contact.email.href}
-          className="lark-caption inline-flex items-center gap-1.5 text-text-2"
-        >
-          <Icon name="mail" scale="xs" />
-          {contact.email.label}
-        </a>
-      </div>
+      {showChannels && (
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          <span className="lark-caption text-text-3">Или напишите:</span>
+          <a
+            href={contact.telegram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lark-caption inline-flex items-center gap-1.5 text-text-2"
+          >
+            <Icon name="telegram" scale="xs" />
+            {contact.telegram.handle}
+          </a>
+          <a
+            href={contact.email.href}
+            className="lark-caption inline-flex items-center gap-1.5 text-text-2"
+          >
+            <Icon name="mail" scale="xs" />
+            {contact.email.label}
+          </a>
+        </div>
+      )}
+
+      <p className="lark-caption text-text-3">{contact.callPromise}.</p>
 
       <p className="lark-caption text-text-3">
-        Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
+        Нажимая кнопку, вы соглашаетесь с{" "}
+        <Link
+          href={contact.privacyPath}
+          className="text-text-2 underline underline-offset-4"
+        >
+          политикой обработки персональных данных
+        </Link>
+        .
       </p>
     </div>
   );
