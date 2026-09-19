@@ -27,6 +27,9 @@ const principles = [
  * линией. Двенадцать границ и три spotlight-слоя заменяет одна линия на
  * строку - на плоской поверхности это читается спокойнее и занимает
  * заметно меньше высоты.
+ *
+ * Первая линия принципов стоит на одной высоте с линией маркера слева:
+ * без этого она висела на 8 px выше - ровно на половину строки маркера.
  */
 export function About() {
   return (
@@ -62,7 +65,7 @@ export function About() {
           initial="hidden"
           whileInView="visible"
           viewport={revealViewport}
-          className="flex flex-col lg:col-span-5"
+          className="flex flex-col lg:col-span-5 lark-rule-aligned"
         >
           {principles.map((principle, i) => (
             <m.li

@@ -20,6 +20,11 @@ import { services } from "@/data/services";
  * Каждая карточка заканчивается действием: человек, выбравший направление,
  * попадает в форму с уже проставленной темой, а не идёт искать её сам.
  * Larkins ведёт на свою страницу - продавать ещё нечего.
+ *
+ * Порядок внутри карточки повторяет порядок решения о покупке: что это
+ * даст → что входит → чем подтверждено → срок и цена → действие. Описания
+ * «ощущаются дорого» и «без шума и хайпа» ушли: они говорили о нас, а
+ * решение человек принимает про себя.
  */
 export function Services() {
   return (
@@ -27,7 +32,7 @@ export function Services() {
       <SectionHeading
         eyebrow="02 - Услуги"
         title="Четыре направления, *одна* команда"
-        description="Закрываем полный цикл цифровой работы - без передачи задач между подрядчиками."
+        description="Берём задачу целиком - от первой формулировки до работающего продукта. Сроки и вилку стоимости называем до старта, а не после."
       />
 
       <m.div
@@ -35,7 +40,7 @@ export function Services() {
         initial="hidden"
         whileInView="visible"
         viewport={revealViewport}
-        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
+        className="lark-services grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-6"
       >
         {services.map((service) => (
           <m.article
@@ -54,7 +59,10 @@ export function Services() {
 
             <h3 className="lark-service__title">{service.title}</h3>
 
-            <p className="lark-body lark-dim">{service.summary}</p>
+            {/* Обещание направления. Единственная строка карточки, набранная
+                основным цветом: человек должен прочитать её, даже если
+                остальное пролистает. */}
+            <p className="lark-body text-text text-pretty">{service.outcome}</p>
 
             <ul className="lark-service__list">
               {service.capabilities.map((capability) => (
@@ -63,7 +71,25 @@ export function Services() {
             </ul>
 
             <div className="lark-service__foot">
-              <p className="lark-caption lark-num">{service.price}</p>
+              {service.trust && (
+                <p className="lark-caption text-text-3 text-pretty">
+                  {service.trust}
+                </p>
+              )}
+
+              {/* Срок и цена в одной строке: два вопроса, которые человек
+                  задаёт до разговора, - и оба закрыты до кнопки. */}
+              <p className="lark-caption lark-num flex flex-wrap items-baseline gap-x-2">
+                {service.timeline && (
+                  <>
+                    <span className="text-text-2">{service.timeline}</span>
+                    <span aria-hidden="true" className="text-text-off">
+                      ·
+                    </span>
+                  </>
+                )}
+                <span className="text-text-2">{service.price}</span>
+              </p>
 
               {service.href ? (
                 <Link href={service.href} className="lark-service__cta">
