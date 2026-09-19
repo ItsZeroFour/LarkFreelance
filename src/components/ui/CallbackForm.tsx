@@ -4,7 +4,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { contact } from "@/data/contacts";
-import { LEAD_TOPIC_EVENT, type LeadTopic } from "@/lib/leadTopic";
+import {
+  LEAD_TOPIC_EVENT,
+  takeStoredLeadTopic,
+  type LeadTopic,
+} from "@/lib/leadTopic";
 import { cn, formatRuPhone } from "@/lib/utils";
 
 type State = "idle" | "sending" | "sent" | "error";
@@ -48,12 +52,19 @@ export function CallbackForm({
   const block = variant === "block";
 
   /**
-   * Тему слушает только развёрнутая форма: кнопки в услугах ведут якорем
-   * именно к ней, а строка на первом экране остаётся коротким путём
+   * Тему слушает только развёрнутая форма: кнопки в услугах и кейсах ведут
+   * якорем именно к ней, а строка на первом экране остаётся коротким путём
    * «номер - и перезвонили» без лишних состояний.
+   *
+   * Сначала забираем тему, отложенную перед переходом со страницы кейса,
+   * затем слушаем события с этой же страницы.
    */
   useEffect(() => {
     if (!block) return;
+
+    const stored = takeStoredLeadTopic();
+    if (stored) setTopic(stored);
+
     const onTopic = (e: Event) => {
       setTopic((e as CustomEvent<LeadTopic>).detail);
       setState((s) => (s === "sent" ? "idle" : s));

@@ -12,17 +12,25 @@ import { portfolio } from "@/data/portfolio";
 import { getBlur } from "@/data/blurData";
 
 /**
- * 04 - Портфолио. Одна строка из трёх кейсов - строительство, стоматология,
- * e-commerce: индустрии, в которых живёт заказчик, ради которого сделана эта
- * страница. Промо и игры показываем в полной подборке, а не на главной:
- * шесть кейсов растягивали мобильную страницу и размывали адресата.
+ * 04 - Портфолио. Одна строка из трёх кейсов, выбранных вручную: интер-
+ * активная игра, стоматология и промышленность. Список задан слагами, а не
+ * первыми тремя из подборки, - витрина главной меняется отдельно от порядка
+ * в /portfolio, и подмена кейса не зависит от сортировки данных.
+ *
+ * Остальное показываем в полной подборке: шесть кейсов растягивали мобильную
+ * страницу и размывали адресата.
  *
  * Снимок приглушён и проявляется на ховере с лёгким наездом. Персональный
  * цвет кейса удалён вместе с остальными произвольными цветами: категорию
  * теперь читает бейдж на снимке.
  */
+/** Витрина главной. Порядок значим - он же порядок показа. */
+const featuredSlugs = ["stockity", "aquamarine", "big"];
+
 export function Portfolio() {
-  const featured = portfolio.slice(0, 3);
+  const featured = featuredSlugs
+    .map((slug) => portfolio.find((item) => item.slug === slug))
+    .filter((item): item is (typeof portfolio)[number] => item !== undefined);
 
   return (
     <Section id="portfolio">
@@ -32,7 +40,7 @@ export function Portfolio() {
         <SectionHeading
           eyebrow="04 - Портфолио"
           title="Работы, которые *ушли в прод*"
-          description="Сайты, которые продают, лечат и отгружают - от строительной компании до обувного бренда. Промо и игры в полной подборке."
+          description="Интерактивная игра, стоматология и промышленность - разные индустрии и разные задачи, один уровень исполнения."
           className="!mb-0"
         />
 
@@ -60,7 +68,9 @@ export function Portfolio() {
                   sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
                   placeholder={getBlur(item.cover) ? "blur" : "empty"}
                   blurDataURL={getBlur(item.cover)}
-                  className="object-cover"
+                  className={`object-cover ${
+                    item.coverPosition === "left" ? "object-left" : ""
+                  }`}
                 />
                 <div className="lark-case__tags">
                   <span className="lark-badge lark-badge--sm lark-badge--neutral">

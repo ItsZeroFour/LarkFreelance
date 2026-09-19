@@ -58,6 +58,12 @@ export interface PortfolioItem {
   hideBrowserBar?: boolean;
   /** Cover image, relative to /public. */
   cover: string;
+  /**
+   * Куда прижимать обложку в карточке, когда она шире рамки. По умолчанию
+   * центр. «left» нужен снимкам, у которых смысл живёт слева - заголовок
+   * и призыв: центральный кадр срезает их до половины слова.
+   */
+  coverPosition?: "left";
   /** Full screenshot set, in display order. */
   gallery: string[];
   /** Detail-page narrative. */
@@ -84,7 +90,11 @@ export const portfolio: PortfolioItem[] = [
       "Корпоративный сайт застройщика с каталогом проектов домов, фильтрами и видеоотзывами клиентов.",
     accent: "#232e78",
     orientation: "landscape",
-    cover: img("sdstroy", "1.webp"),
+    /**
+     * Обложка - кадр первого экрана сайта: дом в сумерках, без интерфейса.
+     * Галерея осталась снимками страниц.
+     */
+    cover: img("sdstroy", "cover.webp"),
     gallery: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"].map((f) =>
       img("sdstroy", f),
     ),
@@ -136,7 +146,12 @@ export const portfolio: PortfolioItem[] = [
       "Премиальный лендинг стоматологии нового поколения, где высокие технологии встречают заботу.",
     accent: "#18b4cf",
     orientation: "landscape",
-    cover: img("aquamarine", "5.webp"),
+    /**
+     * Обложка - отрисованный макет первого экрана, а не снимок страницы:
+     * в карточке и в шапке кейса он читается крупнее и показывает работу
+     * целиком. Галерея осталась снимками живого сайта.
+     */
+    cover: img("aquamarine", "cover.webp"),
     gallery: ["5.webp", "1.webp", "2.webp", "3.webp", "4.webp"].map((f) =>
       img("aquamarine", f),
     ),
@@ -456,7 +471,14 @@ export const portfolio: PortfolioItem[] = [
       "Генератор обоев-визуализаций для Stockity: собери доску желаний и скачай её на смартфон.",
     accent: "#3b82f6",
     orientation: "landscape",
-    cover: img("stockity-wallpaper", "2.webp"),
+    /**
+     * Не кадр из галереи, а вырезанный из него баннер: на снимке страницы
+     * вокруг баннера остаётся белый фон сайта, и в тёмной карточке он читался
+     * полосами по краям. Галерея при этом осталась нетронутой - там страница
+     * показывается целиком, как она и выглядит.
+     */
+    cover: img("stockity-wallpaper", "cover.webp"),
+    coverPosition: "left",
     gallery: ["2.webp", "5.webp", "3.webp", "4.webp", "1.webp"].map((f) =>
       img("stockity-wallpaper", f),
     ),

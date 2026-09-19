@@ -28,6 +28,8 @@ interface ButtonAsButton extends BaseProps {
 interface ButtonAsLink extends BaseProps {
   href: string;
   external?: boolean;
+  /** Ссылка ведёт по якорю, но по дороге может что-то сообщить - например тему обращения. */
+  onClick?: () => void;
   "aria-label"?: string;
 }
 
@@ -78,6 +80,7 @@ export function Button(props: ButtonProps) {
           href={props.href}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={props.onClick}
           aria-label={props["aria-label"]}
           className={classes}
         >
@@ -88,6 +91,7 @@ export function Button(props: ButtonProps) {
     return (
       <Link
         href={props.href}
+        onClick={props.onClick}
         aria-label={props["aria-label"]}
         className={classes}
       >

@@ -94,7 +94,10 @@ export function PortfolioGallery() {
                   }
                   placeholder={getBlur(item.cover) ? "blur" : "empty"}
                   blurDataURL={getBlur(item.cover)}
-                  className="object-cover"
+                  className={cn(
+                    "object-cover",
+                    item.coverPosition === "left" && "object-left",
+                  )}
                 />
                 <div className="lark-case__tags">
                   <span className="lark-badge lark-badge--sm lark-badge--neutral">

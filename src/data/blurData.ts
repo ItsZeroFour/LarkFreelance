@@ -9,6 +9,7 @@ export const blurData: Record<string, string> = {
   "/portfolio/aquamarine/3.webp": "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAAAwAQCdASoQAAcAA4BaJZQAA3AA/vPFX0i840swAAA=",
   "/portfolio/aquamarine/4.webp": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoQAAYAA4BaJbACdAEPyMtHGAD+9wd6GPN28OPhW1ERhMC/DO183Qz2BQHZNb+dtHaGbo24H8AAAA==",
   "/portfolio/aquamarine/5.webp": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAQCdASoQAAgAA4BaJQAAW12XQ4tAAP72F7IEM30es8F9Y4PMgFAfEks+czf4gpvvdJkM635bgvj1/JR2PeREAAA=",
+  "/portfolio/aquamarine/cover.webp": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoQAAsAA4BaJYwAAuQnEDwDoAD+9wiSqU23K4ZOagTfY9SeTs4rNNUnQ1CJIJ+d9NRBTT8ONw6zfj2rMX7O7dwA",
   "/portfolio/august/1.webp": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAgAA4BaJbACdAEN5ekwcAD+8aNtWy+sKtu5SN8pXZUJcPOFPb3fSDOpN+pXSRComUHe181m59na3in7mk9i55WBI1fKOQt1IviByRlAAA==",
   "/portfolio/august/2.webp": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACwAQCdASoQAAgAA4BaJaQAAfcPS1gAAP70cls8icELSX1oUWtLzVSz2+5P30sAAAA=",
   "/portfolio/august/3.webp": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACQAQCdASoQAAgAA4BaJaQAApBVI6AA/vRyWu4pEFjhmIbK9t+DcwDMsL/wAAAA",
@@ -52,6 +53,7 @@ export const blurData: Record<string, string> = {
   "/portfolio/sdstroy/4.webp": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoQAAoAA4BaJZwAAxe0fVCVAAD+6QcDklsS3FQDbd5I3/Kp+8s+09WBVhEQX4Q8WpYOhxF1vPV3wIAA",
   "/portfolio/sdstroy/5.webp": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACwAQCdASoQAAoAA4BaJaQAAveX3pOgAP72GUOZ0HHDH2msZ+MlPq2t+jTPR52Y2WsMvfFZywwlPSL1Sif4GAAA",
   "/portfolio/sdstroy/6.webp": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQAAkAA4BaJaQAAuheBYpgIgAA+9Q3SS+cIsTWFd4kq1Ot9hQXzV1AENSipF3X5QTvPQb8OWAAAA==",
+  "/portfolio/sdstroy/cover.webp": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoQAAgAA4BaJaQAAuQmBn4AAP72kfu79643DcjJQ0aRpFTFW0NcAAAA",
   "/portfolio/stockity/1.webp": "data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAACQBQCdASoQABsALrV2u12jqampiYC0S2AE6ZQjgRYFCA2wF2AegB0vBEdF+AHSUSk788m0EAD+wksau5HfRRjpdkjZx25YiZagM+JMh8vpHiR5rFyE42b4yNWxrWBkG1JDc5P8PVAP9YKAmocblmXv2qCNCn/WCFtHqg4URk/aOYTYAPMZ/uv4Zp8Jj4thrKvwoY9L41Rir4l9sC3xFR/L6hTVykwFxePl5aDA3MEd5ppVpJ+W/Kz6289JjxI/CSAK1Jbag5QQ+det4BQ519Nmst9TnXg+npYRkqJOF8csUAAA",
   "/portfolio/stockity/2.webp": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAADwBQCdASoQABkAPu1iqU2ppaOiMAgBMB2JbACdMoR3EuAdYB/APUA/QAewFBd421zJ0ePEV/1UcAD+idMCVEl+toIFFdIHMdA8d/6CUvKmVYKk40UzP8y4zc7gPQu6M4uWR7fZKxBMquJJNrWb+zMKJq9ucLJIAuc7HSaCr0qej3U1C2wal64ltGuiGEFG57eQ5X3BDNThMTSxgiHeC+babzD2S4VMeHa4fm0IB+TOO6/NP3TVkbhflU/m4ZceKT78kbVJ/sjSYv82+FqsUOJXoH1q/4OcyBLWu8+ZnvjmbwA/WcFB16kuS6dd11AAAAA=",
   "/portfolio/stockity/3.webp": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAAAQBQCdASoQABoAPu1iqU2ppaOiMAgBMB2JbACdMoR3IsChb5gBkgAFKN5izEA1vWCAAP3D5eashhg0ztSaDK2hsnC3Ep0Y5YP7WAHatStgM1aPC3+lMlSsJ8GnotS2QBXFVWxEaT+FSxNDYSgbfc2yXK8fqLhF+HZf5S/Xj5W5tapSV1wXGaD9nPbfCQZiPbk2he/LGKyJrHdkPXv8yqBuTFBxUu26tPRk7jeRARaNrfUvfLA3HWtCoBlBfYAA",
@@ -65,6 +67,7 @@ export const blurData: Record<string, string> = {
   "/portfolio/stockity-wallpaper/3.webp": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoQAAgAA4BaJZwAAujarlky8AD+9R2A0FZPQApUU0pxT+bla6VodKpZvbYfiWxcrAKNXCeg9kJeAAAA",
   "/portfolio/stockity-wallpaper/4.webp": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAQCdASoQAAgAA4BaJZwAAtaWjW8AAP7uW7U984si48CN1ATAUBmHNrWmEC3nTujgsybvoNtKoLBqaa9PKrpEypaSjlFi23FAAA==",
   "/portfolio/stockity-wallpaper/5.webp": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAgAA4BaJbACdAEOuDfSAAD5UuhNhcmBKlU4kPgEq3lhfHovobCrlVe5ZH0Tq7nRYkrJ+Ri0GKoJ0kcV8b92D49HqiHtARN/3SWUAAA=",
+  "/portfolio/stockity-wallpaper/cover.webp": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoQAAYAA4BaJbACdADy/e508AD+5fhF7zM4bfBtZxXT2XYNyb0/AUZXoaLx/7mX596bzjJ34ARm1ghd7DfbiAWwa88s10NAAAA=",
 };
 
 /** Blur-заглушка для пути; undefined - если превью нет. */

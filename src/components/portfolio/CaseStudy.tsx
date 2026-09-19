@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { BrowserFrame, PhoneFrame } from "./Frames";
 import { revealVariants, revealViewport, staggerContainer } from "@/hooks/useReveal";
 import { contact } from "@/data/contacts";
+import { requestLeadTopic } from "@/lib/leadTopic";
 import { getBlur } from "@/data/blurData";
 import type { PortfolioItem } from "@/data/portfolio";
 
@@ -247,22 +248,37 @@ export function CaseStudy({ item, next }: CaseStudyProps) {
             Соберём такой же - <em>под ваш бизнес</em>
           </h2>
           <p className="t-lead">
-            Оставьте номер - перезвоним {contact.responseTime}, предложим решение
-            и назовём сроки и вилку стоимости.
+            Оставьте номер - перезвоним {contact.responseTime} в рабочее время,
+            предложим решение и назовём сроки и вилку стоимости.
           </p>
-          {/* Подпись кнопки lg не переносится (white-space: nowrap), поэтому
-              две штуки в ряд встают только от sm. Ниже - каждая на всю ширину
-              карточки и с урезанным внутренним отступом: на 320px «Обсудить
-              проект» со стрелкой иначе вылезает за край и срезается (у html
-              стоит overflow-x: clip). flex-wrap страхует промежуточные
-              ширины, где вторая кнопка уже не влезает в остаток строки. */}
+          {/* Подписи кнопок lg по умолчанию не переносятся (white-space:
+              nowrap), поэтому две штуки в ряд встают только от sm. Ниже -
+              каждая на всю ширину карточки и с урезанным внутренним отступом.
+              «Обсудить похожий проект» на 320px не влезает в строку даже так
+              (замер: 247px текста в 220px кнопки), поэтому до sm подпись
+              переносится, а кнопка растёт в высоту: min-height сохраняет
+              тап-таргет. Там же ступень текста опускается с body-l до body -
+              на 20px подпись ломается на три строки, на 16px укладывается
+              в две. flex-wrap страхует промежуточные ширины, где вторая
+              кнопка уже не влезает в остаток строки. */}
           <div className="flex w-full min-w-0 flex-wrap gap-3">
+            {/* Кнопка ведёт в форму на главной и забирает кейс с собой:
+                человек уже показал, что ему нужно, - повторно объяснять
+                это в разговоре он не должен. Раньше здесь стояла ссылка
+                tel:, хотя текст рядом обещал обратный звонок. */}
             <Button
-              href={contact.phone.href}
+              href="/#contact"
               size="lg"
-              className="w-full max-sm:px-5 sm:w-auto"
+              onClick={() =>
+                requestLeadTopic({
+                  id: `case-${item.slug}`,
+                  label: `Похожий проект - ${item.title}`,
+                })
+              }
+              className="w-full max-sm:whitespace-normal max-sm:px-4 max-sm:py-3
+                         max-sm:text-[length:var(--lark-size-body)] sm:w-auto"
             >
-              Обсудить проект
+              Обсудить похожий проект
               <Icon name="arrow-right" scale="xs" />
             </Button>
             <Button
