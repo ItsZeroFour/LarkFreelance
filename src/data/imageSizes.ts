@@ -60,7 +60,7 @@ export const imageSizes: Record<string, ImageSize> = {
   "/portfolio/sdstroy/4.webp": { width: 1280, height: 838 },
   "/portfolio/sdstroy/5.webp": { width: 1280, height: 813 },
   "/portfolio/sdstroy/6.webp": { width: 1280, height: 724 },
-  "/portfolio/sdstroy/cover.webp": { width: 1280, height: 640 },
+  "/portfolio/sdstroy/cover.webp": { width: 1280, height: 760 },
   "/portfolio/stockity/1.webp": { width: 453, height: 768 },
   "/portfolio/stockity/2.webp": { width: 487, height: 765 },
   "/portfolio/stockity/3.webp": { width: 473, height: 761 },
