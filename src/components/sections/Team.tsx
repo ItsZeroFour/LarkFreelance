@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { m } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -9,10 +10,9 @@ import { team } from "@/data/team";
 /**
  * 05 - Команда. Четыре человека по три колонки.
  *
- * Четыре персональных оттенка заменены одним акцентом: инициалы живут
- * на нейтрали и заливаются жёлтым под курсором. Фотографий команды в
- * материалах нет, подставлять сток нельзя - инициалы заголовочным
- * шрифтом это осознанный приём, а не заглушка.
+ * Квадратный портрет в рамке ДС, под курсором фото слегка приближается.
+ * Если фото у участника нет, вместо него выводятся инициалы заголовочным
+ * шрифтом на нейтрали - они заливаются жёлтым под курсором.
  *
  * Черта выводится сразу, а не по ховеру: скрытый текст на тач-устройствах
  * недоступен.
@@ -37,11 +37,23 @@ export function Team() {
           <m.li
             key={member.id}
             variants={revealVariants("up")}
-            className="lark-person"
+            className="lark-person group"
           >
-            <span className="lark-person__mark" aria-hidden="true">
-              {member.monogram}
-            </span>
+            {member.photo ? (
+              <div className="lark-person__mark relative overflow-hidden">
+                <Image
+                  src={member.photo}
+                  alt={`${member.name} - ${member.caption.toLowerCase()}`}
+                  fill
+                  sizes="(min-width: 768px) 25vw, 50vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"
+                />
+              </div>
+            ) : (
+              <span className="lark-person__mark" aria-hidden="true">
+                {member.monogram}
+              </span>
+            )}
             <div className="flex flex-col gap-1">
               <h3 className="lark-person__name">{member.name}</h3>
               <p className="lark-person__role">{member.caption}</p>
